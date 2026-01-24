@@ -1,0 +1,5 @@
+par(mfrow=c(1,3))
+curve(dunif(x, 7, 9), from=6, to=10)
+curve(punif(x, 7, 9), from=6, to=10)
+curve(qunif(x, 7, 9), from=0, to=1)
+par(mfrow=c(1,1))

@@ -1,0 +1,5 @@
+par(mfrow=c(1,3))
+curve(dnorm(x, 4, 1.2), from=0, to=8)
+curve(pnorm(x, 4, 1.2), from=0, to=8)
+curve(qnorm(x, 4, 1.2), from=0, to=1)
+par(mfrow=c(1,1))

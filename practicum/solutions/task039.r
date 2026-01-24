@@ -1,0 +1,5 @@
+par(mfrow=c(1,3))
+curve(dexp(x, 3), from=0, to=2)
+curve(pexp(x, 3), from=0, to=2)
+curve(qexp(x, 3), from=0, to=0.99)
+par(mfrow=c(1,1))
