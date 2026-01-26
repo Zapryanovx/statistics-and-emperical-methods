@@ -1,0 +1,1 @@
+prop.test( x=32, n=58, conf.level=0.95, correct=F )$conf.int[1:2]
