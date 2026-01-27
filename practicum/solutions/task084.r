@@ -5,8 +5,8 @@ sim.task <- function(n, mu1, mu2, sigma1, sigma2) {
 }
 
 prob.task <- function(n, mu1, mu2, sigma1, sigma2) {
-    res <- replicate( 10000, sim.t2(n=500, mu1=5, mu2=5, sigma1=1, sigma2=0.8) )
-    sum(rs<=0.05)/length(rs)
+  res <- replicate(10000, sim.task(n, mu1, mu2, sigma1, sigma2))
+  sum(res<=0.05) / 10000
 }
 
-prob.task(500, 5, 5, 1, 0.8)
+sapply(c(20, 50, 100, 500), prob.task, mu1=5, mu2=5, sigma1=1, sigma2=0.8)

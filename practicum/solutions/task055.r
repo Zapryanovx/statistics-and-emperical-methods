@@ -1,3 +1,7 @@
+library(MASS)
+data(survey)
+attach(survey)
+
 median( Pulse, na.rm=T )
 mean( Pulse, na.rm=T )
 sd( Pulse, na.rm=T )
@@ -16,4 +20,4 @@ sd( Pulse[Exer=="Freq"], na.rm=T )
 
 median( Pulse[Smoke=="Never" & Exer=="Freq"], na.rm=T )
 mean( Pulse[Smoke=="Never" & Exer=="Freq"], na.rm=T )
-sd( Pulse[Smoke=="Never" & Exer=="Freq"], na.rm=T )
+sd( Pulse[Smoke=="Never" & Exer=="Freq"], na.rm=T )
