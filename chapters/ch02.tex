@@ -1,1 +1,126 @@
 \chapter{Вероятност и вероятностно пространство}
+
+\section{Дефиниция и аксиоми}
+
+\begin{defbox}[~(Вероятност)]
+Нека $\Omega$ е пространство от елементарни събития и нека
+$\mathcal{A}$ е $\sigma$-алгебра над $\Omega$. \textbf{Вероятността}
+(вероятностна мярка) е функция $\mathbb{P}:\mathcal{A}\to[0,1]$, за
+която:
+\begin{itemize}[nosep]
+  \item $\mathbb{P}(A) \geq 0$ за всяко $A\in\mathcal A$;
+  \item $\mathbb{P}(\Omega) = 1$;
+  \item ако $A_1,\dots,A_n,\dots$ са несъвместими (т.е.\ $A_i\cap A_j=\varnothing$ за $i\neq j$), то
+  $\displaystyle \mathbb{P}\Big(\bigcup_{i=1}^{\infty}A_i\Big) = \sum_{i=1}^{\infty}\mathbb{P}(A_i)$ ($\sigma$-адитивност).
+\end{itemize}
+\end{defbox}
+
+\begin{corbox}[~(основни свойства на вероятността)]
+Нека $\mathbb{P}:\mathcal{A}\to[0,1]$ е вероятност. Тогава са в сила:
+\begin{enumerate}[label=\alph*)]
+  \item $0 \leq \mathbb{P}(A) \leq 1$;
+  \item $\mathbb{P}(\varnothing) = 0$;
+  \item $\mathbb{P}(\bar A) = 1-\mathbb{P}(A)$;
+  \item ако $A\cap B=\varnothing$, то $\mathbb{P}(A\cup B)=\mathbb{P}(A)+\mathbb{P}(B)$;
+  \item в общия случай $\mathbb{P}(A\cup B) = \mathbb{P}(A)+\mathbb{P}(B)-\mathbb{P}(A\cap B)$;
+  \item ако $A\subseteq B$, то $\mathbb{P}(A)\leq\mathbb{P}(B)$ (монотонност);
+  \item (непрекъснатост отдолу) ако $A_1\subseteq A_2\subseteq\dots\subseteq A_n\subseteq\dots$, то
+  $\displaystyle \mathbb{P}\Big(\bigcup_{j=1}^{\infty}A_j\Big)=\lim_{n\to\infty}\mathbb{P}(A_n)$;
+  \item (непрекъснатост отгоре) ако $A_1\supseteq A_2\supseteq\dots\supseteq A_n\supseteq\dots$, то
+  $\displaystyle \mathbb{P}\Big(\bigcap_{i=1}^{\infty}A_i\Big)=\lim_{n\to\infty}\mathbb{P}(A_n)$;
+  \item (изброима субадитивност) ако $A_i\in\mathcal A$ за $i\geq 1$, то
+  $\displaystyle \sum_{i=1}^{\infty}\mathbb{P}(A_i) \geq \mathbb{P}\Big(\bigcup_{i=1}^{\infty}A_i\Big)$,
+  като същото важи и за крайно обединение: $\sum_{i=1}^{n}\mathbb{P}(A_i)\geq\mathbb{P}\big(\bigcup_{i=1}^{n}A_i\big)$ за $n\in\mathbb N$.
+\end{enumerate}
+\end{corbox}
+
+\begin{proofbox}
+\textbf{б)} Понеже $\Omega\cap\varnothing=\varnothing$ (несъвместимо
+обединение) и $\Omega\cup\varnothing=\Omega$, по $\sigma$-адитивност
+$\mathbb P(\Omega)=\mathbb P(\Omega)+\mathbb P(\varnothing)
+\Rightarrow \mathbb P(\varnothing)=0$.
+
+\textbf{а)} От $\varnothing\subseteq A\subseteq\Omega$ и
+монотонността (доказана в (е) по-долу, независимо от (а)) получаваме
+$\mathbb P(\varnothing)\le\mathbb P(A)\le\mathbb P(\Omega)$, т.е.\
+$0\le\mathbb P(A)\le 1$.
+
+\textbf{в)} От $\Omega=A\cup\bar A$ (несъвместимо обединение) и
+$\sigma$-адитивността: $1=\mathbb{P}(A)+\mathbb{P}(\bar A)
+\Rightarrow \mathbb{P}(\bar A)=1-\mathbb{P}(A)$.
+
+\textbf{г)} Директно от $\sigma$-адитивността, приложена към две
+несъвместими събития (допълнена с $\varnothing,\varnothing,\dots$).
+
+\textbf{д)} Пишем $A\cup B = A\cup(B\setminus A)$, като двете части
+са несъвместими, следователно $\mathbb{P}(A\cup B)=\mathbb{P}(A)+
+\mathbb{P}(B\setminus A)$. От друга страна $B=(B\setminus A)\cup(A\cap
+B)$ (несъвместимо разбиване), т.е.\ $\mathbb{P}(B)=\mathbb{P}(B
+\setminus A)+\mathbb{P}(A\cap B)$, откъдето $\mathbb{P}(B\setminus A)
+=\mathbb{P}(B)-\mathbb{P}(A\cap B)$. Заместваме и получаваме
+$\mathbb{P}(A\cup B)=\mathbb{P}(A)+\mathbb{P}(B)-\mathbb{P}(A\cap B)$.
+
+\textbf{е)} Пишем $B = A\cup(B\setminus A)$ - несъвместимо
+обединение, следователно $\mathbb{P}(B)=\mathbb{P}(A)+
+\underbrace{\mathbb{P}(B\setminus A)}_{\geq 0}\geq\mathbb{P}(A)$.
+
+\textbf{ж) (непрекъснатост отдолу)} Нека $A_1\subseteq A_2\subseteq
+\dots$ и $A=\bigcup_{n=1}^{\infty}A_n$. Дефинираме $C_1=A_1$,
+$C_k=A_k\setminus A_{k-1}$ за $k\geq 2$. Тогава $C_k$ са по двойки
+несъвместими и $A_n=\bigcup_{k=1}^{n}C_k$, $A=\bigcup_{k=1}^{\infty}
+C_k$. По $\sigma$-адитивност $\mathbb P(A_n)=\sum_{k=1}^n \mathbb
+P(C_k)$ и $\mathbb P(A)=\sum_{k=1}^\infty \mathbb P(C_k)$. Но сумата
+на реда по дефиниция е границата на частичните суми, откъдето
+$\lim_{n\to\infty}\mathbb P(A_n)=\mathbb P(A)$.
+
+\textbf{з) (непрекъснатост отгоре)} Нека $A_1\supseteq A_2\supseteq
+\dots$ и $A=\bigcap_{i=1}^{\infty}A_i$. Полагаме $B_n=A_n^c$. Тогава
+$B_1\subseteq B_2\subseteq\dots$ и, по закона на Де Морган,
+$\bigcup_n B_n=\bigcap_n A_n^{c}\,{}^{c}=A^c$. От непрекъснатостта
+отдолу, приложена към $B_n$: $\lim_n\mathbb P(B_n)=\mathbb P(A^c)$.
+Но $\mathbb P(B_n)=1-\mathbb P(A_n)$ и $\mathbb P(A^c)=1-\mathbb
+P(A)$, следователно $1-\lim_n\mathbb P(A_n)=1-\mathbb P(A)
+\Rightarrow \lim_n\mathbb P(A_n)=\mathbb P(A)$.
+
+\textbf{и) (субадитивност, чрез „венци“)} Нека
+\[
+  B_1=A_1,\quad B_2=A_2\setminus A_1,\quad B_3=A_3\setminus(A_2\cup A_1),\quad \dots,\quad B_n=A_n\setminus\bigcup_{i=1}^{n-1}A_i.
+\]
+Тогава $B_i\cap B_j=\varnothing$ за $i\neq j$ (по конструкция) и
+$B_i\subseteq A_i$ за всяко $i$, откъдето по монотонност (е)
+$\mathbb{P}(B_i)\leq\mathbb{P}(A_i)$. Освен това
+$\bigcup_{i}B_i=\bigcup_i A_i$: включването „$\subseteq$“ е очевидно
+($B_i\subseteq A_i$); за „$\supseteq$“ - ако $\omega\in\bigcup_i A_i$,
+нека $k=\min\{i\geq 1:\omega\in A_i\}$; тогава $\omega\notin
+\bigcup_{i=1}^{k-1}A_i$, т.е.\ $\omega\in B_k\subseteq\bigcup_i B_i$.
+Следователно, по $\sigma$-адитивност и монотонност,
+\[
+  \mathbb{P}\Big(\bigcup_{i}A_i\Big) = \mathbb{P}\Big(\bigcup_i B_i\Big) = \sum_i \mathbb{P}(B_i) \leq \sum_i \mathbb{P}(A_i).
+\]
+Крайният случай се получава аналогично (или чрез допълване с
+$\varnothing$). \qedbg
+\end{proofbox}
+
+\section{Вероятностно пространство}
+
+\begin{defbox}[~(Вероятностно пространство)]
+\textbf{Вероятностно пространство} е наредена тройка
+$(\Omega,\mathcal{A},\mathbb{P})$, където:
+\begin{itemize}[nosep]
+  \item $\Omega$ е пространството на елементарните събития - непразно множество от всички възможни резултати от даден случаен експеримент;
+  \item $\mathcal{A}$ е $\sigma$-алгебра на събитията върху $\Omega$;
+  \item $\mathbb{P}$ е вероятностна мярка, т.е.\ функция $\mathbb{P}:\mathcal{A}\to[0,1]$, удовлетворяваща аксиомите от предната дефиниция.
+\end{itemize}
+\end{defbox}
+
+\begin{rembox}[Забележка]
+Ако първоначалното вероятностно пространство е било
+$(\Omega,\mathcal{A},\mathbb{P})$ и ограничим вниманието си само до
+събития, съдържащи се в дадено фиксирано $B\in\mathcal A$ с
+$\mathbb P(B)>0$, естествено е новото пространство от елементарни
+събития да стане самото $B$ (вместо цялото $\Omega$), с $\sigma$-алгебра
+$\mathcal A\cap B := \{A\cap B : A\in\mathcal A\}$ (следата на
+$\mathcal A$ върху $B$) и нова вероятностна мярка $\mathbb P(\cdot
+\mid B)$ - идея, върху която стъпва условната вероятност в
+следващата глава.
+\end{rembox}
