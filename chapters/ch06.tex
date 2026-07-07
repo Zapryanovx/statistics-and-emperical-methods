@@ -1,1 +1,347 @@
 \chapter{Основни дискретни разпределения}
+
+\section{Схема на Бернули}
+
+\begin{defbox}[~(Схема на Бернули)]
+\textbf{Схема на Бернули} е редица от $n$ независими опити, където
+всеки опит има само два възможни изхода: \emph{успех} с вероятност
+$p$ ($0\le p\le1$) и \emph{неуспех} с вероятност $q=1-p$. Формално:
+нека $(X_1,\dots,X_n)$ (или $(X_1,X_2,\dots)$) са независими в
+съвкупност, еднакво разпределени случайни величини с
+\[
+  \begin{array}{c|cc} X_1 & 0 & 1\\\hline \mathbb P & q{=}1{-}p & p\end{array}.
+\]
+Тогава редицата $(X_1,\dots,X_n)$ се нарича схема на Бернули.
+\end{defbox}
+
+\section{Разпределение на Бернули}
+
+\begin{defbox}[~(\texorpdfstring{$X\sim Be(p)$}{X~Be(p)})]
+$X\sim Be(p)$, ако $X$ има разпределението
+$\begin{array}{c|cc} X & 0 & 1\\\hline \mathbb P & q{=}1{-}p & p\end{array}$.
+Директно от дефиницията: $\mathbb EX=p$; понеже $X\in\{0,1\}$, имаме
+$X^2=X$, откъдето $DX=\mathbb EX^2-(\mathbb EX)^2=\mathbb EX-(\mathbb
+EX)^2=p-p^2=p(1-p)=pq$; $g_X(s)=s^0q+s^1p=q+ps=1-p+ps$.
+\end{defbox}
+
+\section{Биномно разпределение}
+
+\begin{defbox}[~(\texorpdfstring{$X\sim Bin(n,p)$}{X~Bin(n,p)})]
+Казваме, че $X\sim Bin(n,p)$, ако $X$ е броят успехи измежду първите
+$n$ опита в схема на Бернули с вероятност за успех~$p$, т.е.
+\[
+  X = \sum_{j=1}^{n} X_j, \qquad X_j \sim Be(p)\ \text{независими в съвкупност}.
+\]
+\end{defbox}
+
+\begin{thmbox}[]{Теорема}
+Ако $X\sim Bin(n,p)$, то:
+\[
+  \mathbb EX = np,\qquad DX = npq,\qquad g_X(s) = (q+ps)^n,\qquad
+  \mathbb P(X=k) = \binom{n}{k}p^kq^{n-k},\ k=0,\dots,n.
+\]
+\end{thmbox}
+
+\begin{proofbox}
+От линейността на очакването и адитивността на дисперсията за
+независими събираеми (Тема~5), ползвайки стойностите от $Be(p)$:
+\[
+  \mathbb EX = \sum_{j=1}^{n}\mathbb EX_j = \sum_{j=1}^{n}p = np,
+  \qquad
+  DX = D\sum_{j=1}^{n}X_j = \sum_{j=1}^{n}DX_j = \sum_{j=1}^{n}pq = npq.
+\]
+От леммата за пораждащата функция на сума от независими еднакво
+разпределени величини (Тема~5): $g_X(s)=g_{X_1}^{\,n}(s)=(q+ps)^n$.
+
+Остава да намерим разпределението на $X$. Диференцираме
+$g_X(s)=(q+ps)^n$ последователно:
+\begin{align*}
+  g_X'(s)&=n(q+ps)^{n-1}p,\quad g_X''(s)=n(n-1)(q+ps)^{n-2}p^2,\ \dots,\\
+  g_X^{(k)}(s)&=n(n-1)\cdots(n-k+1)(q+ps)^{n-k}p^k.
+\end{align*}
+Заместваме $s=0$: $g_X^{(k)}(0)=n(n-1)\cdots(n-k+1)\,q^{n-k}p^k$, и
+по формулата $\mathbb P(X=k)=\dfrac{g_X^{(k)}(0)}{k!}$ (Тема~5):
+\[
+  \mathbb P(X=k) = \frac{n(n-1)\cdots(n-k+1)}{k!}\,p^k q^{n-k} = \binom{n}{k}p^k q^{n-k}. \qedbg
+\]
+\end{proofbox}
+
+\section{Геометрично разпределение}
+
+\begin{defbox}[~(\texorpdfstring{$X\sim Ge(p)$}{X~Ge(p)})]
+$X\sim Ge(p)$, ако $X=\min\{n\ge1 : \sum_{j=1}^n X_j=1\}-1$ за схема
+на Бернули $(X_j)$. Има два еквивалентни по смисъл варианта:
+\begin{itemize}[nosep]
+  \item \emph{брой неуспехи преди първия успех} - това е дефиницията по-горе, $X\sim Ge(p)$, $\mathbb P(X=k)=(1-p)^k p = pq^k$ за $k=0,1,2,\dots$;
+  \item \emph{брой опити до първия успех} (включително успеха) - $Y\sim Ge(p)$, $\mathbb P(Y=k)=(1-p)^{k-1}p$ за $k=1,2,3,\dots$, свързано с горното чрез $Y=X+1$.
+\end{itemize}
+\end{defbox}
+
+\begin{thmbox}[]{Теорема}
+Нека $X\sim Ge(p)$ (брой неуспехи преди първия успех). Тогава:
+\begin{enumerate}[label=\arabic*)]
+  \item $\mathbb P(X=k) = (1-p)^k p = pq^k$, $k=0,1,2,\dots$
+  \item $g_X(s) = \dfrac{p}{1-qs}$, $|s|<1$.
+  \item $\mathbb EX = \dfrac{q}{p}$.
+  \item $DX = \dfrac{q}{p^2}$.
+\end{enumerate}
+\end{thmbox}
+
+\begin{proofbox}
+\textbf{2)} Събитието $\{X=k\}$ означава първите $k$ опита са
+неуспешни, а опит $k{+}1$ е успешен:
+\[
+  \mathbb P(X=k) = \mathbb P(X_1{=}0,\dots,X_k{=}0,X_{k+1}{=}1) = \mathbb P(X_1{=}0)\cdots\mathbb P(X_k{=}0)\,\mathbb P(X_{k+1}{=}1) = q^k p.
+\]
+Следователно, ползвайки сумата на геометрична прогресия
+$\sum_{k=0}^{\infty}r^k=\tfrac1{1-r}$ за $|r|<1$:
+\[
+  g_X(s) = \sum_{k=0}^{\infty} s^k\,\mathbb P(X=k) = \sum_{k=0}^{\infty}s^k pq^k = p\sum_{k=0}^{\infty}(sq)^k = \frac{p}{1-qs}, \qquad |s|<1.
+\]
+
+\textbf{3)} $g_X'(s) = \Big(\dfrac{p}{1-qs}\Big)' = \dfrac{p\cdot q}{(1-qs)^2} = \dfrac{pq}{(1-qs)^2}$, следователно $g_X'(1)=\dfrac{pq}{(1-q)^2}=\dfrac{pq}{p^2}=\dfrac{q}{p}$. Понеже
+$\mathbb EX=g_X'(1)$ (Тема~5), получаваме $\mathbb EX=\dfrac{q}{p}$.
+
+\textbf{4)} $g_X''(s) = \Big(\dfrac{pq}{(1-qs)^2}\Big)' = \dfrac{2pq^2}{(1-qs)^3}$, откъдето $g_X''(1)=\dfrac{2pq^2}{p^3}=\dfrac{2q^2}{p^2}$.
+По формулата $DX=g_X''(1)+g_X'(1)-(g_X'(1))^2$ (Тема~5):
+\[
+  DX = \frac{2q^2}{p^2} + \frac{q}{p} - \Big(\frac{q}{p}\Big)^2 = \frac{q^2}{p^2}+\frac{q}{p} = \frac{q^2+pq}{p^2} = \frac{q(q+p)}{p^2} = \frac{q}{p^2}. \qedbg
+\]
+\end{proofbox}
+
+\begin{thmbox}[~(безпаметност на геометричното разпределение)]{Теорема}
+Нека $X\sim Ge(p)$. Тогава за всички $m,k\in\mathbb N$:
+\[
+  \mathbb P(X\ge m+k \mid X\ge k) = \mathbb P(X\ge m) = q^m.
+\]
+\emph{Интерпретация:} ако вече сме имали $k$ неуспеха, разпределението
+на оставащите опити до успех е същото като в началото - системата
+„не помни“ миналите неуспехи.
+\end{thmbox}
+
+\begin{proofbox}
+$\mathbb P(X\ge m) = \mathbb P(X_1{=}0,\dots,X_m{=}0)=q^m$
+(независимост). Следователно
+\[
+  \mathbb P(X\ge m+k \mid X\ge k) = \frac{\mathbb P(X\ge m+k,\ X\ge k)}{\mathbb P(X\ge k)} = \frac{\mathbb P(X\ge m+k)}{\mathbb P(X\ge k)} = \frac{q^{m+k}}{q^k} = q^m. \qedbg
+\]
+\end{proofbox}
+
+\section{Отрицателно биномно разпределение}
+
+\begin{defbox}[~(\texorpdfstring{$X\sim NB(r,p)$}{X~NB(r,p)})]
+Нека $r\ge1$. Казваме, че $X\sim NB(r,p)$, ако
+$X=\min\{n\ge1:\sum_{j=1}^n X_j=r\}-r$ за схема на Бернули. Описва
+броя на \emph{неуспешните} опити на Бернули, необходими за
+постигане на $r$-ти успех (частен случай $r=1$: $NB(1,p)=Ge(p)$).
+\end{defbox}
+
+\begin{thmbox}[]{Теорема}
+Ако $X\sim NB(r,p)$, то $X=\sum_{j=1}^{r}Y_j$, където
+$(Y_1,\dots,Y_r)$ са независими в съвкупност, еднакво разпределени
+$Y_j\sim Ge(p)$.
+\end{thmbox}
+
+\begin{proofbox}
+Идеята е, че броят неуспехи до $r$-тия успех се разбива на $r$
+последователни, независими „блока“: неуспехите между $(j{-}1)$-вия и
+$j$-тия успех имат точно геометрично разпределение (по
+безпаметността на схемата на Бернули - след всеки успех схемата
+„се рестартира“). За $r=2$, директна проверка чрез разбиване по
+позицията на първия успех потвърждава, че $Y_1\perp\!\!\!\perp Y_2$,
+$Y_1\stackrel{d}{=}Y_2\sim Ge(p)$ и $X\stackrel{d}{=}Y_1+Y_2$; общият
+случай за произволно $r$ следва по индукция по същата схема. \qedbg
+\end{proofbox}
+
+\begin{thmbox}[]{Теорема}
+Ако $X\sim NB(r,p)$, то:
+\[
+  g_X(s) = \Big(\frac{p}{1-qs}\Big)^{r}, \qquad \mathbb EX = r\frac{q}{p}, \qquad DX = r\frac{q}{p^2}.
+\]
+\end{thmbox}
+
+\begin{proofbox}
+От предната теорема $X=\sum_{j=1}^r Y_j$ с $Y_j\sim Ge(p)$ независими,
+следователно (Тема~5, лема за пораждаща функция на сума от еднакво
+разпределени независими величини):
+\[
+  g_X(s) = g_{Y_1}^{\,r}(s) = \Big(\frac{p}{1-qs}\Big)^r.
+\]
+От линейността на очакването и адитивността на дисперсията:
+\[
+  \mathbb EX = \sum_{j=1}^r \mathbb EY_j = r\frac{q}{p}, \qquad DX = \sum_{j=1}^r DY_j = r\,DY_1 = r\frac{q}{p^2}. \qedbg
+\]
+\end{proofbox}
+
+\begin{thmbox}[]{Теорема}
+Ако $X\sim NB(r,p)$, то
+\[
+  \mathbb P(X=k) = \binom{r+k-1}{k}q^kp^r, \qquad k\ge0.
+\]
+\end{thmbox}
+
+\begin{proofbox}
+Комбинаторно: искаме сред първите $k+r-1$ опита (неуспехите плюс
+първите $r-1$ успеха) да изберем позициите на $k$-те неуспехи -
+$\binom{k+r-1}{k}$ начина - а опитът с номер $k+r$ задължително е
+успешен ($r$-тият успех). Всяка такава конфигурация има вероятност
+$q^kp^{r-1}\cdot p = q^kp^r$, откъдето
+$\mathbb P(X=k)=\binom{k+r-1}{k}q^kp^r$. \qedbg
+\end{proofbox}
+
+\section{Поасоново разпределение}
+
+\begin{defbox}[~(\texorpdfstring{$X\sim Poi(\lambda)$}{X~Poi(лямбда)})]
+Нека $\lambda>0$. $X\sim Poi(\lambda)$, ако $X$ е целочислена
+случайна величина, такава че
+\[
+  \mathbb P(X=k) = \frac{\lambda^k}{k!}e^{-\lambda}, \qquad k\ge0
+  \qquad\Big(\text{коректност: } \sum_{k=0}^{\infty}\mathbb P(X=k)=e^{-\lambda}\sum_{k=0}^{\infty}\frac{\lambda^k}{k!}=e^{-\lambda}e^{\lambda}=1\Big).
+\]
+\end{defbox}
+
+\begin{rembox}[Моделиране]
+Поасоновото разпределение моделира броя събития, случващи се във
+фиксиран интервал от време или пространство, при условията:
+събитията се случват независимо; средният брой събития в интервала е
+постоянен (означава се с~$\lambda$); две събития не могат да се
+случат в един и същ момент; вероятността за събитие в много малък
+подинтервал е пропорционална на дължината му. Типични примери:
+брой обаждания в кол-център за минута, брой насекоми в единица площ,
+брой клиенти за час.
+\end{rembox}
+
+\begin{thmbox}[]{Теорема}
+Ако $X\sim Poi(\lambda)$, $\lambda>0$, то $g_X(s)=e^{\lambda(s-1)}$ и
+$\mathbb EX = DX = \lambda$.
+\end{thmbox}
+
+\begin{proofbox}
+\[
+  g_X(s) = \mathbb Es^X = \sum_{k=0}^{\infty}s^k\,\mathbb P(X=k) = \sum_{k=0}^{\infty}s^k\frac{\lambda^k e^{-\lambda}}{k!} = e^{-\lambda}\sum_{k=0}^{\infty}\frac{(s\lambda)^k}{k!} = e^{-\lambda}e^{s\lambda} = e^{\lambda(s-1)},
+\]
+ползвайки реда на експонентата $\sum_{k=0}^{\infty}\tfrac{x^k}{k!}=e^x$.
+Тогава
+\[
+  \mathbb EX = g_X'(s)\big|_{s=1} = \lambda e^{\lambda(s-1)}\big|_{s=1} = \lambda,
+\]
+а от $g_X''(s)=\lambda^2 e^{\lambda(s-1)}$, $g_X''(1)=\lambda^2$, и
+формулата $DX=g_X''(1)+\mathbb EX-(\mathbb EX)^2$:
+\[
+  DX = \lambda^2+\lambda-\lambda^2=\lambda. \qedbg
+\]
+\end{proofbox}
+
+\section{Сходимост по разпределение и теорема на Поасон}
+
+\begin{defbox}[~(Сходимост по разпределение)]
+Редицата от целочислени случайни величини $(X_n)_{n\ge1}$ се
+\textbf{сближава по разпределение} към $X$, ако $\lim_{n\to\infty}
+\mathbb P(X_n=k)=\mathbb P(X=k)$ за всяко $k\in\mathbb Z$. Ако
+$(X_n)_{n\ge1}$ са неотрицателни, това е еквивалентно на
+$\lim_{n\to\infty}g_{X_n}(s)=g_X(s)$ за всяко $|s|<1$.
+\end{defbox}
+
+\begin{thmbox}[~(на Поасон)]{Теорема}
+Нека $X_n\sim Bin(n,p_n)$, $n\ge1$, където $p_n=\dfrac{\lambda}{n}+
+\dfrac{\nu_n}{n}$, $\lambda>0$ и $\lim_{n\to\infty}\nu_n=0$. Тогава
+$X_n$ се сближава по разпределение към $X\sim Poi(\lambda)$, т.е.
+\[
+  \forall k\ge0:\ \lim_{n\to\infty}\mathbb P(X_n=k) = e^{-\lambda}\frac{\lambda^k}{k!} = \mathbb P(X=k).
+\]
+Интуитивно: когато имаме много на брой опити ($n$ голямо), много
+малка вероятност за успех ($p_n\approx\lambda/n$), но среден брой
+успехи $np_n$, оставащ приблизително постоянен ($\approx\lambda$),
+биномното разпределение става неразличимо от поасоновото.
+\end{thmbox}
+
+\begin{proofbox}
+Ползваме $g_{X_n}(s) = (q_n+p_ns)^n = (1-p_n+p_ns)^n$:
+\begin{align*}
+  g_{X_n}(s) &= \Big(1-\frac{\lambda}{n}-\frac{\nu_n}{n}+\Big(\frac{\lambda}{n}+\frac{\nu_n}{n}\Big)s\Big)^n
+  = \Big(1-\frac{\lambda}{n}-\frac{\nu_n}{n}+\frac{\lambda}{n}s+\frac{\nu_n}{n}s\Big)^n\\
+  &= \Big(1+\frac{\lambda}{n}(s-1)+\frac{\nu_n}{n}(s-1)\Big)^n
+  = \Big(1+\frac{(\lambda+\nu_n)(s-1)}{n}\Big)^n.
+\end{align*}
+Граничният преход следва от класическото гранично твърдение
+$\lim_{n\to\infty}\big(1+\tfrac{x_n}{n}\big)^n = e^{\lim_{n\to\infty}x_n}$
+(валидно, ако границата на $x_n$ съществува). В нашия случай
+$x_n=(\lambda+\nu_n)(s-1)$, и понеже $\lim_{n\to\infty}\nu_n=0$,
+имаме $\lim_{n\to\infty}x_n = \lambda(s-1)$. Следователно, при
+$n\to\infty$, изразът клони към $e^{\lambda(s-1)}=g_X(s)$, където
+$X\sim Poi(\lambda)$. \qedbg
+\end{proofbox}
+
+\section{Хипергеометрично разпределение}
+
+\begin{rembox}[Постановка]
+Имаме $N$ елемента, от които $M\le N$ са „маркирани“. Избираме
+$n\le N$ измежду тях (теглене \emph{без връщане/повторение}) и
+случайната величина $X$ е броят маркирани обекти сред избраните~$n$.
+\end{rembox}
+
+\begin{defbox}[~(\texorpdfstring{$X\sim HG(N,M,n)$}{X~HG(N,M,n)})]
+$X\sim HG(N,M,n)$, ако $X$ брои колко маркирани (от общо $M$)
+елемента са избрани в извадка от $n$ обекта (без повторение) от общо
+$N$ елемента.
+\end{defbox}
+
+\begin{thmbox}[]{Теорема}
+Ако $X\sim HG(N,M,n)$, то:
+\begin{enumerate}[label=\alph*)]
+  \item $\mathbb P(X=k) = \dfrac{\binom{M}{k}\binom{N-M}{n-k}}{\binom{N}{n}}$, за $\max(0,n-(N-M))\le k\le \min(M,n)$;
+  \item $\mathbb EX = n\dfrac{M}{N}$, \qquad $DX = \dfrac{nM}{N}\cdot\dfrac{N-M}{N}\cdot\dfrac{N-n}{N-1}$.
+\end{enumerate}
+\end{thmbox}
+
+\begin{proofbox}
+\textbf{а)} $\binom{M}{k}$ е броят начини да изберем $k$ маркирани
+измежду $M$-те маркирани; $\binom{N-M}{n-k}$ - броят начини да
+изберем останалите $n-k$ (обикновени) измежду $N-M$-те немаркирани;
+$\binom{N}{n}$ - общият брой начини да изберем $n$ обекта измежду
+$N$. По равномерна вероятност, $\mathbb P(X=k)=\dfrac{\binom{M}{k}
+\binom{N-M}{n-k}}{\binom{N}{n}}$.
+
+\textbf{б) (очакване)} Дефинираме индикаторните случайни величини
+$X_j = \begin{cases}1,&\text{ако }j\text{-тият изтеглен обект е маркиран}\\0,&\text{иначе}\end{cases}$,
+$j=1,\dots,n$, така че $X=\sum_{j=1}^n X_j$ (величините $(X_j)$
+\emph{не} са независими помежду си, но линейността на очакването не
+изисква независимост). По симетрия на изтеглянето без връщане,
+$\mathbb P(X_j=1) = \dfrac{\binom{N-1}{M-1}}{\binom{N}{M}} =
+\dfrac{M}{N}$ за всяко $j$, следователно
+\[
+  \mathbb EX = \mathbb E\sum_{j=1}^n X_j = \sum_{j=1}^n \mathbb P(X_j{=}1) = n\frac{M}{N}.
+\]
+
+\textbf{б) (дисперсия - доказателство чрез факториални моменти)} За
+$i\neq j$: $X_iX_j=1$ точно когато и $i$-тият, и $j$-тият изтеглен
+обект са маркирани, следователно
+\[
+  \mathbb E(X_iX_j) = \mathbb P(X_i{=}1,X_j{=}1) = \frac{M}{N}\cdot\frac{M-1}{N-1}, \qquad i\neq j
+\]
+(вероятността вторият маркиран обект да е избран, при условие че
+първият вече е маркиран и не се връща в множеството). Понеже
+$X(X-1) = \sum_{i\neq j} X_iX_j$ (сума по всички $n(n-1)$ наредени
+двойки различни индекси),
+\[
+  \mathbb E\big[X(X-1)\big] = n(n-1)\cdot\frac{M}{N}\cdot\frac{M-1}{N-1}.
+\]
+От тук $\mathbb EX^2 = \mathbb E[X(X-1)]+\mathbb EX$, и
+\[
+  DX = \mathbb EX^2-(\mathbb EX)^2 = n(n-1)\frac{M(M-1)}{N(N-1)} + n\frac{M}{N} - n^2\frac{M^2}{N^2}.
+\]
+Изнасяме множител $\tfrac{nM}{N}$:
+\[
+  DX = \frac{nM}{N}\left[\frac{(n-1)(M-1)}{N-1} + 1 - \frac{nM}{N}\right].
+\]
+Привеждаме скобата под общ знаменател $N(N-1)$; за числителя,
+разписвайки $(n-1)(M-1)=nM-n-M+1$:
+\begin{align*}
+  N(n-1)(M-1) + N(N-1) - nM(N-1) &= N(nM-n-M+N) - nM(N-1)\\
+  &= N^2-Nn-NM+nM = (N-n)(N-M).
+\end{align*}
+Следователно скобата е равна на $\dfrac{(N-n)(N-M)}{N(N-1)}$, и
+\[
+  DX = \frac{nM}{N}\cdot\frac{(N-n)(N-M)}{N(N-1)} = \frac{nM}{N}\cdot\frac{N-M}{N}\cdot\frac{N-n}{N-1}. \qedbg
+\]
+\end{proofbox}
