@@ -1,1 +1,230 @@
 \chapter{Ковариация, корелация}
+
+\section{Съвместна функция на разпределение и независимост}
+
+\begin{defbox}[~(Съвместна функция на разпределение)]
+Нека $X,Y$ са случайни величини. Функцията
+\[
+  F_{X,Y}(x,y) := \mathbb P(X<x,\,Y<y), \qquad (x,y)\in\mathbb R^2,
+\]
+се нарича \textbf{съвместна функция на разпределение} на двойката
+$(X,Y)$. За нея са в сила
+\[
+  F_{X,Y}(\infty,y)=F_Y(y),\qquad F_{X,Y}(x,\infty)=F_X(x),\qquad F_{X,Y}(\infty,\infty)=1,\qquad F_{X,Y}(-\infty,y)=0.
+\]
+\end{defbox}
+
+\begin{defbox}[~(Независимост чрез съвместната функция на разпределение)]
+Случайните величини $X$ и $Y$ са \textbf{независими}, ако
+\[
+  F_{X,Y}(x,y) = F_X(x)\cdot F_Y(y), \qquad \forall (x,y)\in\mathbb R^2,
+\]
+т.е.\ $\mathbb P(X<x,\,Y<y) = \mathbb P(X<x)\cdot\mathbb P(Y<y)$.
+\end{defbox}
+
+\begin{corbox}[]
+Ако $X,Y$ са дискретни, дефиницията е еквивалентна на
+$\mathbb P(X=x_i,Y=y_j) = \mathbb P(X=x_i)\cdot\mathbb P(Y=y_j)$ за
+всички $i,j$.
+\end{corbox}
+
+\begin{proofbox}
+($\Leftarrow$) Нека $\mathbb P(X=x_i,Y=y_j)=\mathbb P(X=x_i)\mathbb
+P(Y=y_j)$ за всички $i,j$. Тогава за произволни $x,y$:
+\[
+  \mathbb P(X<x,Y<y) = \sum_{x_i<x}\sum_{y_j<y}\mathbb P(X=x_i,Y=y_j) = \sum_{x_i<x}\sum_{y_j<y}\mathbb P(X=x_i)\mathbb P(Y=y_j)
+\]
+\[
+  = \Big(\sum_{x_i<x}\mathbb P(X=x_i)\Big)\Big(\sum_{y_j<y}\mathbb P(Y=y_j)\Big) = F_X(x)F_Y(y).
+\]
+
+($\Rightarrow$) Нека $F_{X,Y}(x,y)=F_X(x)F_Y(y)$ за всички $(x,y)$.
+Нека $x_i,y_j$ са съседни стойности в носителите на $X,Y$, а
+$x_i^-,y_j^-$ означават непосредствено предходната стойност (или
+$-\infty$, ако $x_i$/$y_j$ е най-малката). По принципа на
+включване-изключване:
+\begin{align*}
+  \mathbb P(X=x_i,Y=y_j) &= F_{X,Y}(x_i^+,y_j^+) - F_{X,Y}(x_i^{-,+},y_j^+) - F_{X,Y}(x_i^+,y_j^{-,+}) + F_{X,Y}(x_i^{-,+},y_j^{-,+})\\
+  &= F_X(x_i)F_Y(y_j) - F_X(x_i^-)F_Y(y_j) - F_X(x_i)F_Y(y_j^-) + F_X(x_i^-)F_Y(y_j^-)\\
+  &= \big[F_X(x_i)-F_X(x_i^-)\big]\big[F_Y(y_j)-F_Y(y_j^-)\big] = \mathbb P(X=x_i)\,\mathbb P(Y=y_j). \qedbg
+\end{align*}
+\end{proofbox}
+
+\section{Ковариация}
+
+\begin{defbox}[~(Ковариация)]
+Нека $X,Y$ са случайни величини. Количеството
+\[
+  \operatorname{cov}(X,Y) := \mathbb E\big[(X-\mathbb EX)(Y-\mathbb EY)\big]
+\]
+се нарича \textbf{ковариация} на $X$ и $Y$, ако съществува. Тя
+измерва как двете случайни величини се изменят заедно. За дискретни
+$X,Y$: $\operatorname{cov}(X,Y) = \sum_{i,j}(x_i-\mathbb EX)(y_j-\mathbb EY)\,p_{ij}$.
+\end{defbox}
+
+\begin{rembox}[Идея: линейна връзка]
+Линейна зависимост между две случайни величини имаме, когато
+$Y=aX+b$. Ковариацията е мярка за \emph{посоката} на линейната връзка.
+Наистина, ако положим $\widetilde X=X-\mathbb EX$,
+$\widetilde Y=Y-\mathbb EY$ (центрирани версии), то от $Y=aX+b$
+следва
+\[
+  Y-\mathbb EY = a(X-\mathbb EX) \iff \widetilde Y = a\widetilde X,
+\]
+т.е.\ центрирането не променя линейната зависимост между величините
+- то само премества центъра в началото на координатната система.
+\end{rembox}
+
+\begin{thmbox}[]{Теорема}
+Нека $X,Y$ са случайни величини. Тогава
+\[
+  \operatorname{cov}(X,Y) = \mathbb E\widetilde X\widetilde Y = \mathbb EXY - \mathbb EX\,\mathbb EY,
+  \qquad \widetilde X=X-\mathbb EX,\ \widetilde Y = Y-\mathbb EY.
+\]
+\end{thmbox}
+
+\begin{proofbox}
+\begin{align*}
+  \mathbb E(X-\mathbb EX)(Y-\mathbb EY) &= \mathbb E\big[XY - Y\,\mathbb EX - X\,\mathbb EY + \mathbb EX\,\mathbb EY\big]\\
+  &= \mathbb EXY - \mathbb EX\,\mathbb EY - \mathbb EY\,\mathbb EX + \mathbb EX\,\mathbb EY = \mathbb EXY - \mathbb EX\,\mathbb EY. \qedbg
+\end{align*}
+\end{proofbox}
+
+\begin{rembox}[Забележка: скалиране]
+Преминаването $X,Y\to X-\mathbb EX,\,Y-\mathbb EY$ не променя
+зависимостта между $X$ и $Y$, а само центрира величините. От друга
+страна, скалирането $X,Y\to 10X,10Y$ скалира ковариацията
+квадратично:
+\[
+  \operatorname{cov}(10X,10Y) = \mathbb E(10X-10\,\mathbb EX)(10Y-10\,\mathbb EY) = 100\,\mathbb E(X-\mathbb EX)(Y-\mathbb EY) = 100\operatorname{cov}(X,Y).
+\]
+\end{rembox}
+
+\begin{thmbox}[~(на ковариацията)]{Свойства}
+\begin{enumerate}[label=\arabic*)]
+  \item \textbf{Симетрия:} $\operatorname{cov}(X,Y)=\operatorname{cov}(Y,X)$.
+  \item $\operatorname{cov}(X,X)=DX$.
+  \item \textbf{Линейност:} $\operatorname{cov}(aX+b,\,cY+d) = ac\cdot\operatorname{cov}(X,Y)$.
+  \item \textbf{Адитивност:} $\operatorname{cov}(X+Z,\,Y) = \operatorname{cov}(X,Y)+\operatorname{cov}(Z,Y)$.
+  \item Ако $X\perp\!\!\!\perp Y$, то $\operatorname{cov}(X,Y)=0$.
+\end{enumerate}
+\end{thmbox}
+
+\begin{proofbox}
+\textbf{1)} Директно от дефиницията: $\operatorname{cov}(X,Y)=\mathbb
+E(X-\mathbb EX)(Y-\mathbb EY) = \mathbb E(Y-\mathbb EY)(X-\mathbb EX)
+= \operatorname{cov}(Y,X)$.
+
+\textbf{2)} $\operatorname{cov}(X,X) = \mathbb EX\cdot X - \mathbb
+EX\cdot\mathbb EX = \mathbb EX^2-(\mathbb EX)^2 = DX$.
+
+\textbf{3)} Ползвайки формулата $\operatorname{cov}(U,V)=\mathbb
+EUV-\mathbb EU\,\mathbb EV$ и линейността на очакването:
+\begin{align*}
+  \operatorname{cov}(aX+b,cY+d) &= \mathbb E\big[(aX+b)(cY+d)\big] - \mathbb E(aX+b)\,\mathbb E(cY+d)\\
+  &= \mathbb E\big[ac\,XY+ad\,X+bc\,Y+bd\big] - (a\,\mathbb EX+b)(c\,\mathbb EY+d)\\
+  &= ac\,\mathbb EXY+ad\,\mathbb EX+bc\,\mathbb EY+bd - \big(ac\,\mathbb EX\,\mathbb EY+ad\,\mathbb EX+bc\,\mathbb EY+bd\big)\\
+  &= ac\big(\mathbb EXY-\mathbb EX\,\mathbb EY\big) = ac\cdot\operatorname{cov}(X,Y).
+\end{align*}
+
+\textbf{4)} Аналогично:
+\begin{align*}
+  \operatorname{cov}(X+Z,Y) &= \mathbb E\big[(X+Z)Y\big] - \mathbb E(X+Z)\,\mathbb EY = \mathbb EXY+\mathbb EZY - (\mathbb EX+\mathbb EZ)\mathbb EY\\
+  &= \big(\mathbb EXY-\mathbb EX\,\mathbb EY\big) + \big(\mathbb EZY-\mathbb EZ\,\mathbb EY\big) = \operatorname{cov}(X,Y)+\operatorname{cov}(Z,Y).
+\end{align*}
+
+\textbf{5)} Ако $X\perp\!\!\!\perp Y$, по свойството за очакване на
+произведение на независими случайни величини (Тема~5),
+$\mathbb EXY=\mathbb EX\,\mathbb EY$, следователно
+$\operatorname{cov}(X,Y)=\mathbb EXY-\mathbb EX\,\mathbb EY=0$.
+\emph{(Обратното не е вярно в общия случай - нулева ковариация не
+означава непременно независимост.)} \qedbg
+\end{proofbox}
+
+\section{Корелация}
+
+\begin{defbox}[~(Корелация)]
+Нека $X,Y$ са случайни величини с $DX<\infty$, $DY<\infty$. Тогава
+\[
+  \rho(X,Y) := \frac{\operatorname{cov}(X,Y)}{\sqrt{DX}\sqrt{DY}}
+\]
+се нарича \textbf{корелация} (коефициент на корелация) между $X$ и
+$Y$.
+\end{defbox}
+
+\begin{rembox}[Инвариантност спрямо мащаб]
+За разлика от ковариацията, корелацията е инвариантна спрямо
+(положително) мащабиране:
+\[
+  \rho(10X,10Y) = \frac{100\operatorname{cov}(X,Y)}{\sqrt{D(10X)}\sqrt{D(10Y)}} = \frac{100\operatorname{cov}(X,Y)}{10\sqrt{DX}\cdot10\sqrt{DY}} = \frac{\operatorname{cov}(X,Y)}{\sqrt{DX}\sqrt{DY}} = \rho(X,Y).
+\]
+\end{rembox}
+
+\begin{thmbox}[]{Теорема}
+Нека $X,Y$ са случайни величини с $DX<\infty$, $DY<\infty$, и нека
+$\bar X = \dfrac{X-\mathbb EX}{\sqrt{DX}}$, $\bar Y = \dfrac{Y-\mathbb
+EY}{\sqrt{DY}}$ (\textbf{стандартизирани} случайни величини). Тогава
+$\mathbb E\bar X = \mathbb E\bar Y = 0$, $D\bar X = D\bar Y = 1$, и
+\[
+  \rho(X,Y) = \mathbb E\bar X\bar Y.
+\]
+\end{thmbox}
+
+\begin{proofbox}
+$\mathbb E\bar X = \mathbb E\dfrac{X-\mathbb EX}{\sqrt{DX}} =
+\dfrac1{\sqrt{DX}}\,\mathbb E(X-\mathbb EX) = 0$, понеже $\mathbb
+E(X-\mathbb EX)=\mathbb EX-\mathbb EX=0$. Аналогично $\mathbb E\bar
+Y=0$.
+
+$D\bar X = D\Big(\dfrac{X-\mathbb EX}{\sqrt{DX}}\Big) =
+\dfrac1{(\sqrt{DX})^2}\,D(X-\mathbb EX) = \dfrac1{DX}\cdot DX = 1$
+(изваждането на константа $\mathbb EX$ не променя дисперсията).
+Аналогично $D\bar Y=1$.
+
+Накрая:
+\[
+  \rho(X,Y) = \frac{\operatorname{cov}(X,Y)}{\sqrt{DX}\sqrt{DY}} = \mathbb E\left(\frac{X-\mathbb EX}{\sqrt{DX}}\right)\left(\frac{Y-\mathbb EY}{\sqrt{DY}}\right) = \mathbb E\bar X\bar Y. \qedbg
+\]
+\end{proofbox}
+
+\begin{thmbox}[]{Теорема}
+Нека $X,Y$ са случайни величини с $DX<\infty$, $DY<\infty$. Тогава:
+\begin{enumerate}[label=\alph*)]
+  \item $|\rho(X,Y)|\le 1$;
+  \item $|\rho(X,Y)|=1 \iff Y=aX+b$ за някои $a,b\in\mathbb R$ (т.е.\ $Y$ се предопределя линейно от $X$).
+\end{enumerate}
+\end{thmbox}
+
+\begin{proofbox}
+\textbf{а)} Нека $\bar X,\bar Y$ са стандартизираните величини от
+предната теорема, така че $\rho(X,Y)=\mathbb E\bar X\bar Y$. Понеже
+$D\bar X = \mathbb E\bar X^2-(\mathbb E\bar X)^2=1$ и $\mathbb
+E\bar X=0$, следва $\mathbb E\bar X^2=1$; аналогично $\mathbb
+E\bar Y^2=1$. Разглеждаме
+\[
+  0 \le \mathbb E(\bar X\pm\bar Y)^2 = \mathbb E\bar X^2 \pm 2\,\mathbb E\bar X\bar Y + \mathbb E\bar Y^2 = 1\pm2\rho(X,Y)+1 = 2\big(1\pm\rho(X,Y)\big),
+\]
+откъдето $1\pm\rho(X,Y)\ge0$ и за двата знака, т.е.\ $-1\le\rho(X,Y)\le1$, или $|\rho(X,Y)|\le1$.
+
+\textbf{б) ($\Rightarrow$)} Нека $\rho(X,Y)=1=\mathbb E\bar X\bar Y$.
+От горното с избор на знак „$-$“:
+\[
+  \mathbb E(\bar X-\bar Y)^2 = 1-2\rho(X,Y)+1 = 1-2+1 = 0.
+\]
+Понеже $(\bar X-\bar Y)^2\ge0$ и очакването му е нула, следва
+$(\bar X-\bar Y)^2=0$ (с вероятност~1), т.е.\ $\bar X=\bar Y$. Записвайки
+explicitно $\bar X = \dfrac{X-\mathbb EX}{\sqrt{DX}}$, $\bar Y =
+\dfrac{Y-\mathbb EY}{\sqrt{DY}}$, от $\bar X=\bar Y$ получаваме
+\[
+  Y = \sqrt{\frac{DY}{DX}}\,X + \Big(\mathbb EY - \sqrt{\frac{DY}{DX}}\,\mathbb EX\Big) =: aX+b,
+\]
+където $a=\sqrt{DY/DX}\ge0$ (в случая $\rho(X,Y)=-1$ разсъждението е
+аналогично с избор на знак „$+$“, и се получава $a\le0$).
+
+\textbf{б) ($\Leftarrow$)} Нека $Y=aX+b$. Тогава $\mathbb EY=a\,
+\mathbb EX+b$, $DY=D(aX+b)=a^2DX$, и
+\begin{align*}
+  \rho(X,Y) &= \frac{\mathbb E(X-\mathbb EX)(Y-\mathbb EY)}{\sqrt{DX}\sqrt{DY}} = \frac{\mathbb E(X-\mathbb EX)(aX+b-a\,\mathbb EX-b)}{\sqrt{DX}\sqrt{a^2DX}}\\
+  &= \frac{a\,\mathbb E(X-\mathbb EX)^2}{|a|\,DX} = \frac{a\,DX}{|a|\,DX} = \frac{a}{|a|} = \pm1. \qedbg
+\end{align*}
+\end{proofbox}
