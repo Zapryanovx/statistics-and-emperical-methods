@@ -1,1 +1,229 @@
 \chapter{Непрекъснати случайни величини}
+
+\section{Дефиниция и плътност}
+
+\begin{defbox}[~(Непрекъсната случайна величина)]
+Нека $(\Omega,\mathcal A,\mathbb P)$ е вероятностно пространство.
+Функцията $X:\Omega\to\mathbb R$ е \textbf{непрекъсната случайна
+величина}, ако приема \textbf{неизброимо много} стойности.
+\end{defbox}
+
+\begin{defbox}[~((Абсолютно) непрекъсната случайна величина)]
+Казваме, че $X$ е (абсолютно) непрекъсната случайна величина, ако
+съществува функция $f_X:\mathbb R\to[0,\infty)$, такава че:
+\begin{enumerate}[label=\arabic*)]
+  \item $f_X(x)\ge0$ за всяко $x\in\mathbb R$;
+  \item $\displaystyle\int_{-\infty}^{\infty} f_X(x)\,dx = 1$;
+  \item за всички $a<b$ ($-\infty\le a<b\le\infty$): $\displaystyle
+  \mathbb P\big(X\in(a,b)\big) = \int_a^b f_X(x)\,dx$.
+\end{enumerate}
+Функцията $f_X$ се нарича \textbf{плътност} на $X$.
+\end{defbox}
+
+\begin{thmbox}[]{Теорема}
+Нека $X$ е непрекъсната случайна величина и $c\in\mathbb R$. Тогава
+$\mathbb P(X=c)=0$, и следователно за $a<b$:
+\[
+  \mathbb P\big(X\in(a,b)\big) = \mathbb P(a<X<b) = \mathbb P(a<X\le b) = \mathbb P(a\le X<b) = \mathbb P(a\le X\le b).
+\]
+\end{thmbox}
+
+\begin{proofbox}
+Записваме $\{X=c\}$ като сечение на смаляващи се интервали:
+\[
+  \{X=c\} = \bigcap_{n\ge1} \Big\{X\in\big(c-\tfrac1n,\,c+\tfrac1n\big)\Big\}.
+\]
+По непрекъснатостта на вероятността отгоре (Тема~2):
+\[
+  \mathbb P(X=c) = \lim_{n\to\infty} \mathbb P\Big(X\in\big(c-\tfrac1n,c+\tfrac1n\big)\Big) = \lim_{n\to\infty}\int_{c-\frac1n}^{c+\frac1n} f_X(x)\,dx = \int_c^c f_X(x)\,dx = 0,
+\]
+защото горната и долната граница на интеграла клонят към едно и
+също число~$c$. Следователно добавянето или изваждането на краищата
+$a,b$ (всяко от които е отделна точка с нулева вероятност) не
+променя вероятността на интервала. \qedbg
+\end{proofbox}
+
+\begin{defbox}[~(Носител на плътността)]
+Ако $f_X$ е плътност за $X$, множеството $D_{f_X} = \{x\in\mathbb R :
+f_X(x)>0\}$ (областта, върху която плътността е строго положителна)
+се нарича \textbf{носител} на плътността.
+\end{defbox}
+
+\section{Функция на разпределение}
+
+\begin{defbox}[~(Функция на разпределение)]
+Нека $X$ е случайна величина. Тогава $F_X(x) = \mathbb P(X<x)$. Ако
+$X$ е непрекъсната с плътност $f_X$, то
+\[
+  F_X(x) = \int_{-\infty}^{x} f_X(y)\,dy, \qquad \forall x\in\mathbb R,
+\]
+и ако $f_X$ е непрекъсната в точка $x_0$, то $F_X'(x_0)=f_X(x_0)$ -
+т.е.\ можем да възстановим плътността от функцията на разпределение
+чрез диференциране: $F_X'=f_X$. Освен това, за непрекъсната $X$:
+$\mathbb P(X<x)=\mathbb P(X\le x)$ за всяко $x\in\mathbb R$ (следва
+от предната теорема).
+\end{defbox}
+
+\section{Смяна на променливите}
+
+\begin{rembox}[Предупреждение]
+Ако $X$ е непрекъсната случайна величина, $Y=g(X)$ не е задължително
+непрекъсната случайна величина за произволна $g$. Например за
+$g(x) = \begin{cases}1,&x\ge0\\0,&x<0\end{cases}$, $Y=g(X)\in\{0,1\}$
+приема само две стойности и \emph{не е} непрекъсната случайна
+величина. Затова смяната на променливите изисква допълнителни
+условия върху~$g$.
+\end{rembox}
+
+\begin{thmbox}[]{Теорема}
+Нека $X$ е непрекъсната случайна величина с плътност $f_X$ и носител
+$D_{f_X}$, и нека $g:\mathbb R\to\mathbb R$ е строго монотонна
+(растяща или намаляваща) и диференцируема функция върху $D_{f_X}$
+(или върху интервал $(A,B)\supseteq D_{f_X}$). Тогава $Y=g(X)$ е
+непрекъсната случайна величина с плътност
+\[
+  f_Y(y) = f_X\big(g^{-1}(y)\big)\cdot\big|(g^{-1}(y))'\big|, \qquad y\in\mathbb R.
+\]
+\end{thmbox}
+
+\begin{proofbox}
+\textbf{Случай 1: $g$ строго растяща.} Нека $a<b$. Понеже $g$ е
+растяща (и следователно обратима), $g(X)\in(a,b) \iff X\in
+(g^{-1}(a),g^{-1}(b))$, откъдето
+\[
+  \mathbb P\big(Y\in(a,b)\big) = \mathbb P\big(X\in(g^{-1}(a),g^{-1}(b))\big) = \int_{g^{-1}(a)}^{g^{-1}(b)} f_X(x)\,dx.
+\]
+Извършваме смяна на променливата $x=g^{-1}(y)$, $dx=(g^{-1}(y))'\,dy$:
+\[
+  \int_{g^{-1}(a)}^{g^{-1}(b)} f_X(x)\,dx = \int_a^b f_X\big(g^{-1}(y)\big)\,(g^{-1}(y))'\,dy,
+\]
+откъдето (по дефиниция на плътност) $f_Y(y) = f_X(g^{-1}(y))\cdot
+(g^{-1}(y))'$. Понеже $g$ е растяща, $g^{-1}$ също е растяща, т.е.\
+$(g^{-1}(y))'\ge0$, следователно $(g^{-1}(y))'=|(g^{-1}(y))'|$.
+
+\textbf{Случай 2: $g$ строго намаляваща.} Аналогично, $g(X)\in(a,b)
+\iff X\in(g^{-1}(b),g^{-1}(a))$ (границите се разменят, защото $g$
+обръща посоката на неравенствата), откъдето
+\[
+  \mathbb P\big(Y\in(a,b)\big) = \int_{g^{-1}(b)}^{g^{-1}(a)} f_X(x)\,dx \overset{x=g^{-1}(y)}{=} -\int_a^b f_X\big(g^{-1}(y)\big)(g^{-1}(y))'\,dy,
+\]
+и понеже сега $g^{-1}$ е намаляваща, $(g^{-1}(y))'\le0$, т.е.\
+$-(g^{-1}(y))' = |(g^{-1}(y))'|$, следователно отново $f_Y(y) =
+f_X(g^{-1}(y))\cdot|(g^{-1}(y))'|$. \qedbg
+\end{proofbox}
+
+\section{Математическо очакване}
+
+\begin{defbox}[~(Математическо очакване на непрекъсната случайна величина)]
+Нека $X$ е непрекъсната случайна величина с плътност $f_X$. Тогава
+\[
+  \mathbb EX = \int_{-\infty}^{\infty} x\,f_X(x)\,dx,
+\]
+ако несобственият интеграл е добре дефиниран, т.е.\
+$\int_{-\infty}^{\infty}|x|f_X(x)\,dx<\infty$.
+\end{defbox}
+
+\begin{thmbox}[~(Смяна на променливите за очакване)]{Теорема}
+Ако $Y=g(X)$ и $\int_{-\infty}^{\infty}|g(x)|f_X(x)\,dx<\infty$, то
+\[
+  \mathbb EY = \mathbb Eg(X) = \int_{-\infty}^{\infty} g(x)\,f_X(x)\,dx
+\]
+(т.е.\ не е нужно първо да намираме плътността $f_Y$ на $Y$).
+\end{thmbox}
+
+\begin{proofbox}
+По дефиниция и предната теорема за смяна на променливите (за $g$
+строго монотонна, диференцируема):
+\[
+  \mathbb EY = \int_{-\infty}^{\infty} y\,f_Y(y)\,dy = \int_{-\infty}^{\infty} y\,f_X(g^{-1}(y))\,(g^{-1}(y))'\,dy.
+\]
+Извършваме обратната смяна $x=g^{-1}(y)$, $y=g(x)$, $dy=g'(x)\,dx$:
+\[
+  = \int_{-\infty}^{\infty} g(x)\,f_X(x)\,\big(g^{-1}(g(x))\big)'\,g'(x)\,dx = \int_{-\infty}^{\infty} g(x)\,f_X(x)\,dx,
+\]
+защото по правилото за диференциране на обратна функция,
+$\big(g^{-1}(g(x))\big)'\cdot g'(x) = \big(x\big)' = 1$. \qedbg
+\end{proofbox}
+
+\begin{thmbox}[~(на математическото очакване)]{Свойства}
+Нека $X,Y$ са непрекъснати случайни величини с крайни очаквания.
+\begin{enumerate}[label=\arabic*)]
+  \item $\mathbb E(aX+b) = a\,\mathbb EX+b$ за $a,b\in\mathbb R$.
+  \item $\mathbb E(X+Y) = \mathbb EX+\mathbb EY$.
+  \item Ако $X\perp\!\!\!\perp Y$, то $\mathbb E(XY)=\mathbb EX\cdot\mathbb EY$.
+  \item $\mathbb E(cX) = c\,\mathbb EX$ за $c\in\mathbb R$.
+\end{enumerate}
+\end{thmbox}
+
+\begin{proofbox}
+\textbf{1)} Нека $g(x)=ax+b$. Ако $a=0$, $Y\equiv b$ и $\mathbb EY=b$
+тривиално. Иначе, по теоремата за смяна на променливите за очакване:
+\[
+  \mathbb Eg(X) = \int_{-\infty}^{\infty}(ax+b)f_X(x)\,dx = a\int_{-\infty}^{\infty}xf_X(x)\,dx + b\int_{-\infty}^{\infty}f_X(x)\,dx = a\,\mathbb EX+b.
+\]
+
+\textbf{2)} Нека $f_{X,Y}(x,y)$ е съвместната плътност на $(X,Y)$
+(с маргинали $f_X,f_Y$). Тогава
+\begin{align*}
+  \mathbb E(X+Y) &= \iint (x+y)f_{X,Y}(x,y)\,dx\,dy = \iint x f_{X,Y}(x,y)\,dx\,dy + \iint y f_{X,Y}(x,y)\,dx\,dy\\
+  &= \int x\Big(\int f_{X,Y}(x,y)\,dy\Big)dx + \int y\Big(\int f_{X,Y}(x,y)\,dx\Big)dy\\
+  &= \int x f_X(x)\,dx + \int y f_Y(y)\,dy = \mathbb EX+\mathbb EY.
+\end{align*}
+
+\textbf{3)} Ако $X\perp\!\!\!\perp Y$, то съвместната плътност се
+разпада, $f_{X,Y}(x,y)=f_X(x)f_Y(y)$, следователно
+\[
+  \mathbb EXY = \iint xy\,f_X(x)f_Y(y)\,dx\,dy = \Big(\int xf_X(x)\,dx\Big)\Big(\int yf_Y(y)\,dy\Big) = \mathbb EX\cdot\mathbb EY.
+\]
+
+\textbf{4)} $\mathbb EcX = \int_{-\infty}^{\infty} cx\,f_X(x)\,dx = c\int_{-\infty}^{\infty}xf_X(x)\,dx = c\,\mathbb EX$. \qedbg
+\end{proofbox}
+
+\section{Дисперсия}
+
+\begin{defbox}[~(Дисперсия на непрекъсната случайна величина)]
+Нека $X$ е непрекъсната случайна величина с очакване $\mathbb EX$.
+Тогава
+\[
+  DX = \int_{-\infty}^{\infty} (x-\mathbb EX)^2 f_X(x)\,dx = \mathbb E\big[X-\mathbb EX\big]^2 = \min_{a\in\mathbb R}\mathbb E(X-a)^2,
+\]
+ако интегралът е добре дефиниран (краен). \emph{(Съществуват случаи,
+в които $\mathbb EX<\infty$, но $DX=\infty$.)}
+\end{defbox}
+
+\begin{thmbox}[~(на дисперсията)]{Свойства}
+Нека $X,Y$ са непрекъснати случайни величини с $DX<\infty$,
+$DY<\infty$.
+\begin{enumerate}[label=\arabic*)]
+  \item $D(aX+b) = a^2 DX$ за $a,b\in\mathbb R$.
+  \item $DX = \mathbb EX^2 - (\mathbb EX)^2$.
+  \item $Dc = 0$ за константа $c$.
+  \item Ако $X\perp\!\!\!\perp Y$, то $D(X+Y)=DX+DY$.
+\end{enumerate}
+\end{thmbox}
+
+\begin{proofbox}
+\textbf{1)} Полагаме $a_0=\mathbb EX$. Понеже $\mathbb E(aX+b)=a\,
+\mathbb EX+b$ (свойство~1 на очакването):
+\begin{align*}
+  D(aX+b) &= \mathbb E\big(aX+b-\mathbb E(aX+b)\big)^2 = \mathbb E\big(aX+b-a\,\mathbb EX-b\big)^2 = \mathbb E\big[a^2(X-\mathbb EX)^2\big]\\
+  &= a^2\int_{-\infty}^{\infty}(x-\mathbb EX)^2 f_X(x)\,dx = a^2 DX.
+\end{align*}
+
+\textbf{2)} Нека $a=\mathbb EX$. Тогава
+\begin{align*}
+  DX &= \int_{-\infty}^{\infty}(x-a)^2 f_X(x)\,dx = \int_{-\infty}^{\infty}(x^2-2ax+a^2)f_X(x)\,dx\\
+  &= \int x^2f_X(x)\,dx - 2a\int xf_X(x)\,dx + a^2\int f_X(x)\,dx\\
+  &= \mathbb EX^2 - 2a\cdot a + a^2\cdot1 = \mathbb EX^2-a^2 = \mathbb EX^2-(\mathbb EX)^2.
+\end{align*}
+
+\textbf{3)} $Dc = \mathbb E(c-\mathbb Ec)^2 = \mathbb E(c-c)^2 = \mathbb E0 = 0$.
+
+\textbf{4)} Използвайки свойство~2 (връзка с $\mathbb EX^2$) и
+свойство~3 на очакването (мултипликативност при независимост):
+\begin{align*}
+  D(X+Y) &= \mathbb E(X+Y)^2 - \big(\mathbb E(X+Y)\big)^2 = \mathbb E\big(X^2+2XY+Y^2\big) - (\mathbb EX+\mathbb EY)^2\\
+  &= \mathbb EX^2+2\,\mathbb EXY+\mathbb EY^2 - (\mathbb EX)^2-2\,\mathbb EX\,\mathbb EY-(\mathbb EY)^2\\
+  &\overset{X\perp\!\!\!\perp Y}{=} \big(\mathbb EX^2-(\mathbb EX)^2\big) + \big(\mathbb EY^2-(\mathbb EY)^2\big) = DX+DY. \qedbg
+\end{align*}
+\end{proofbox}
