@@ -1,1 +1,207 @@
 \chapter{Видове непрекъснати случайни величини}
+
+\section{Равномерно разпределение}
+
+\begin{defbox}[~(\texorpdfstring{$X\sim U(a,b)$}{X~U(a,b)})]
+Нека $-\infty<a<b<\infty$. Казваме, че $X\sim U(a,b)$, ако
+\[
+  f_X(x) = \begin{cases} \dfrac1{b-a}, & x\in(a,b)\\ 0, & \text{иначе}\end{cases}.
+\]
+\end{defbox}
+
+\begin{rembox}[Идея]
+Ако имаме интервал $(c,d)\subseteq(a,b)$, вероятността да попаднем в
+него зависи само от дължината на интервала - тя е пропорционална на
+$d-c$. Всички изходи в $(a,b)$ са равновероятни.
+\end{rembox}
+
+\begin{thmbox}[]{Теорема}
+Ако $X\sim U(a,b)$, то за $A\subseteq(a,b)$: $\mathbb P(A)=
+\dfrac{|A|}{b-a}$; освен това
+\[
+  \mathbb EX = \frac{a+b}{2}, \qquad \mathbb EX^2 = \frac{a^2+ab+b^2}{3}, \qquad DX = \frac{(a-b)^2}{12},
+\]
+и
+\[
+  F_X(x) = \begin{cases}0, & x\le a\\ \dfrac{x-a}{b-a}, & x\in(a,b)\\ 1, & x\ge b\end{cases}.
+\]
+\end{thmbox}
+
+\begin{proofbox}
+\[
+  \mathbb EX = \int_a^b \frac{x}{b-a}\,dx = \frac1{b-a}\cdot\frac{x^2}2\Big|_a^b = \frac{b^2-a^2}{2(b-a)} = \frac{a+b}{2}.
+\]
+\[
+  \mathbb EX^2 = \int_a^b \frac{x^2}{b-a}\,dx = \frac1{b-a}\cdot\frac{x^3}3\Big|_a^b = \frac{b^3-a^3}{3(b-a)} = \frac{a^2+ab+b^2}{3}.
+\]
+\[
+  DX = \mathbb EX^2-(\mathbb EX)^2 = \frac{a^2+ab+b^2}{3} - \frac{(a+b)^2}{4} = \frac{(a-b)^2}{12}
+\]
+(след привеждане под общ знаменател~12 и опростяване). Функцията на
+разпределение се получава директно чрез интегриране на плътността:
+за $x\in(a,b)$, $F_X(x)=\int_a^x\frac1{b-a}\,dy = \frac{x-a}{b-a}$.
+\qedbg
+\end{proofbox}
+
+\begin{rembox}[Забележка]
+$DX$ зависи само от дължината на интервала $b-a$, а не от неговото
+разположение (позиция) върху числовата ос.
+\end{rembox}
+
+\begin{thmbox}[~(стандартизация на равномерното разпределение)]{Теорема}
+Ако $X\sim U(a,b)$, то $Y=\dfrac{X-a}{b-a}\sim U(0,1)$; и обратно,
+ако $Y\sim U(0,1)$, то $X=a+(b-a)Y \sim U(a,b)$.
+\end{thmbox}
+
+\begin{proofbox}
+\textbf{($\Rightarrow$)} Нека $D_{f_X}=(a,b)$ и $g(x)=\dfrac{x-a}{b-a}$
+- строго растяща функция. Тогава $g^{-1}(y)=a+(b-a)y$,
+$(g^{-1}(y))'=b-a$, и по теоремата за смяна на променливите (Тема~9):
+\[
+  f_Y(y) = f_X\big(g^{-1}(y)\big)\cdot(b-a) = \begin{cases}\dfrac{b-a}{b-a}=1, & y\in(0,1)\\ 0,&\text{иначе}\end{cases}
+  \quad\Longrightarrow\quad Y\sim U(0,1).
+\]
+
+\textbf{($\Leftarrow$)} Нека $Y\sim U(0,1)$, т.е.\ $f_Y(y)=1$ за
+$y\in(0,1)$, $0$ иначе. Разглеждаме $X=g(Y)=a+(b-a)Y$ - строго
+растяща функция на $Y$ (защото $b>a$), с $g^{-1}(x)=\dfrac{x-a}{b-a}$
+и $(g^{-1}(x))'=\dfrac1{b-a}$. Тогава
+\begin{align*}
+  f_X(x) &= f_Y\big(g^{-1}(x)\big)\cdot\Big|\frac1{b-a}\Big| = \begin{cases}\dfrac1{b-a}, & 0<\dfrac{x-a}{b-a}<1 \iff a<x<b\\ 0,&\text{иначе}\end{cases}\\
+  &\quad\Longrightarrow\quad X\sim U(a,b). \qedbg
+\end{align*}
+\end{proofbox}
+
+\begin{rembox}[Пресмятане за \texorpdfstring{$U(0,1)$}{U(0,1)}]
+За $X\sim U(0,1)$: $\mathbb EX = \int_0^1 x\,dx = \tfrac12$, и
+\[
+  DX = \mathbb EX^2-(\mathbb EX)^2 = \int_0^1 x^2\,dx - \frac14 = \frac13-\frac14 = \frac1{12},
+\]
+което съвпада с горната обща формула $DX=\tfrac{(b-a)^2}{12}$ при
+$a=0,b=1$.
+\end{rembox}
+
+\section{Нормално (Гаусово) разпределение}
+
+\begin{defbox}[~(\texorpdfstring{$X\sim N(\mu,\sigma^2)$}{X~N(мю,сигма^2)})]
+Нека $\mu\in\mathbb R$, $\sigma^2>0$. Казваме, че $X\sim N(\mu,
+\sigma^2)$ (\emph{нормално/Гаусово разпределение}), ако
+\[
+  f_X(x) = \frac1{\sqrt{2\pi}\,\sigma}\,e^{-\frac{(x-\mu)^2}{2\sigma^2}}, \qquad x\in\mathbb R,
+\]
+където $\mu$ е средната стойност, а $\sigma$ - стандартното
+отклонение. „Камбанката“ е по-висока и по-тясна за по-малко~$\sigma$.
+\end{defbox}
+
+\begin{rembox}[Стандартно нормално разпределение]
+$Z\sim N(0,1)$ се нарича \textbf{стандартно нормално разпределение}:
+$f_Z(x)=\dfrac1{\sqrt{2\pi}}e^{-x^2/2}$. Приемаме за известен факта,
+че $\dfrac1{\sqrt{2\pi}\sigma}\int_{-\infty}^{\infty}
+e^{-(y-\mu)^2/(2\sigma^2)}\,dy=1$ (нормировъчен интеграл на Гаус),
+т.е.\ плътността $f_X$ е коректно дефинирана. Означаваме
+$F_Z(x)=\Phi(x)=\mathbb P(Z<x)=\dfrac1{\sqrt{2\pi}}\int_{-\infty}^{x}
+e^{-y^2/2}\,dy$.
+\end{rembox}
+
+\begin{thmbox}[]{Теорема}
+Ако $X\sim N(\mu,\sigma^2)$, то $Z=\dfrac{X-\mu}{\sigma}\sim N(0,1)$.
+\end{thmbox}
+
+\begin{proofbox}
+Нека $g(x)=\dfrac{x-\mu}{\sigma}$ - строго растяща функция, с
+$g^{-1}(z)=\mu+\sigma z$, $(g^{-1}(z))'=\sigma$. По теоремата за
+смяна на променливите (Тема~9):
+\[
+  f_Z(z) = f_X\big(g^{-1}(z)\big)\cdot\sigma = \frac1{\sqrt{2\pi}\sigma}e^{-\frac{(\mu+\sigma z-\mu)^2}{2\sigma^2}}\cdot\sigma = \frac1{\sqrt{2\pi}}e^{-\frac{\sigma^2z^2}{2\sigma^2}} = \frac1{\sqrt{2\pi}}e^{-z^2/2}. \qedbg
+\]
+\end{proofbox}
+
+\begin{corbox}[]
+Ако $X\sim N(\mu,\sigma^2)$, то $\mathbb EX=\mu$ и $DX=\sigma^2$.
+\end{corbox}
+
+\begin{proofbox}
+От предната теорема $X=\mu+\sigma Z$, $Z\sim N(0,1)$.
+
+$\mathbb EX = \mu+\sigma\,\mathbb EZ$, като
+\[
+  \mathbb EZ = \frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty} z\,e^{-z^2/2}\,dz = 0,
+\]
+защото подинтегралната функция $z\mapsto ze^{-z^2/2}$ е нечетна (а
+интегралът ѝ по симетричен относно нулата интервал е нула).
+Следователно $\mathbb EX=\mu$.
+
+$DX = \sigma^2 DZ$, като (интегрирайки по части, с $u=z$,
+$dv=ze^{-z^2/2}dz \Rightarrow v=-e^{-z^2/2}$):
+\begin{align*}
+  DZ &= \mathbb EZ^2-(\mathbb EZ)^2 = \mathbb EZ^2 = \frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}z^2e^{-z^2/2}\,dz = \frac{2}{\sqrt{2\pi}}\int_0^{\infty}z^2e^{-z^2/2}\,dz\\
+  &= \frac{2}{\sqrt{2\pi}}\left[-ze^{-z^2/2}\Big|_0^{\infty} + \int_0^{\infty}e^{-z^2/2}\,dz\right] = \frac{2}{\sqrt{2\pi}}\cdot\frac1{2}\int_{-\infty}^{\infty}e^{-z^2/2}\,dz = \frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-z^2/2}dz = 1
+\end{align*}
+(използвахме четността на $z\mapsto z^2e^{-z^2/2}$, граничния член
+$-ze^{-z^2/2}\to0$ при $z\to\infty$, и нормировъчния интеграл на
+Гаус за $N(0,1)$). Следователно $DX=\sigma^2\cdot1=\sigma^2$. \qedbg
+\end{proofbox}
+
+\section{Експоненциално разпределение}
+
+\begin{defbox}[~(\texorpdfstring{$X\sim Exp(\lambda)$}{X~Exp(лямбда)})]
+Нека $\lambda>0$. Казваме, че $X\sim Exp(\lambda)$, ако
+\[
+  f_X(x) = \begin{cases}\lambda e^{-\lambda x}, & x>0\\ 0, & \text{иначе}\end{cases}.
+\]
+\end{defbox}
+
+\begin{rembox}[Коректност и функция на разпределение]
+\[
+  \int_0^{\infty}\lambda e^{-\lambda x}\,dx = -e^{-\lambda x}\Big|_0^{\infty} = \lim_{x\to\infty}(-e^{-\lambda x}) - (-1) = 0+1 = 1.
+\]
+Функцията на разпределение и функцията на оцеляване (,,опашка``) са:
+\[
+  F_X(x) = \int_0^x \lambda e^{-\lambda y}\,dy = 1-e^{-\lambda x}, \qquad \overline{F}_X(x) = 1-F_X(x) = e^{-\lambda x}, \qquad x\ge0.
+\]
+\end{rembox}
+
+\begin{thmbox}[]{Теорема}
+Ако $X\sim Exp(\lambda)$, то $\mathbb EX = \dfrac1\lambda$ и
+$DX = \dfrac1{\lambda^2}$.
+\end{thmbox}
+
+\begin{proofbox}
+Интегрираме по части ($u=x$, $dv=\lambda e^{-\lambda x}dx
+\Rightarrow v=-e^{-\lambda x}$):
+\[
+  \mathbb EX = \int_0^{\infty} x\lambda e^{-\lambda x}\,dx = -xe^{-\lambda x}\Big|_0^{\infty} + \int_0^{\infty}e^{-\lambda x}\,dx = 0 + \Big(-\frac{e^{-\lambda x}}{\lambda}\Big|_0^{\infty}\Big) = \frac1\lambda
+\]
+(граничният член изчезва, защото експонентата клони към нула
+по-бързо, отколкото $x$ расте). За дисперсията ползваме метода на
+диференциране по параметър (,,трик на Файнман``): нека
+$f(\lambda):=\mathbb EX = \int_0^{\infty}x\lambda e^{-\lambda x}\,dx
+= \tfrac1\lambda$. Диференцираме двете представяния на $f(\lambda)$
+по $\lambda$. От дясната страна: $f'(\lambda) = -\tfrac1{\lambda^2}$.
+От лявата страна, диференцирайки под интеграла:
+\[
+  f'(\lambda) = \int_0^{\infty} x\,\frac{\partial}{\partial\lambda}\big(\lambda e^{-\lambda x}\big)\,dx = \int_0^{\infty}x\big(e^{-\lambda x}-\lambda x e^{-\lambda x}\big)\,dx = \underbrace{\int_0^{\infty}xe^{-\lambda x}\,dx}_{=\,1/\lambda^2} \; - \; \underbrace{\int_0^{\infty}x^2\lambda e^{-\lambda x}\,dx}_{=\,\mathbb EX^2}.
+\]
+Приравнявайки двата израза за $f'(\lambda)$:
+\[
+  \frac1{\lambda^2} - \mathbb EX^2 = -\frac1{\lambda^2} \quad\Longrightarrow\quad \mathbb EX^2 = \frac2{\lambda^2}.
+\]
+Следователно
+\[
+  DX = \mathbb EX^2-(\mathbb EX)^2 = \frac2{\lambda^2}-\frac1{\lambda^2} = \frac1{\lambda^2}. \qedbg
+\]
+\end{proofbox}
+
+\begin{thmbox}[~(безпаметност на експоненциалното разпределение)]{Теорема}
+Ако $X\sim Exp(\lambda)$, то за всички $x,y>0$:
+\[
+  \mathbb P(X>x+y \mid X>x) = \mathbb P(X>y).
+\]
+\end{thmbox}
+
+\begin{proofbox}
+\begin{align*}
+  \mathbb P(X>x+y\mid X>x) &= \frac{\mathbb P(X>x+y,\,X>x)}{\mathbb P(X>x)} = \frac{\mathbb P(X>x+y)}{\mathbb P(X>x)}\\
+  &= \frac{e^{-\lambda(x+y)}}{e^{-\lambda x}} = e^{-\lambda y} = \mathbb P(X>y). \qedbg
+\end{align*}
+\end{proofbox}
