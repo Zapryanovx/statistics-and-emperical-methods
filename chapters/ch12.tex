@@ -1,1 +1,292 @@
 \chapter{Сходимост и закони за големите числа}
+
+\begin{rembox}[Забележка]
+Това е сред най-важните теми в курса - сходимостта на случайни
+величини и законите за големите числа стоят в основата на цялата
+математическа статистика (оценки, доверителни интервали, гранични
+теореми).
+\end{rembox}
+
+\section{Видове сходимост}
+
+\begin{rembox}[Постановка]
+Нека $(X_n)_{n=1}^{\infty}$ е редица от случайни величини във
+вероятностно пространство $V=(\Omega,\mathcal A,\mathbb P)$.
+\end{rembox}
+
+\begin{defbox}[~(Почти сигурна сходимост, п.с.)]
+Нека $L_X = \{\omega\in\Omega : \lim_{n\to\infty}X_n(\omega)=X(\omega)\}$.
+Казваме, че $X_n\xrightarrow[n\to\infty]{\text{п.с.}} X$, ако
+$\mathbb P(L_X)=1$ (,,$X_n$ клони почти сигурно към $X$``). Възможно
+е да съществуват изходи $\omega$, за които границата не е изпълнена,
+но множеството от такива изходи да има вероятност нула.
+\end{defbox}
+
+\begin{defbox}[~(Сходимост по вероятност)]
+Нека $A_{n,\varepsilon} = \{\omega\in\Omega : |X_n(\omega)-X(\omega)|
+>\varepsilon\}$. Казваме, че $X_n\xrightarrow[n\to\infty]{\mathbb P}
+X$, ако $\forall\varepsilon>0$: $\lim_{n\to\infty}\mathbb
+P(A_{n,\varepsilon})=0$.
+\end{defbox}
+
+\begin{defbox}[~(Сходимост по разпределение)]
+Нека $C_{F_X}=\{x\in\mathbb R : F_X\text{ е непрекъсната в } x\}$ -
+множеството от точки на непрекъснатост на функцията на разпределение
+$F_X$. Казваме, че $X_n\xrightarrow[n\to\infty]{d} X$, ако за всяко
+$x\in C_{F_X}$: $\lim_{n\to\infty}F_{X_n}(x)=F_X(x)$.
+\end{defbox}
+
+\begin{thmbox}[]{Теорема}
+Нека $(X_n)_{n=1}^{\infty}$ е редица от случайни величини.
+\begin{enumerate}[label=\alph*)]
+  \item Ако $X_n\xrightarrow{\text{п.с.}}X$, то $X_n\xrightarrow{\mathbb P}X$.
+  \item Ако $X_n\xrightarrow{\mathbb P}X$, то $X_n\xrightarrow{d}X$.
+\end{enumerate}
+(Т.е.\ п.с.\ сходимостта е най-силна, следвана от сходимостта по
+вероятност, а сходимостта по разпределение е най-слабата.)
+\end{thmbox}
+
+\begin{proofbox}
+\textbf{а)} Нека $X_n\xrightarrow{\text{п.с.}}X$, т.е.\ $\mathbb
+P(L)=1$ за $L=\{\omega:\lim_n X_n(\omega)=X(\omega)\}$. Твърдим, че
+\[
+  L = \bigcap_{r=1}^{\infty}\bigcup_{n=1}^{\infty}\bigcap_{k=n}^{\infty} \Big\{\omega\in\Omega : |X_k(\omega)-X(\omega)|\le\frac1r\Big\}.
+\]
+\emph{($\subseteq$)} Нека $\tilde\omega\in L$. За всяко $r\ge1$
+(с $\varepsilon=1/r$), понеже $X_n(\tilde\omega)\to X(\tilde\omega)$,
+съществува $n_r$ такова, че $|X_n(\tilde\omega)-X(\tilde\omega)|<
+\tfrac1r$ за $n\ge n_r$, т.е.\ $\tilde\omega\in\bigcap_{k=n_r}^{\infty}
+\{|X_k-X|\le\tfrac1r\}\subseteq\bigcup_n\bigcap_{k=n}^{\infty}\{\dots\}$,
+и това важи за всяко $r$, следователно $\tilde\omega$ принадлежи на
+дясната страна.
+
+\emph{($\supseteq$)} Нека $\tilde\omega$ принадлежи на дясната
+страна. За всяко $r\ge1$ съществува $n_r$, такова че $\tilde\omega\in
+\bigcap_{k=n_r}^{\infty}\{|X_k-X|\le\tfrac1r\}$, т.е.\
+$|X_k(\tilde\omega)-X(\tilde\omega)|\le\tfrac1r$ за всяко $k\ge n_r$.
+Това означава $\lim_{k\to\infty}X_k(\tilde\omega)=X(\tilde\omega)$
+(по дефиниция на граница), т.е.\ $\tilde\omega\in L$.
+
+От равенството и закона на Де Морган:
+\[
+  L^c = \bigcup_{r=1}^{\infty}\bigcap_{n=1}^{\infty}\underbrace{\bigcup_{k=n}^{\infty}A_{k,\frac1r}}_{=:B_{n,r}}.
+\]
+Понеже $\mathbb P(L)=1$, имаме $\mathbb P(L^c)=0$, следователно
+$\mathbb P\big(\bigcap_n B_{n,r}\big)=0$ за всяко $r\ge1$ (обединение
+на неотрицателни членове е нула точно когато всеки е нула). Нека
+$r\ge1$ е фиксирано. Редицата $(B_{n,r})_{n\ge1}$ намалява по $n$
+(защото обединяваме над все по-малко индекси), следователно по
+непрекъснатостта на вероятността отгоре (Тема~2):
+\[
+  0 = \mathbb P\Big(\bigcap_{n=1}^{\infty}B_{n,r}\Big) = \lim_{n\to\infty}\mathbb P(B_{n,r}).
+\]
+Понеже $B_{n,r}=\bigcup_{k=n}^{\infty}A_{k,1/r}\supseteq A_{n,1/r}$,
+имаме $\mathbb P(A_{n,1/r})\le\mathbb P(B_{n,r})\to0$, т.е.
+$\lim_{n\to\infty}\mathbb P(A_{n,1/r})=0$ за всяко $r\ge1$ - а това
+означава точно $X_n\xrightarrow{\mathbb P}X$ (произволно $\varepsilon>0$
+може да бъде „уловено“ от достатъчно голямо $r$ с $1/r<\varepsilon$).
+
+\textbf{б)} Нека $X_n\xrightarrow{\mathbb P}X$, т.е.\
+$\lim_n\mathbb P(A_{n,\varepsilon})=0$ за всяко $\varepsilon>0$. Нека
+$x\in C_{F_X}$ е фиксирано и нека $\varepsilon>0$. Забелязваме
+двете включвания:
+\[
+  \{X_n<x\} \subseteq A_{n,\varepsilon}\cup\{X<x+\varepsilon\},
+  \qquad
+  \{X<x-\varepsilon\}\cap A_{n,\varepsilon}^c \subseteq \{X_n<x\}
+\]
+(геометрично: ако $X_n<x$ и $|X_n-X|\le\varepsilon$, то $X<x+
+\varepsilon$; а ако $X<x-\varepsilon$ и $|X_n-X|\le\varepsilon$, то
+$X_n<x$). От тези включвания следва:
+\[
+  \mathbb P(X<x-\varepsilon) - \mathbb P(A_{n,\varepsilon}) \le \mathbb P(X_n<x) \le \mathbb P(X<x+\varepsilon)+\mathbb P(A_{n,\varepsilon}),
+\]
+т.е.\ $F_X(x-\varepsilon)-\mathbb P(A_{n,\varepsilon})\le
+\mathbb P(X_n<x)\le F_X(x+\varepsilon)+\mathbb P(A_{n,\varepsilon})$.
+Взимаме $\liminf$/$\limsup$ по $n\to\infty$ (при което $\mathbb
+P(A_{n,\varepsilon})\to0$):
+\[
+  F_X(x-\varepsilon) \le \liminf_{n\to\infty}\mathbb P(X_n<x) \le \limsup_{n\to\infty}\mathbb P(X_n<x) \le F_X(x+\varepsilon).
+\]
+Понеже $x\in C_{F_X}$ (точка на непрекъснатост), $\lim_{\varepsilon
+\to0}F_X(x-\varepsilon)=\lim_{\varepsilon\to0}F_X(x+\varepsilon)=
+F_X(x)$, следователно при $\varepsilon\to0$ границите отляво и
+отдясно се сближават до $F_X(x)$, откъдето
+$\lim_{n\to\infty}\mathbb P(X_n<x)=F_X(x)$, т.е.\ $X_n
+\xrightarrow{d}X$. \qedbg
+\end{proofbox}
+
+\begin{thmbox}[]{Теорема}
+Нека $(X_n)_{n=1}^{\infty}$ е редица от случайни величини в едно
+вероятностно пространство. Ако $X_n\xrightarrow{d}c$, то
+$X_n\xrightarrow{\mathbb P}c$, където $c$ е константа.
+\end{thmbox}
+
+\begin{proofbox}
+$F_c(x) = I_{\{x>c\}}$, т.е.\ $C_{F_c}=\mathbb R\setminus\{c\}$.
+Фиксираме $\varepsilon>0$ и разписваме:
+\begin{align*}
+  \mathbb P(|X_n-c|>\varepsilon) &= \mathbb P(X_n>c+\varepsilon)+\mathbb P(X_n<c-\varepsilon)\\
+  &= 1-\mathbb P(X_n\le c+\varepsilon) + F_{X_n}(c-\varepsilon)\\
+  &= 1 - F_{X_n}(c+\varepsilon) - \mathbb P(X_n=c+\varepsilon) + F_{X_n}(c-\varepsilon).
+\end{align*}
+Понеже $c+\varepsilon,c-\varepsilon\in C_{F_c}$, от $X_n
+\xrightarrow{d}c$ следва $F_{X_n}(c+\varepsilon)\to F_c(c+\varepsilon)
+=1$ и $F_{X_n}(c-\varepsilon)\to F_c(c-\varepsilon)=0$ при
+$n\to\infty$. Следователно
+\[
+  0 \le \lim_{n\to\infty}\mathbb P(|X_n-c|>\varepsilon) = \underbrace{1-1-0}_{=0} - \lim_{n\to\infty}\mathbb P(X_n=c+\varepsilon) = -\lim_{n\to\infty}\mathbb P(X_n=c+\varepsilon) \le 0
+\]
+(последното неравенство, защото вероятности са неотрицателни), т.е.\
+границата е едновременно $\ge0$ и $\le0$, откъдето $\lim_{n\to
+\infty}\mathbb P(|X_n-c|>\varepsilon)=0$. \qedbg
+\end{proofbox}
+
+\section{Неравенство на Чебишов (обобщение)}
+
+\begin{thmbox}[~(на Чебишов, чрез индикатор)]{Теорема}
+Нека $X$ е случайна величина с $DX<\infty$. Тогава за всяко $a>0$:
+\[
+  \mathbb P(|X-\mathbb EX|>a) \le \frac{DX}{a^2}.
+\]
+\end{thmbox}
+
+\begin{proofbox}
+Нека $Y=X-\mathbb EX$. Тогава $\mathbb P(|Y|>a)=\mathbb E\mathbb
+1_{\{|Y|>a\}}$, и разбивайки по допълващи се събития:
+\begin{align*}
+  DX = \mathbb EY^2 &= \mathbb E\big[Y^2\cdot1\big] = \mathbb E\big[Y^2\big(I_{\{|Y|\le a\}}+I_{\{|Y|>a\}}\big)\big]\\
+  &\ge \mathbb E\big[Y^2I_{\{|Y|>a\}}\big] \ge a^2\,\mathbb EI_{\{|Y|>a\}} = a^2\,\mathbb P(|Y|>a)
+\end{align*}
+(изпуснахме неотрицателния член с $I_{\{|Y|\le a\}}$, а на
+събитието $\{|Y|>a\}$ имаме $Y^2>a^2$). Следователно $\mathbb
+P(|X-\mathbb EX|>a)\le DX/a^2$. \qedbg
+\end{proofbox}
+
+\begin{corbox}[~(обобщение за по-висок момент)]
+Нека $X$ е случайна величина и $n\ge1$. Тогава за всяко $a>0$:
+\[
+  \mathbb P(|X-\mathbb EX|>a) \le \frac{\mathbb E|X-\mathbb EX|^n}{a^n}
+\]
+(доказва се по абсолютно същата схема, замествайки квадрат с
+$n$-та степен: на $\{|Y|>a\}$ имаме $|Y|^n>a^n$).
+\end{corbox}
+
+\section{Закони за големите числа}
+
+\begin{defbox}[~(Независими еднакво разпределени - i.i.d.)]
+Редицата $(X_i)_{i=1}^{n}$ (или $(X_i)_{i=1}^{\infty}$) е от
+\textbf{независими еднакво разпределени} случайни величини
+(съкратено \textbf{i.i.d.}), ако $X_1\stackrel{d}{=}X_i$ (т.е.\
+$F_{X_1}=F_{X_i}$) за всяко $i\ge2$, и $(X_i)$ са независими в
+съвкупност (т.е.\ за всяко $n\ge1$ и всеки избор на индекси
+$(i_1,\dots,i_n)$, величините $(X_{i_1},\dots,X_{i_n})$ са
+независими в съвкупност).
+\end{defbox}
+
+\begin{defbox}[~(Слаб закон за големите числа, СЗГЧ)]
+Нека $(X_i)_{i=1}^{\infty}$ е редица от случайни величини с
+очаквания $(\mathbb EX_i)_{i=1}^{\infty}$. Казваме, че за редицата е
+в сила \textbf{слабият закон за големите числа}, ако
+\[
+  \frac{\sum_{i=1}^n (X_i-\mathbb EX_i)}{n} \xrightarrow[n\to\infty]{\mathbb P} 0.
+\]
+\end{defbox}
+
+\begin{thmbox}[~(СЗГЧ)]{Теорема}
+Нека $(X_i)_{i=1}^{\infty}$ е i.i.d.\ редица с $\mathbb EX_1$ и
+$DX_1<\infty$. Тогава
+\[
+  \frac{\sum_{i=1}^n X_i}{n} \xrightarrow[n\to\infty]{\mathbb P} \mathbb EX_1.
+\]
+\end{thmbox}
+
+\begin{proofbox}
+Фиксираме $\varepsilon>0$. Понеже $(X_i)$ са i.i.d., $D\big(
+\sum_{i=1}^n(X_i-\mathbb EX_i)\big) = \sum_{i=1}^n D(X_i-\mathbb
+EX_i) = \sum_{i=1}^n DX_i = n\,DX_1$ (адитивност на дисперсията за
+независими събираеми, Тема~5/9; изваждането на константа $\mathbb
+EX_i$ не променя дисперсията). По неравенството на Чебишов,
+приложено към $\sum_{i=1}^n(X_i-\mathbb EX_i)$:
+\begin{align*}
+  \mathbb P\Big(\Big|\frac{\sum_{i=1}^n X_i}{n}-\mathbb EX_1\Big|>\varepsilon\Big) &= \mathbb P\Big(\Big|\sum_{i=1}^n(X_i-\mathbb EX_i)\Big|>n\varepsilon\Big) \le \frac{D\big(\sum_{i=1}^n(X_i-\mathbb EX_i)\big)}{\varepsilon^2n^2}\\
+  &= \frac{n\,DX_1}{\varepsilon^2n^2} = \frac{DX_1}{n\varepsilon^2} \xrightarrow[n\to\infty]{} 0. \qedbg
+\end{align*}
+\end{proofbox}
+
+\begin{defbox}[~(Усилен закон за големите числа, УЗГЧ)]
+Нека $(X_i)_{i=1}^{\infty}$ е редица от случайни величини с
+очаквания $(\mathbb EX_i)_{i=1}^{\infty}$. Казваме, че за редицата е
+в сила \textbf{усиленият закон за големите числа}, ако
+\[
+  \frac{\sum_{i=1}^n (X_i-\mathbb EX_i)}{n} \xrightarrow[n\to\infty]{\text{п.с.}} 0.
+\]
+\end{defbox}
+
+\begin{thmbox}[~(УЗГЧ)]{Теорема}
+Нека $(X_i)_{i=1}^{\infty}$ е i.i.d.\ редица с $\mathbb E|X_1|<\infty$.
+Тогава
+\[
+  \frac{\sum_{i=1}^n X_i}{n} \xrightarrow[n\to\infty]{\text{п.с.}} \mathbb EX_1.
+\]
+\end{thmbox}
+
+\begin{proofbox}
+\emph{(Доказваме при допълнителното техническо предположение
+$\mathbb EX_1^4<\infty$, което опростява сметките.)} Без ограничение
+на общността приемаме $\mathbb EX_1=0$ (иначе разглеждаме
+$X_i-\mathbb EX_i$). Полагаме $S_k=\sum_{i=1}^k X_i$. Целта е да
+докажем $\mathbb P(L)=1$ за $L=\{\omega: S_n(\omega)/n\to0\}$, т.е.\
+$\mathbb P(L^c)=0$. Аналогично на предната теорема,
+\[
+  L^c = \bigcup_{r=1}^{\infty} C_r, \qquad C_r = \bigcap_{n=1}^{\infty}B_{n,r}, \qquad B_{n,r} = \bigcup_{k=n}^{\infty}\Big\{\Big|\frac{S_k}{k}\Big|>\frac1r\Big\}.
+\]
+Достатъчно е да покажем $\mathbb P(C_r)=0$ за всяко $r\ge1$. Понеже
+$(B_{n,r})_{n\ge1}$ намалява по $n$, $\mathbb P(C_r)=\lim_{n\to
+\infty}\mathbb P(B_{n,r})$. По субадитивност (Тема~2):
+\[
+  \mathbb P(B_{n,r}) \le \sum_{k=n}^{\infty} \mathbb P\Big(\Big|\frac{S_k}{k}\Big|>\frac1r\Big).
+\]
+Прилагаме обобщеното неравенство на Чебишов с $n=4$-ти момент:
+\[
+  \mathbb P\Big(\Big|\frac{S_k}{k}\Big|>\frac1r\Big) \le \frac{r^4}{k^4}\,\mathbb E S_k^4 = \frac{r^4}{k^4}\,\mathbb E\Big(\sum_{i=1}^k X_i\Big)^4.
+\]
+Разгръщаме четвъртата степен:
+\[
+  \Big(\sum_{i=1}^k X_i\Big)^4 = \sum_{i=1}^k X_i^4 + 6\sum_{i<j} X_i^2X_j^2 + (\text{членове с нечетни степени}).
+\]
+Понеже $(X_i)$ са независими и $\mathbb EX_i=0$, всеки член с
+нечетна степен на кой да е от множителите (напр.\ $X_i^3X_j$) се
+анулира при вземане на очакване: $\mathbb E[X_i^3X_j]=\mathbb
+EX_i^3\cdot\mathbb EX_j = \mathbb EX_i^3\cdot0=0$. Остават само
+членовете от четни степени:
+\[
+  \mathbb E\Big(\sum_{i=1}^k X_i\Big)^4 = k\,\mathbb EX_1^4 + 6\binom{k}{2}\big(\mathbb EX_1^2\big)^2 \le C\cdot k^2
+\]
+за подходяща константа $C>0$ (защото първият член расте линейно по
+$k$, а вторият - квадратично, откъдето изразът е от порядъка на
+$k^2$ за големи $k$). Заместваме:
+\[
+  \mathbb P\Big(\Big|\frac{S_k}{k}\Big|>\frac1r\Big) \le \frac{r^4}{k^4}\cdot C k^2 = \frac{Cr^4}{k^2}.
+\]
+Следователно
+\[
+  \mathbb P(B_{n,r}) \le \sum_{k=n}^{\infty}\frac{Cr^4}{k^2} = Cr^4\sum_{k=n}^{\infty}\frac1{k^2} \xrightarrow[n\to\infty]{} 0
+\]
+(опашка на сходящ ред $\sum 1/k^2$ клони към нула). Следователно
+$\mathbb P(C_r) = \lim_n\mathbb P(B_{n,r}) = 0$ за всяко $r\ge1$, и по
+субадитивност $\mathbb P(L^c) = \mathbb P\big(\bigcup_r C_r\big) \le
+\sum_r \mathbb P(C_r) = 0$, т.е.\ $\mathbb P(L)=1$. \qedbg
+\end{proofbox}
+
+\begin{rembox}[Обобщение при \texorpdfstring{$\mathbb EX_1=\mathbb EX_i$}{EX1=EXi}]
+Ако $(X_i)_{i=1}^{\infty}$ са независими (не непременно еднакво
+разпределени), но с общо очакване $\mathbb EX_1=\mathbb EX_i$ за
+всяко $i$, то $\sum_{i=1}^n(X_i-\mathbb EX_i)/n = \sum_{i=1}^n X_i/n
+- \mathbb EX_1$, и заключенията на СЗГЧ/УЗГЧ остават:
+\[
+  \text{СЗГЧ:}\quad \frac{\sum_{i=1}^n X_i}{n}\xrightarrow{\mathbb P}\mathbb EX_1,
+  \qquad\qquad
+  \text{УЗГЧ:}\quad \frac{\sum_{i=1}^n X_i}{n}\xrightarrow{\text{п.с.}}\mathbb EX_1.
+\]
+\end{rembox}
