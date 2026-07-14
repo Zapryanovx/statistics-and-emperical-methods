@@ -1,1 +1,215 @@
 \chapter{Централна гранична теорема}
+
+\section{Функции на моментите}
+
+\begin{defbox}[~(Функция на моментите)]
+Нека $X$ е случайна величина, за която $\mathbb Ee^{tX}$ съществува
+за $t\in(-a,a)$, $a>0$. Тогава
+\[
+  M_X(t) := \mathbb Ee^{tX}, \qquad t\in(-a,a),
+\]
+се нарича \textbf{функция на моментите} на $X$. Ако $X$ е дискретна:
+$M_X(t)=\sum_i \mathbb P(X=x_i)\,e^{tx_i}$; ако $X$ е непрекъсната:
+$M_X(t)=\int_{\mathbb R} f_X(x)\,e^{tx}\,dx$.
+\end{defbox}
+
+\begin{defbox}[~($k$-ти момент, абсолютен и централен момент)]
+Нека $X$ е случайна величина и $k\ge1$.
+\begin{itemize}[nosep]
+  \item Ако $\mathbb EX^k$ съществува, той се нарича \textbf{$k$-ти момент} на $X$.
+  \item Ако $\mathbb E|X|^k$ съществува, той се нарича \textbf{$k$-ти абсолютен момент}.
+  \item Ако $\mathbb E|X-\mathbb EX|^k$ съществува, той се нарича \textbf{$k$-ти (абсолютен) централен момент}; при $k=2$ това е точно дисперсията: $DX=\mathbb E(X-\mathbb EX)^2$.
+\end{itemize}
+\end{defbox}
+
+\begin{thmbox}[~(на функцията на моментите)]{Свойства}
+Нека $X,Y$ са случайни величини, за които $M_X,M_Y$ съществуват в
+околност на нулата.
+\begin{enumerate}[label=\alph*)]
+  \item $M_X(0)=1$.
+  \item $M_X(t) = \displaystyle\sum_{k=0}^{\infty}\frac{t^k}{k!}\,\mathbb EX^k$ (за $t$ в радиуса на сходимост).
+  \item $M_X^{(k)}(0) = \mathbb EX^k$ ($k$-тата производна в нулата е $k$-тият момент).
+  \item Ако $X\perp\!\!\!\perp Y$, то $M_{X+Y}(t)=M_X(t)\cdot M_Y(t)$.
+  \item Ако $\lim_{n\to\infty}M_{X_n}(t)=M_X(t)$ за $|t|<\varepsilon$, то $X_n\xrightarrow{d}X$ (теорема за непрекъснатост).
+  \item Ако $M_X(t)=M_Y(t)$ за $|t|<a$, то $X\stackrel{d}{=}Y$ (единственост).
+  \item Ако $Y=aX+b$, то $M_Y(t) = e^{bt}\,M_X(at)$.
+\end{enumerate}
+\end{thmbox}
+
+\begin{proofbox}
+\textbf{а)} $M_X(0)=\mathbb Ee^{0\cdot X}=\mathbb E1=1$.
+
+\textbf{б)} Разлагаме $e^{tX}$ в степенен ред и разменяме ред на
+сумиране с очакване (валидно в радиуса на сходимост):
+\[
+  M_X(t) = \mathbb Ee^{tX} = \mathbb E\sum_{k=0}^{\infty}\frac{(tX)^k}{k!} = \sum_{k=0}^{\infty}\frac{t^k}{k!}\,\mathbb EX^k.
+\]
+
+\textbf{в)} От б), $M_X$ е степенен ред по $t$ с коефициенти
+$a_k=\tfrac1{k!}\mathbb EX^k$. Диференцираме почленно $k$ пъти
+(позволено вътре в радиуса на сходимост на степенен ред):
+\[
+  M_X^{(k)}(t) = \sum_{j=k}^{\infty} j(j-1)\cdots(j-k+1)\,\frac{t^{j-k}}{j!}\,\mathbb EX^j.
+\]
+При $t=0$ оцелява само членът с $j=k$ (всички останали съдържат
+положителна степен на $t$ и се анулират):
+\[
+  M_X^{(k)}(0) = k(k-1)\cdots1\cdot\frac1{k!}\,\mathbb EX^k = \frac{k!}{k!}\,\mathbb EX^k = \mathbb EX^k.
+\]
+
+\textbf{г)} Нека $f_{X,Y}$ е съвместната плътност. Понеже
+$X\perp\!\!\!\perp Y$, $f_{X,Y}(x,y)=f_X(x)f_Y(y)$, следователно
+\[
+  M_{X+Y}(t) = \mathbb Ee^{t(X+Y)} = \iint e^{t(x+y)}f_{X,Y}(x,y)\,dxdy = \iint e^{tx}e^{ty}f_X(x)f_Y(y)\,dxdy
+\]
+\[
+  = \int e^{tx}f_X(x)\,dx \cdot \int e^{ty}f_Y(y)\,dy = M_X(t)\cdot M_Y(t).
+\]
+
+\textbf{д), е)} Дълбоки аналитични резултати от теорията на
+преобразуванията на Лаплас/Фурие на вероятностни мерки - приемаме ги
+без доказателство в рамките на този курс.
+
+\textbf{ж)}
+\[
+  M_Y(t) = \mathbb Ee^{tY} = \mathbb Ee^{t(aX+b)} = e^{bt}\,\mathbb Ee^{atX} = e^{bt}\,M_X(at),
+\]
+дефинирано за $|at|<\varepsilon \iff |t|<\varepsilon/|a|$. \qedbg
+\end{proofbox}
+
+\begin{thmbox}[]{Лема}
+Ако $X\sim N(\mu,\sigma^2)$, то $M_X(t) = e^{\mu t+\frac{\sigma^2t^2}2}$
+за всяко $t\in\mathbb R$.
+\end{thmbox}
+
+\begin{proofbox}
+Нека $Z=\frac{X-\mu}\sigma\sim N(0,1)$, т.е.\ $X=\mu+\sigma Z$. По
+свойство ж): $M_X(t) = e^{\mu t}\,M_Z(\sigma t)$. Остава да намерим
+$M_Z(s)$ за $Z\sim N(0,1)$:
+\[
+  M_Z(s) = \mathbb Ee^{sZ} = \frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{sz}e^{-z^2/2}\,dz = \frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{sz-\frac{z^2}2}\,dz.
+\]
+Допълваме показателя до точен квадрат: $sz-\tfrac{z^2}2 =
+-\tfrac12(z-s)^2+\tfrac{s^2}2$, следователно
+\[
+  M_Z(s) = \frac{e^{s^2/2}}{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-\frac12(z-s)^2}\,dz \overset{\omega=z-s}{=} \frac{e^{s^2/2}}{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-\omega^2/2}\,d\omega = e^{s^2/2}\cdot1 = e^{s^2/2}
+\]
+(последният интеграл е нормировъчният интеграл на плътността на
+$N(0,1)$, следователно е равен на $\sqrt{2\pi}$, което съкращава
+множителя пред него). Заместваме $s=\sigma t$:
+\[
+  M_X(t) = e^{\mu t}\,M_Z(\sigma t) = e^{\mu t}\,e^{\sigma^2t^2/2} = e^{\mu t+\frac{\sigma^2t^2}2}. \qedbg
+\]
+\end{proofbox}
+
+\section{Централна гранична теорема}
+
+\begin{thmbox}[~(ЦГТ)]{Теорема}
+Нека $(X_i)_{i=1}^{\infty}$ е i.i.d.\ редица с $\mathbb EX_1=\mu<
+\infty$, $DX_1=\sigma^2<\infty$. Нека $S_n=\sum_{i=1}^n X_i$. Тогава
+\[
+  Z_n = \frac{S_n-\mathbb ES_n}{\sqrt{DS_n}} = \frac{S_n-n\mu}{\sigma\sqrt n} \xrightarrow[n\to\infty]{d} Z\sim N(0,1).
+\]
+\end{thmbox}
+
+\begin{proofbox}
+Нека $Y_i=\dfrac{X_i-\mu}\sigma$, $i\ge1$ - стандартизирани, i.i.d.\
+величини с $\mathbb EY_1=0$, $\mathbb EY_1^2=DY_1=1$. Тогава
+\[
+  Z_n = \frac{\sum_{i=1}^n X_i-n\mu}{\sigma\sqrt n} = \frac1{\sqrt n}\sum_{i=1}^n\frac{X_i-\mu}\sigma = \frac1{\sqrt n}\sum_{i=1}^n Y_i.
+\]
+Нека допуснем, че $M_{X_1}(t)$ (следователно и $M_{Y_1}(t)$)
+съществува за $|t|<\varepsilon$. Понеже $(Y_i)$ са i.i.d., по
+свойства г) и ж) на функцията на моментите:
+\[
+  M_{Z_n}(t) = M_{\frac1{\sqrt n}\sum Y_i}(t) = M_{\sum Y_i}\Big(\frac t{\sqrt n}\Big) = \prod_{i=1}^n M_{Y_i}\Big(\frac t{\sqrt n}\Big) = \Big(M_{Y_1}\big(\tfrac t{\sqrt n}\big)\Big)^n,
+\]
+дефинирано за $\big|\tfrac t{\sqrt n}\big|<\varepsilon \iff |t|<
+\varepsilon\sqrt n$. Разгръщаме $M_{Y_1}(s)$ по свойство б) (на
+предната теорема) за малки $s=t/\sqrt n$:
+\[
+  M_{Y_1}\Big(\frac t{\sqrt n}\Big) = 1 + \frac{t}{\sqrt n}\,\mathbb EY_1 + \frac{t^2}{2n}\,\mathbb EY_1^2 + o\Big(\frac{t^2}n\Big) = 1+\frac{t^2}{2n}+o\Big(\frac{t^2}n\Big)
+\]
+(използвахме $\mathbb EY_1=0$, $\mathbb EY_1^2=1$). Следователно
+\[
+  M_{Z_n}(t) = \Big(1+\frac{t^2}{2n}+o\Big(\frac{t^2}n\Big)\Big)^{n} \xrightarrow[n\to\infty]{} e^{t^2/2} = M_Z(t), \qquad Z\sim N(0,1)
+\]
+(класически граничен преход $(1+x_n/n)^n\to e^{\lim x_n}$, тук с
+$x_n=\tfrac{t^2}2+n\cdot o(t^2/n)\to\tfrac{t^2}2$). По свойство д) на
+функцията на моментите (теоремата за непрекъснатост), от $M_{Z_n}(t)
+\to M_Z(t)$ следва $Z_n\xrightarrow{d}Z$. \qedbg
+\end{proofbox}
+
+\begin{rembox}[Полезни следствия (означаваме \texorpdfstring{$\Phi(x)=\mathbb P(Z<x)$}{Ф(x)=P(Z<x)} за \texorpdfstring{$Z\sim N(0,1)$}{Z~N(0,1)})]
+От ЦГТ получаваме следните приблизителни (асимптотични) формули за
+голямо $n$:
+\begin{itemize}[nosep]
+  \item $\dfrac{S_n}{n} \approx \mu + Z\cdot\dfrac{\sigma}{\sqrt n}$ (приближение на извадковата средна);
+  \item $\mathbb P\big(a < \tfrac{S_n-n\mu}{\sigma\sqrt n} < b\big) \approx \Phi(b)-\Phi(a)$;
+  \item $\mathbb P\big(|\tfrac{S_n}n-\mu|>a\big) \approx \mathbb P\big(|Z|>\tfrac{a\sqrt n}{\sigma}\big)$.
+\end{itemize}
+\end{rembox}
+
+\begin{corbox}[~(на Моавър--Лаплас, ЦГТ за биномно разпределение)]
+Нека $S_n\sim Bin(n,p)$ (или еквивалентно, $S_n=\sum_{i=1}^n X_i$,
+$X_i\sim Be(p)$ i.i.d.). Тогава
+\[
+  \frac{S_n-np}{\sqrt{np(1-p)}} \xrightarrow[n\to\infty]{d} Z\sim N(0,1),
+  \qquad\text{т.е.}
+\]
+\[
+  \mathbb P\Big(a\le\frac{S_n-np}{\sqrt{np(1-p)}}\le b\Big) \approx \int_a^b \frac1{\sqrt{2\pi}}e^{-x^2/2}\,dx = \Phi(b)-\Phi(a).
+\]
+\end{corbox}
+
+\begin{proofbox}
+Директно частен случай на ЦГТ за $X_i\sim Be(p)$, $\mu=\mathbb EX_1
+=p$, $\sigma^2=DX_1=p(1-p)$: $Z_n=\tfrac{S_n-np}{\sqrt{np(1-p)}}
+\xrightarrow{d}Z\sim N(0,1)$. \qedbg
+\end{proofbox}
+
+\begin{thmbox}[~(Бери--Есен)]{Неравенство}
+Нека $(X_i)_{i=1}^{\infty}$ е i.i.d.\ редица с $\mathbb EX_1=\mu$,
+$DX_1=\sigma^2$, $\mathbb E|X_1-\mu|^3<\infty$. Тогава
+\[
+  \sup_{x\in\mathbb R} \left|\mathbb P\Big(\frac{\sum_{i=1}^N X_i}{N}-\mu \le \frac{\sigma x}{\sqrt N}\Big) - \Phi(x)\right| \le \frac{0.4748\cdot\mathbb E|X_1-\mathbb EX_1|^3}{\sigma^3\sqrt N}.
+\]
+\end{thmbox}
+
+\begin{rembox}[Забележка]
+ЦГТ ни казва, че разпределението на (стандартизираната) грешка клони
+към нормално разпределение, но не и \emph{колко бързо}. Неравенството
+на Бери--Есен допълва тази картина, като дава количествена оценка на
+скоростта на сходимост - максималното отклонение между нашето
+(крайно) разпределение и идеалната нормална крива за конкретно $N$ е
+от порядъка на $1/\sqrt N$.
+\end{rembox}
+
+\section{Функция на моментите на Гама разпределението}
+
+\begin{thmbox}[]{Теорема}
+Ако $X\sim\Gamma(\alpha,\beta)$, то $M_X(t) = \Big(\dfrac\beta{\beta-t}\Big)^{\alpha}$ за $t<\beta$.
+\end{thmbox}
+
+\begin{proofbox}
+\[
+  M_X(t) = \frac{\beta^\alpha}{\Gamma(\alpha)}\int_0^{\infty}e^{tx}x^{\alpha-1}e^{-\beta x}\,dx = \frac{\beta^\alpha}{\Gamma(\alpha)}\int_0^{\infty}x^{\alpha-1}e^{-x(\beta-t)}\,dx.
+\]
+Заместваме $y=x(\beta-t)$ (коректно за $t<\beta$, т.е.\ $\beta-t>0$),
+$x=y/(\beta-t)$, $dx=dy/(\beta-t)$:
+\[
+  M_X(t) = \frac{\beta^\alpha}{\Gamma(\alpha)(\beta-t)^{\alpha}}\int_0^{\infty}y^{\alpha-1}e^{-y}\,dy = \frac{\beta^\alpha}{\Gamma(\alpha)(\beta-t)^\alpha}\cdot\Gamma(\alpha) = \Big(\frac\beta{\beta-t}\Big)^\alpha. \qedbg
+\]
+\end{proofbox}
+
+\begin{corbox}[~(проверка на моментите чрез \texorpdfstring{$M_X$}{Mx})]
+Диференцирайки $M_X(t)=\beta^\alpha(\beta-t)^{-\alpha}$:
+\[
+  \mathbb EX = M_X'(0) = \frac{\alpha\beta^\alpha}{(\beta-t)^{\alpha+1}}\bigg|_{t=0} = \frac\alpha\beta,
+  \qquad
+  \mathbb EX^2 = M_X''(0) = \frac{\alpha(\alpha+1)\beta^\alpha}{(\beta-t)^{\alpha+2}}\bigg|_{t=0} = \frac{\alpha(\alpha+1)}{\beta^2},
+\]
+което съвпада с директно пресметнатите стойности от Тема~11
+($\mathbb EX=\alpha/\beta$, $DX=\mathbb EX^2-(\mathbb EX)^2=
+\alpha/\beta^2$) - потвърждение чрез независим метод.
+\end{corbox}
