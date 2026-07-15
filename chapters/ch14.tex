@@ -1,1 +1,277 @@
 \chapter{Точкови оценки}
+
+\section{Постановка}
+
+\begin{rembox}[Идея]
+Нека $X$ описва някакво свойство на генерална съвкупност, с функция
+на разпределение $F_X(x)=\mathbb P(X<x)$ (или плътност $f_X$).
+Разполагаме с \textbf{извадка} $\bar X=(X_1,\dots,X_n)$, където
+$(X_i)_{i=1}^n$ са i.i.d.\ (независими наблюдения над $X$,
+$X_i\stackrel d=X$), и искаме на базата на извадката да определим
+или приближим $F_X$ (респ.\ $f_X$). Важно е да отбележим: това, че
+знаем $f_X$ или $F_X$, не означава, че познаваме случайния изход
+$X$ предварително - знаем само разпределението му.
+\end{rembox}
+
+\begin{rembox}[Допускане: параметричен клас]
+Допускаме, че $X$ принадлежи на някакъв \textbf{клас} от случайни
+величини $F_X(x;\theta)$, където $\theta$ е параметър (или вектор
+от параметри), асоцииран с възможните разпределения на $X$. Например:
+\begin{itemize}[nosep]
+  \item $\theta=p$: $X\sim Be(p)$, $p\in(0,1)$;
+  \item $\theta=\lambda$: $X\sim Exp(\lambda)$, $F_X(x;\lambda)=1-e^{-\lambda x}$, $\lambda>0$;
+  \item $\theta=(\mu,\sigma^2)$: $X\sim N(\mu,\sigma^2)$, $\mu\in\mathbb R$, $\sigma^2>0$.
+\end{itemize}
+\end{rembox}
+
+\begin{defbox}[~(Точкова оценка)]
+Нека $X$ е от класа $F_X(x;\theta)$ и нека $\bar X=(X_1,\dots,X_n)$
+е извадка от независими наблюдения над $X$. Функцията
+$\hat\theta=\hat\theta(\bar X)$ се нарича \textbf{точкова оценка}
+(или \textbf{статистика}) за $\theta$. Тъй като $\hat\theta$ е
+функция на случайни величини, самата $\hat\theta$ е случайна
+величина; за конкретна реализация $\bar x=(x_1,\dots,x_n)$ получаваме
+конкретно число $\hat\theta=\hat\theta(\bar x)$.
+\end{defbox}
+
+\section{Максимално правдоподобни оценки}
+
+\begin{defbox}[~(Функция на правдоподобие)]
+Нека $X$ е от класа $f_X(x;\theta)$ (или дискретна с $f(x;\theta)=
+\mathbb P(X=x;\theta)$) и $\bar X=(X_1,\dots,X_n)$ е извадка от
+независими наблюдения над $X$. \textbf{Функцията на правдоподобие}
+е съвместната плътност на извадката:
+\[
+  L(\bar X;\theta) = \prod_{j=1}^{n} f_X(X_j;\theta).
+\]
+\end{defbox}
+
+\begin{defbox}[~(Максимално правдоподобна оценка, МПО)]
+Нека $\Theta$ е множеството от възможни стойности на $\theta$.
+Оценката $\hat\theta$, за която
+\[
+  L(\bar X,\hat\theta) = \sup_{\theta\in\Theta} \prod_{j=1}^{n} f(X_j;\theta),
+\]
+се нарича \textbf{максимално правдоподобна оценка} за $\theta$. Т.е.\
+$\hat\theta$ е стойността на параметъра, за която функцията на
+правдоподобие достига максимум - интуитивно, тази стойност на
+$\theta$, при която наблюдаваната извадка би била „най-вероятна“.
+\end{defbox}
+
+\begin{rembox}[Логаритмуване]
+Ако $f_X$ е диференцируема по $\theta$, МПО обикновено се търси чрез
+$\dfrac{\partial L}{\partial\theta}=0$ или (по-удобно на практика)
+чрез $\dfrac{\partial\ln L}{\partial\theta}=0$ - понеже логаритъмът е
+монотонна функция, $L$ и $\ln L$ достигат максимум в една и съща
+точка.
+\end{rembox}
+
+\begin{rembox}[Пример: едно наблюдение от \texorpdfstring{$N(\mu,1)$}{N(мю,1)}]
+Нека $X\sim N(\mu,1)$ и $\bar X=X_1=x_1$ (едно единствено
+наблюдение). Тогава $L(\bar X,\mu)=f_X(x_1,\mu)$ - плътността на
+$N(\mu,1)$, изчислена в точката $x_1$, като функция на $\mu$. Тя се
+максимизира, когато центърът на камбанката съвпада точно с
+наблюдението, т.е.\ $\hat\mu=x_1$ (интуитивно: измежду всички
+възможни центрове $\mu$, стойността $\mu=x_1$ прави наблюдението
+$x_1$ „най-вероятно“).
+\end{rembox}
+
+\begin{thmbox}[]{Теорема}
+Нека $X\sim N(\mu,\sigma^2)$ и $\bar X=(X_1,\dots,X_n)$ са
+независими наблюдения над $X$. Тогава МПО за $\mu$ е
+\[
+  \hat\mu = \overline{X}_n = \frac1n\sum_{j=1}^{n} X_j
+\]
+(винаги, независимо дали $\sigma^2$ е известно), а МПО за $\sigma^2$
+зависи от това дали $\mu$ е известно:
+\[
+  \text{а) } \hat\sigma^2 = \frac1n\sum_{j=1}^n (X_j-\mu)^2\ \text{(ако $\mu$ е известно)},
+\]
+\[
+  \text{б) } \hat\sigma^2 = \frac1n\sum_{j=1}^n (X_j-\overline X_n)^2\ \text{(ако $\mu$ не е известно)}.
+\]
+\end{thmbox}
+
+\begin{proofbox}
+Функцията на правдоподобие е
+\[
+  L(\bar X,\theta) = \Big(\frac1{\sqrt{2\pi}}\Big)^{n}(\sigma^2)^{-n/2}\,e^{-\sum_{j=1}^n\frac{(X_j-\mu)^2}{2\sigma^2}}, \qquad \theta=(\mu,\sigma^2),
+\]
+следователно
+\[
+  \ln L(\bar X,\theta) = -\frac n2\ln(2\pi) - \frac n2\ln(\sigma^2) - \sum_{j=1}^{n}\frac{(X_j-\mu)^2}{2\sigma^2}.
+\]
+Диференцираме по $\mu$ и приравняваме на нула:
+\[
+  \frac{\partial\ln L}{\partial\mu} = \frac1{\sigma^2}\sum_{j=1}^n (X_j-\mu) = 0 \quad\Longrightarrow\quad \hat\mu = \overline X_n
+\]
+(независимо от стойността на $\sigma^2$). Диференцираме по $\sigma^2$:
+\[
+  \frac{\partial\ln L}{\partial\sigma^2} = -\frac{n}{2\sigma^2} + \frac1{2\sigma^4}\sum_{j=1}^n(X_j-\mu)^2 = 0.
+\]
+Ако $\mu$ е известно, решаваме директно: $\hat\sigma^2 = \tfrac1n
+\sum_{j=1}^n(X_j-\mu)^2$. Ако $\mu$ не е известно, заместваме
+неговата МПО оценка $\hat\mu=\overline X_n$ (решавайки системата от
+двете уравнения едновременно): $\hat\sigma^2=\tfrac1n\sum_{j=1}^n
+(X_j-\overline X_n)^2$. \qedbg
+\end{proofbox}
+
+\begin{rembox}[Пример: \texorpdfstring{$X\sim U(0,\theta)$}{X~U(0,тета)}]
+Нека $f_X(x)=\tfrac1\theta\,I_{[0,\theta]}(x)$, $\theta>0$.
+Тогава
+\[
+  L(\bar X,\theta) = \prod_{j=1}^{n}\frac1\theta\,I_{[0,\theta]}(X_j) = \begin{cases}\dfrac1{\theta^n}, & \theta\ge\max_{1\le j\le n}X_j\\ 0, & \theta<\max_{1\le j\le n}X_j\end{cases}.
+\]
+Понеже $\tfrac1{\theta^n}$ намалява по $\theta$, функцията на
+правдоподобие е максимална при най-малкото допустимо $\theta$, т.е.
+\[
+  \hat\theta = \max_{1\le j\le n} X_j.
+\]
+\end{rembox}
+
+\section{Метод на моментите}
+
+\begin{rembox}[Идея]
+От усиления закон за големите числа (Тема~12), за i.i.d.\ извадка:
+$\overline X_n^{(j)} := \tfrac1n\sum_{k=1}^n X_k^j
+\xrightarrow{\text{п.с.}}\mathbb EX^j$ за всеки ред на момента $j$
+(стига моментът да съществува). Идеята на метода на моментите е да
+\emph{изравним} теоретичните моменти (функции на $\theta$) с
+емпиричните моменти от извадката и да решим спрямо~$\theta$.
+\end{rembox}
+
+\begin{defbox}[~(Метод на моментите, ММ)]
+Нека $X$ е случайна величина от клас $F_X(x;\theta)$, $\theta=
+(\theta_1,\dots,\theta_s)$, и $\bar X$ е извадка. Ако първите $s$
+момента на $X$ съществуват, полагаме $\mu^{(j)}(\theta):=\mathbb
+EX^j$, $1\le j\le s$, и емпиричните моменти $\overline
+X_n^{(j)}=\tfrac1n\sum_{k=1}^n X_k^j$. Тогава \textbf{оценката по
+метода на моментите} $\hat\theta=(\hat\theta_1,\dots,\hat\theta_s)$
+се получава чрез решаване на системата
+\[
+  \mu^{(j)}(\theta) = \overline X_n^{(j)}, \qquad 1\le j\le s,
+  \qquad\text{т.е.}\qquad
+  \hat\theta_j = \big(\mu^{(j)}\big)^{-1}\big(\overline X_n^{(j)}\big).
+\]
+\end{defbox}
+
+\begin{rembox}[Пример: \texorpdfstring{$X\sim U(0,\theta)$}{X~U(0,тета)}]
+$\mu^{(1)}(\theta)=\mathbb EX=\tfrac\theta2$. Изравняваме с
+$\overline X_n^{(1)}$: $\tfrac\theta2=\overline X_n^{(1)}
+\Rightarrow \hat\theta = 2\overline X_n^{(1)} = 2\overline X_n$ -
+различна от МПО оценката $\max_j X_j$, но също разумна оценка на
+$\theta$.
+\end{rembox}
+
+\begin{rembox}[Пример: \texorpdfstring{$X\sim N(\mu,\sigma^2)$}{X~N(мю,сигма^2)}, двата параметъра неизвестни]
+Тук $\theta=(\mu,\sigma^2)$, а системата е $\mathbb EX=\overline
+X_n^{(1)}$, $\mathbb EX^2=\overline X_n^{(2)}$. От $\mathbb EX=\mu$
+получаваме $\hat\mu=\overline X_n^{(1)}=\overline X_n$. От
+$\mathbb EX^2 = DX+(\mathbb EX)^2=\sigma^2+\mu^2$ получаваме
+\[
+  \hat\sigma^2 = \overline X_n^{(2)} - \hat\mu^2 = \overline X_n^{(2)} - \big(\overline X_n^{(1)}\big)^2,
+\]
+което съвпада точно с МПО оценката от предната теорема (в случая,
+когато $\mu$ не е известно) - в този пример методът на моментите и
+методът на максималното правдоподобие дават \emph{една и съща}
+оценка.
+\end{rembox}
+
+\section{Свойства на точковите оценки}
+
+\begin{defbox}[~(Неизместеност)]
+Казваме, че $\hat\theta$ е \textbf{неизместена} (несмесена) оценка
+за $\theta$, ако $\mathbb E\hat\theta(\bar X) = \theta$ (респ.\
+$\mathbb E\hat\theta_j = \theta_j$ за всяко $1\le j\le s$, ако
+$\theta=(\theta_1,\dots,\theta_s)$). Величината $|\mathbb E\hat\theta
+-\theta|$ се нарича \textbf{систематична грешка} на $\hat\theta$.
+\end{defbox}
+
+\begin{rembox}[Пример: \texorpdfstring{$\hat\mu=\overline X_n$}{мю-капа=X-чертата}, \texorpdfstring{$X\sim N(\mu,\sigma^2)$}{X~N(мю,сигма^2)}]
+\[
+  \mathbb E\hat\mu = \mathbb E\Big(\frac1n\sum_{j=1}^n X_j\Big) = \frac1n\sum_{j=1}^n \mathbb EX_j = \frac1n\cdot n\mu = \mu \quad\Longrightarrow\quad \hat\mu\ \text{е неизместена.}
+\]
+\end{rembox}
+
+\begin{rembox}[Пример: дисперсията, ако \texorpdfstring{$\mu$}{мю} е известно]
+$\hat\sigma^2=\tfrac1n\sum_{j=1}^n(X_j-\mu)^2$:
+\[
+  \mathbb E\hat\sigma^2 = \frac1n\sum_{j=1}^n\mathbb E(X_j-\mu)^2 = \frac1n\cdot n\sigma^2 = \sigma^2 \quad\Longrightarrow\quad \hat\sigma^2\ \text{е неизместена.}
+\]
+\end{rembox}
+
+\begin{rembox}[Пример: дисперсията, ако \texorpdfstring{$\mu$}{мю} \textbf{не} е известно (важен случай!)]
+Нека $\hat\sigma^2 = \tfrac1n\sum_{j=1}^n(X_j-\overline X_n)^2 =
+\overline X_n^{(2)} - \big(\overline X_n^{(1)}\big)^2$ (разписано
+чрез разкриване на квадрата, аналогично на $DX=\mathbb EX^2-
+(\mathbb EX)^2$). Тогава
+\[
+  \mathbb E\hat\sigma^2 = \mathbb E\overline X_n^{(2)} - \mathbb E\big(\overline X_n^{(1)}\big)^2 = \mathbb EX_1^2 - \frac1{n^2}\,\mathbb E\Big(\sum_{j=1}^n X_j^2 + \sum_{i\neq j}X_iX_j\Big).
+\]
+Понеже $(X_i)$ са i.i.d., $\mathbb E\sum_j X_j^2 = n\,\mathbb EX_1^2$,
+а за $i\neq j$ (независими, $\mathbb EX_iX_j=\mathbb EX_i\,\mathbb
+EX_j=\mu^2$) има точно $n(n-1)$ наредени двойки, следователно:
+\begin{align*}
+  \mathbb E\hat\sigma^2 &= \mathbb EX_1^2 - \frac1{n^2}\Big(n\,\mathbb EX_1^2 + n(n-1)\mu^2\Big) = \Big(1-\frac1n\Big)\mathbb EX_1^2 - \frac{n-1}{n}\mu^2\\
+  &= \frac{n-1}{n}\big(\mathbb EX_1^2-\mu^2\big) = \frac{n-1}{n}\,\sigma^2 \neq \sigma^2.
+\end{align*}
+Следователно тази оценка е \textbf{изместена}, със систематична
+грешка $|\mathbb E\hat\sigma^2-\sigma^2|=\tfrac{\sigma^2}n$. Но
+$\mathbb E\hat\sigma^2 = \tfrac{n-1}n\sigma^2 \to \sigma^2$ при $n\to\infty$ - казваме, че $\hat\sigma^2$
+е \textbf{асимптотично неизместена}. \emph{(Затова на практика често
+се предпочита нормираната с $\tfrac1{n-1}$ версия на извадковата
+дисперсия - тя е точно неизместена.)}
+\end{rembox}
+
+\begin{rembox}[Пример: \texorpdfstring{$X\sim U(0,\theta)$}{X~U(0,тета)}, МПО оценката \texorpdfstring{$\hat\theta=\max_j X_j$}{тета-капа=max Xj}]
+Намираме плътността на $\hat\theta$:
+\[
+  F_{\hat\theta}(x) = \mathbb P\Big(\max_{1\le j\le n}X_j\le x\Big) = \prod_{j=1}^{n}\mathbb P(X_j\le x) = \big(\mathbb P(X_1\le x)\big)^n = \begin{cases}0,&x\le0\\ (x/\theta)^n,&x\in(0,\theta)\\1,&x\ge\theta\end{cases}
+\]
+(използвахме независимостта на $(X_j)$), следователно $f_{\hat\theta}
+(x) = \tfrac n{\theta^n}x^{n-1}$ за $x\in(0,\theta)$. Тогава
+\[
+  \mathbb E\hat\theta = \int_0^{\theta} x\cdot\frac n{\theta^n}x^{n-1}\,dx = \frac n{\theta^n}\int_0^\theta x^n\,dx = \frac n{\theta^n}\cdot\frac{\theta^{n+1}}{n+1} = \frac{n}{n+1}\,\theta < \theta,
+\]
+т.е.\ $\hat\theta$ е \textbf{изместена} оценка, но $\tfrac n{n+1}
+\theta\to\theta$ при $n\to\infty$, т.е.\ тя е \textbf{асимптотично
+неизместена}.
+\end{rembox}
+
+\begin{defbox}[~(Състоятелност)]
+Нека $\hat\theta=\hat\theta(\bar X)$ е точкова оценка на $\theta$
+(респ.\ $\theta=(\theta_1,\dots,\theta_s)$). Казваме, че $\hat\theta$
+е \textbf{състоятелна} оценка на $\theta$, ако
+\[
+  \hat\theta \xrightarrow[n\to\infty]{\mathbb P} \theta
+  \qquad
+  \Big(\text{еквивалентно: }\forall\varepsilon>0:\ \mathbb P\big(|\hat\theta(\bar X)-\theta|>\varepsilon\big)\xrightarrow[n\to\infty]{}0\Big)
+\]
+(вероятността за грешка намалява, когато броят на наблюденията в
+извадката расте).
+\end{defbox}
+
+\begin{defbox}[~(Силна състоятелност)]
+Казваме, че $\hat\theta$ е \textbf{силно състоятелна} оценка на
+$\theta$, ако $\hat\theta\xrightarrow[n\to\infty]{\text{п.с.}}\theta$.
+От теоремата за видовете сходимост (Тема~12), силната състоятелност
+влече състоятелност.
+\end{defbox}
+
+\begin{rembox}[Пример: \texorpdfstring{$\hat\mu=\overline X_n$}{мю-капа=X-чертата} е силно състоятелна]
+По усиления закон за големите числа (Тема~12), директно приложен
+към i.i.d.\ извадката $(X_j)$: $\overline X_n=\tfrac1n\sum_j X_j
+\xrightarrow{\text{п.с.}}\mathbb EX_1=\mu$.
+\end{rembox}
+
+\begin{rembox}[Пример: \texorpdfstring{$\hat\sigma^2=\overline X_n^{(2)}-(\overline X_n^{(1)})^2$}{сигма-капа^2} е силно състоятелна]
+По УЗГЧ, приложен поотделно към редиците $(X_j)$ и $(X_j^2)$:
+$\overline X_n^{(1)}\xrightarrow{\text{п.с.}}\mathbb EX_1=\mu$ и
+$\overline X_n^{(2)}\xrightarrow{\text{п.с.}}\mathbb EX_1^2$.
+Функцията $g(a,b)=b-a^2$ е непрекъсната, следователно
+\[
+  \hat\sigma^2 = \overline X_n^{(2)}-\big(\overline X_n^{(1)}\big)^2 \xrightarrow[n\to\infty]{\text{п.с.}} \mathbb EX_1^2-\mu^2 = \sigma^2,
+\]
+т.е.\ $\hat\sigma^2$ е силно състоятелна (макар да е изместена за
+крайно $n$, видяхме по-горе).
+\end{rembox}
