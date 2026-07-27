@@ -280,13 +280,22 @@ $\mathbb P(C_r) = \lim_n\mathbb P(B_{n,r}) = 0$ за всяко $r\ge1$, и по
 \end{proofbox}
 
 \begin{rembox}[Обобщение при \texorpdfstring{$\mathbb EX_1=\mathbb EX_i$}{EX1=EXi}]
-Ако $(X_i)_{i=1}^{\infty}$ са независими (не непременно еднакво
-разпределени), но с общо очакване $\mathbb EX_1=\mathbb EX_i$ за
-всяко $i$, то $\sum_{i=1}^n(X_i-\mathbb EX_i)/n = \sum_{i=1}^n X_i/n
-- \mathbb EX_1$, и заключенията на СЗГЧ/УЗГЧ остават:
+Независимост и общо (крайно) очакване \textbf{сами по себе си не са
+достатъчни} за СЗГЧ/УЗГЧ при неeднакво разпределени величини -
+нужно е допълнително условие върху дисперсиите. Едно просто
+достатъчно условие е \emph{равномерна ограниченост на дисперсиите}:
+съществува $M>0$, такова че $DX_i\le M$ за всяко $i$. Тогава
+$\sum_{i=1}^n(X_i-\mathbb EX_i)/n = \sum_{i=1}^n X_i/n-\mathbb EX_1$,
+и заключението на СЗГЧ остава в сила:
 \[
-  \text{СЗГЧ:}\quad \frac{\sum_{i=1}^n X_i}{n}\xrightarrow{\mathbb P}\mathbb EX_1,
-  \qquad\qquad
-  \text{УЗГЧ:}\quad \frac{\sum_{i=1}^n X_i}{n}\xrightarrow{\text{п.с.}}\mathbb EX_1.
+  \frac{\sum_{i=1}^n X_i}{n}\xrightarrow{\mathbb P}\mathbb EX_1,
 \]
+защото по независимост и равномерна ограниченост,
+$D\big(\sum_{i=1}^n(X_i-\mathbb EX_i)\big)=\sum_{i=1}^nDX_i\le nM$, и
+неравенството на Чебишов дава (аналогично на доказателството по-горе)
+$\mathbb P\big(|\sum_{i=1}^n(X_i-\mathbb EX_i)/n|>\varepsilon\big)\le
+M/(n\varepsilon^2)\to0$. За УЗГЧ равномерната ограниченост на
+дисперсиите също е достатъчна (чрез по-финото условие на Колмогоров
+$\sum_i DX_i/i^2<\infty$), но доказателството излиза извън рамките на
+този курс.
 \end{rembox}

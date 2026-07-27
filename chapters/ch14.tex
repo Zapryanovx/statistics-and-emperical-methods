@@ -147,12 +147,16 @@ $\overline X_n^{(j)} := \tfrac1n\sum_{k=1}^n X_k^j
 EX^j$, $1\le j\le s$, и емпиричните моменти $\overline
 X_n^{(j)}=\tfrac1n\sum_{k=1}^n X_k^j$. Тогава \textbf{оценката по
 метода на моментите} $\hat\theta=(\hat\theta_1,\dots,\hat\theta_s)$
-се получава чрез решаване на системата
+се получава чрез решаване на системата (спрямо целия вектор
+$\theta$ едновременно - за $s\ge2$ всеки момент обикновено зависи от
+\emph{няколко} от параметрите, така че координатно обръщане по
+компоненти на $\theta$ най-често не е възможно)
 \[
-  \mu^{(j)}(\theta) = \overline X_n^{(j)}, \qquad 1\le j\le s,
-  \qquad\text{т.е.}\qquad
-  \hat\theta_j = \big(\mu^{(j)}\big)^{-1}\big(\overline X_n^{(j)}\big).
+  \mu^{(j)}(\theta) = \overline X_n^{(j)}, \qquad 1\le j\le s.
 \]
+При $s=1$ системата е едно уравнение с едно неизвестно и решението
+приема простия вид $\hat\theta = \big(\mu^{(1)}\big)^{-1}\big(\overline
+X_n^{(1)}\big)$.
 \end{defbox}
 
 \begin{rembox}[Пример: \texorpdfstring{$X\sim U(0,\theta)$}{X~U(0,тета)}]

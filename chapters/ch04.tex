@@ -257,10 +257,10 @@ $Z=\sum_l z_l\,I_{T_l}$ за подходяща пълна група $\{T_l\}$ 
 Нека $X,Y$ са дискретни случайни величини във $V$. Казваме, че
 $X\perp\!\!\!\perp Y$ (са независими), ако за всички $i,j$:
 \[
-  \mathbb P(X=x_i,\,Y=y_j) = \mathbb P(X=x_i\cap Y=y_j) \overset{\text{def}}{=} \mathbb P(X=x_i)\cdot\mathbb P(Y=y_j),
+  \mathbb P(X=x_i,\,Y=y_j) = \mathbb P\big(\{X=x_i\}\cap\{Y=y_j\}\big) \overset{\text{def}}{=} \mathbb P(X=x_i)\cdot\mathbb P(Y=y_j),
 \]
 или еквивалентно $\mathbb P(X=x_i\mid Y=y_j)=\mathbb P(X=x_i)$ за
-всички $i,j$.
+всички $i,j$, за които $\mathbb P(Y=y_j)>0$.
 \end{defbox}
 
 \begin{defbox}[~(Независимост в съвкупност)]

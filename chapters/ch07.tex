@@ -144,7 +144,8 @@ $\operatorname{cov}(X,Y)=\mathbb EXY-\mathbb EX\,\mathbb EY=0$.
 \section{Корелация}
 
 \begin{defbox}[~(Корелация)]
-Нека $X,Y$ са случайни величини с $DX<\infty$, $DY<\infty$. Тогава
+Нека $X,Y$ са случайни величини с $0<DX<\infty$, $0<DY<\infty$
+(т.е.\ нито едната не е почти сигурно константа). Тогава
 \[
   \rho(X,Y) := \frac{\operatorname{cov}(X,Y)}{\sqrt{DX}\sqrt{DY}}
 \]
@@ -161,7 +162,7 @@ $Y$.
 \end{rembox}
 
 \begin{thmbox}[]{Теорема}
-Нека $X,Y$ са случайни величини с $DX<\infty$, $DY<\infty$, и нека
+Нека $X,Y$ са случайни величини с $0<DX<\infty$, $0<DY<\infty$, и нека
 $\bar X = \dfrac{X-\mathbb EX}{\sqrt{DX}}$, $\bar Y = \dfrac{Y-\mathbb
 EY}{\sqrt{DY}}$ (\textbf{стандартизирани} случайни величини). Тогава
 $\mathbb E\bar X = \mathbb E\bar Y = 0$, $D\bar X = D\bar Y = 1$, и
@@ -188,7 +189,7 @@ $D\bar X = D\Big(\dfrac{X-\mathbb EX}{\sqrt{DX}}\Big) =
 \end{proofbox}
 
 \begin{thmbox}[]{Теорема}
-Нека $X,Y$ са случайни величини с $DX<\infty$, $DY<\infty$. Тогава:
+Нека $X,Y$ са случайни величини с $0<DX<\infty$, $0<DY<\infty$. Тогава:
 \begin{enumerate}[label=\alph*)]
   \item $|\rho(X,Y)|\le 1$;
   \item $|\rho(X,Y)|=1 \iff Y=aX+b$ за някои $a,b\in\mathbb R$ (т.е.\ $Y$ се предопределя линейно от $X$).
