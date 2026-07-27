@@ -37,6 +37,10 @@
 
 \definecolor{ChapterAccent}{HTML}{C0522F}
 
+\definecolor{ProbColor}{HTML}{2E8B8B}
+\definecolor{ProbColorDark}{HTML}{1F5F5F}
+\definecolor{ProbBg}{HTML}{E9F5F5}
+
 \newcounter{boxcounter}[chapter]
 \renewcommand{\theboxcounter}{\thechapter.\arabic{boxcounter}}
 
@@ -80,6 +84,14 @@
   title={#1},
 }
 \newcommand{\qedbg}{\ifmmode\hfill\textcolor{ThmColor}{\blacksquare}\else\hfill\textcolor{ThmColor}{$\blacksquare$}\fi}
+
+\newtcolorbox{probbox}[1][Задача]{%
+  colback=ProbBg, colframe=ProbColor,
+  unbreakable, boxrule=0.6pt, arc=2pt, left=6pt, right=6pt,
+  top=4pt, bottom=4pt,
+  fonttitle=\bfseries, coltitle=white, colbacktitle=ProbColor,
+  title={#1},
+}
 
 \titleformat{\chapter}[display]
   {\normalfont\Huge\bfseries\color{ChapterAccent}}
