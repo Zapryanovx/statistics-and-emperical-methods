@@ -5,9 +5,9 @@
 \begin{rembox}[Отправна точка]
 Знаем, че $DX = \mathbb E(X-\mathbb EX)^2 = \min_{a\in\mathbb R}
 \mathbb E(X-a)^2$ - т.е.\ константата $a=\mathbb EX$ е
-\emph{най-добрата} (в смисъл на най-малка средноквадратична грешка)
+\emph{най-добрата} (в~смисъл на най-малка средноквадратична грешка)
 константна прогноза за случайната величина $X$. Естественият
-въпрос е: ако разполагаме с \emph{допълнителна информация} за друга
+въпрос е: ако разполагаме с~\emph{допълнителна информация} за друга
 случайна величина $Y$, каква е най-добрата функция $G(Y)$, която
 прогнозира $X$, т.е.\ коя $G$ минимизира $\mathbb E\big(X-G(Y)\big)^2$?
 \end{rembox}
@@ -37,7 +37,7 @@ bI_{A^c}$ за някои константи $a,b$, така че задачат
 \section{Дефиниция}
 
 \begin{defbox}[~(Условно математическо очакване)]
-Нека $X,Y$ са случайни величини с $\mathbb EX^2<\infty$ (т.е.\
+Нека $X,Y$ са случайни величини с~$\mathbb EX^2<\infty$ (т.е.\
 $X\in L^2$, за да е добре дефиниран минимумът по-долу). Тогава
 $\mathbb E(X\mid Y):=G^*(Y)$ е случайната величина, за която
 \[
@@ -48,7 +48,7 @@ $\mathbb E(X\mid Y):=G^*(Y)$ е случайната величина, за ко
 \end{defbox}
 
 \begin{thmbox}[]{Теорема}
-Нека $X,Y$ са случайни величини, като $Y$ е дискретна с разпределение
+Нека $X,Y$ са случайни величини, като $Y$ е дискретна с~разпределение
 $\mathbb P(Y=y_j)=p_j$. Полагаме $A_j=\{Y=y_j\}$, така че
 $Y=\sum_j y_jI_{A_j}$. Тогава
 \[
@@ -59,7 +59,7 @@ $Y=\sum_j y_jI_{A_j}$. Тогава
 
 \begin{proofbox}
 Нека $G(Y)=\sum_j a_jI_{A_j}$ е произволна функция на $Y$
-(параметризирана с коефициентите $a_j$). Разглеждаме
+(параметризирана с~коефициентите $a_j$). Разглеждаме
 \[
   f(a_1,a_2,\dots) = \mathbb E\big(X-G(Y)\big)^2 = \mathbb E\Big(X-\sum_j a_jI_{A_j}\Big)^2.
 \]
@@ -101,7 +101,7 @@ Y=y_j]$ е \textbf{число} - стойността на тази случай
 \begin{corbox}[]
 Нека $X,Y$ са дискретни случайни величини. Тогава $\mathbb E[X\mid
 Y]$ е дискретна случайна величина, приемаща стойностите $\mathbb
-E[X\mid Y=y_j]$ с вероятности $\mathbb P(Y=y_j)$:
+E[X\mid Y=y_j]$ с~вероятности $\mathbb P(Y=y_j)$:
 \[
   \begin{array}{c|cccc}
     \mathbb E[X\mid Y] & \mathbb E[X\mid Y{=}y_1] & \dots & \mathbb E[X\mid Y{=}y_j] & \dots\\\hline
@@ -113,7 +113,7 @@ E[X\mid Y=y_j]$ с вероятности $\mathbb P(Y=y_j)$:
 \section{Свойства на условното математическо очакване}
 
 \begin{thmbox}[~(на условното математическо очакване)]{Свойства}
-Нека $X,Y,Z$ са случайни величини с $\mathbb EX<\infty$,
+Нека $X,Y,Z$ са случайни величини с~$\mathbb EX<\infty$,
 $\mathbb EZ<\infty$, като $Y$ е дискретна.
 \begin{enumerate}[label=\arabic*)]
   \item \textbf{Линейност:} $\mathbb E[aX+bZ\mid Y] = a\,\mathbb E[X\mid Y]+b\,\mathbb E[Z\mid Y]$.
@@ -151,15 +151,15 @@ $X=f(y_j)$ (константа), следователно
 \[
   \frac{\mathbb EXI_{A_j}}{\mathbb P(A_j)} = \frac{\mathbb E f(Y)I_{A_j}}{\mathbb P(A_j)} = \frac{f(y_j)\,\mathbb P(A_j)}{\mathbb P(A_j)} = f(y_j),
 \]
-и оттам $\mathbb E[X\mid Y] = \sum_j f(y_j)I_{A_j} = f(Y) = X$.
+и~оттам $\mathbb E[X\mid Y] = \sum_j f(y_j)I_{A_j} = f(Y) = X$.
 
-\textbf{4)} Пряко от дефиницията и линейността на очакването:
+\textbf{4)} Пряко от дефиницията и~линейността на очакването:
 \begin{align*}
   \mathbb E\big[\mathbb E[X\mid Y]\big] &= \mathbb E\Big[\sum_j\frac{\mathbb EXI_{A_j}}{\mathbb P(A_j)}I_{A_j}\Big] = \sum_j\frac{\mathbb EXI_{A_j}}{\mathbb P(A_j)}\,\mathbb EI_{A_j}\\
   &= \sum_j \mathbb EXI_{A_j} = \mathbb EX\Big(\sum_jI_{A_j}\Big) = \mathbb EX,
 \end{align*}
 защото $\mathbb EI_{A_j}=\mathbb P(A_j)$ съкращава знаменателя,
-а $\{A_j\}$ е пълна група от събития. \qedbg
+а~$\{A_j\}$ е пълна група от събития. \qedbg
 \end{proofbox}
 
 \section{Условно разпределение}

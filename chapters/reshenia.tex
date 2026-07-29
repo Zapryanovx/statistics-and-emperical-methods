@@ -11,15 +11,15 @@
 Тази колекция е $\sigma$-алгебра: съдържа $\Omega$ (за $S=\{1,\dots,
 k\}$); затворена е относно допълнение, защото допълнението на
 $\bigcup_{i\in S}B_i$ е точно $\bigcup_{i\notin S}B_i$ (понеже
-блоковете покриват $\Omega$ и са несъвместими); и е затворена относно
+блоковете покриват $\Omega$ и~са несъвместими); и~е затворена относно
 (крайно) обединение, защото обединение на такива множества отговаря
 на обединението на съответните индексни множества. Освен това всяка
 $\sigma$-алгебра, съдържаща $B_1,\dots,B_k$, трябва да съдържа всички
 такива обединения по затвореност относно обединение, така че
 $\mathcal A$ е точно породената $\sigma$-алгебра. Броят на
-подмножествата на $\{1,\dots,k\}$ е $2^k$, а различните подмножества
+подмножествата на $\{1,\dots,k\}$ е $2^k$, а~различните подмножества
 дават различни (несъвпадащи) обединения, понеже блоковете са
-непразни и по двойки несъвместими. Следователно $|\mathcal A|=2^k$.
+непразни и~по двойки несъвместими. Следователно $|\mathcal A|=2^k$.
 \end{proofbox}
 
 \begin{proofbox}[Решение на Задача 1.2]
@@ -30,9 +30,9 @@ A$. \textbf{2)} Нека $A\in\mathcal A$, т.е.\ $A\in\mathcal A_i$ за
 всяко $i\in I$. За всяко $i$, понеже $\mathcal A_i$ е затворена
 относно допълнение, $A^c\in\mathcal A_i$. Това важи за всяко $i$,
 следователно $A^c\in\bigcap_i\mathcal A_i=\mathcal A$. \textbf{3)}
-Нека $A_1,A_2,\dots\in\mathcal A$, т.е.\ за всяко $n$ и всяко $i$:
+Нека $A_1,A_2,\dots\in\mathcal A$, т.е.\ за всяко $n$ и~всяко $i$:
 $A_n\in\mathcal A_i$. Фиксираме $i\in I$: понеже всички $A_n\in
-\mathcal A_i$ и $\mathcal A_i$ е затворена относно изброимо
+\mathcal A_i$ и~$\mathcal A_i$ е затворена относно изброимо
 обединение, $\bigcup_n A_n\in\mathcal A_i$. Това важи за всяко
 $i\in I$, следователно $\bigcup_n A_n\in\bigcap_i\mathcal A_i=
 \mathcal A$. \qedbg
@@ -42,8 +42,7 @@ $i\in I$, следователно $\bigcup_n A_n\in\bigcap_i\mathcal A_i=
 Понеже $\mathcal A$ е затворена относно допълнение, $B^c\in\mathcal
 A$. По закона на Де Морган, $A\cap B^c = (A^c\cup B)^c$. Понеже
 $A^c,B\in\mathcal A$, тяхното обединение $A^c\cup B\in\mathcal A$
-(изброимо обединение с всички останали членове $\varnothing$), а
-оттам и допълнението му $(A^c\cup B)^c=A\cap B^c\in\mathcal A$ (пак
+(изброимо обединение с~всички останали членове $\varnothing$), а~оттам и~допълнението му $(A^c\cup B)^c=A\cap B^c\in\mathcal A$ (пак
 по затвореност относно допълнение). Но $A\setminus B = A\cap B^c$,
 следователно $A\setminus B\in\mathcal A$. Аналогично, $B\setminus A
 = B\cap A^c\in\mathcal A$. Накрая, $A\triangle B = (A\setminus B)
@@ -55,8 +54,8 @@ $A^c,B\in\mathcal A$, тяхното обединение $A^c\cup B\in\mathcal 
 
 \begin{proofbox}[Решение на Задача 2.1]
 От известната формула $\mathbb P(A\cup B)=\mathbb P(A)+\mathbb P(B)-
-\mathbb P(A\cap B)$ и $\mathbb P(A\cup B)\le1$ (защото $A\cup B
-\subseteq\Omega$ и монотонност), получаваме
+\mathbb P(A\cap B)$ и~$\mathbb P(A\cup B)\le1$ (защото $A\cup B
+\subseteq\Omega$ и~монотонност), получаваме
 \[
   \mathbb P(A)+\mathbb P(B)-\mathbb P(A\cap B) \le 1 \quad
   \Longrightarrow\quad \mathbb P(A\cap B) \ge \mathbb P(A)+\mathbb
@@ -65,10 +64,10 @@ $A^c,B\in\mathcal A$, тяхното обединение $A^c\cup B\in\mathcal 
 \end{proofbox}
 
 \begin{proofbox}[Решение на Задача 2.2]
-База ($n=2$): вече доказано в Тема~2. Индукционна стъпка: нека
-твърдението е вярно за $n$ събития и нека $A_1,\dots,A_{n+1}$ са
+База ($n=2$): вече доказано в~Тема~2. Индукционна стъпка: нека
+твърдението е вярно за $n$ събития и~нека $A_1,\dots,A_{n+1}$ са
 произволни. Прилагайки случая за две събития към $\bigcup_{i=1}^n
-A_i$ и $A_{n+1}$:
+A_i$ и~$A_{n+1}$:
 \[
   \mathbb P\Big(\bigcup_{i=1}^{n+1}A_i\Big) = \mathbb P\Big(\Big(
   \bigcup_{i=1}^n A_i\Big)\cup A_{n+1}\Big) \le \mathbb P\Big(
@@ -76,17 +75,17 @@ A_i$ и $A_{n+1}$:
   \le \sum_{i=1}^n \mathbb P(A_i) + \mathbb P(A_{n+1}) = \sum_{i=1}^{n+1}
   \mathbb P(A_i),
 \]
-където използвахме индукционното предположение (И.П.) в предпоследната
+където използвахме индукционното предположение (И.П.) в~предпоследната
 стъпка. \qedbg
 \end{proofbox}
 
 \begin{proofbox}[Решение на Задача 2.3]
 Понеже $\mathbb P(A_n)=1$, имаме $\mathbb P(A_n^c)=1-\mathbb P(A_n)=0$
 за всяко $n$. Нека $C_n=\bigcap_{k=1}^n A_k$ (намаляваща редица).
-$C_n^c=\bigcup_{k=1}^n A_k^c$, и по Задача~2.2 (крайна субадитивност):
+$C_n^c=\bigcup_{k=1}^n A_k^c$, и~по Задача~2.2 (крайна субадитивност):
 $\mathbb P(C_n^c)\le\sum_{k=1}^n\mathbb P(A_k^c)=0$, т.е.\ $\mathbb
 P(C_n)=1$ за всяко $n$. Понеже $\bigcap_{n=1}^{\infty}A_n=
-\bigcap_{n=1}^{\infty}C_n$ и $(C_n)$ намалява, по непрекъснатостта
+\bigcap_{n=1}^{\infty}C_n$ и~$(C_n)$ намалява, по непрекъснатостта
 на вероятността отгоре (Тема~2):
 \[
   \mathbb P\Big(\bigcap_{n=1}^{\infty}A_n\Big) = \lim_{n\to\infty}
@@ -109,7 +108,7 @@ P(C_n)=1$ за всяко $n$. Понеже $\bigcap_{n=1}^{\infty}A_n=
 
 \begin{proofbox}[Решение на Задача 3.2]
 \textbf{1)} $Q(B)=\mathbb P(B\cap A)/\mathbb P(A)\ge0$, защото
-числителят и знаменателят са неотрицателни. \textbf{2)} $Q(\Omega)=
+числителят и~знаменателят са неотрицателни. \textbf{2)} $Q(\Omega)=
 \mathbb P(\Omega\cap A)/\mathbb P(A) = \mathbb P(A)/\mathbb P(A)=1$.
 \textbf{3)} Нека $B_1,B_2,\dots$ са по двойки несъвместими. Тогава
 $(B_i\cap A)$ също са по двойки несъвместими (наследяват
@@ -146,10 +145,10 @@ P(D\mid M_3)=0.05$. По формулата за пълната вероятно
 \section*{Тема 4}
 
 \begin{proofbox}[Решение на Задача 4.1]
-За произволно $x\in\mathbb R$: $\max(X,Y)<x \iff X<x \text{ и } Y<x$,
-т.е.\ $\{Z<x\}=\{X<x\}\cap\{Y<x\}$. И двете множества са в $\mathcal
+За произволно $x\in\mathbb R$: $\max(X,Y)<x \iff X<x \text{ и~} Y<x$,
+т.е.\ $\{Z<x\}=\{X<x\}\cap\{Y<x\}$. И двете множества са в~$\mathcal
 A$ (защото $X,Y$ са случайни величини), следователно сечението им
-$\{Z<x\}\in\mathcal A$ (затвореност относно допълнение и обединение,
+$\{Z<x\}\in\mathcal A$ (затвореност относно допълнение и~обединение,
 приложена за да получим затвореност относно сечение). Понеже това е
 вярно за всяко $x$, $Z=\max(X,Y)$ е случайна величина. \qedbg
 \end{proofbox}
@@ -168,10 +167,9 @@ $\{Z<x\}\in\mathcal A$ (затвореност относно допълнени
 \end{proofbox}
 
 \begin{proofbox}[Решение на Задача 4.3]
-Нека $u,v\in\mathbb R$ са произволни (в образите на $g(X)$, $h(Y)$
-съответно), и нека $A=\{x : g(x)=u\}$, $B=\{y:h(y)=v\}$ (в
-носителите на $X,Y$). Тогава $\{g(X)=u\}=\bigcup_{x_i\in A}\{X=x_i\}$
-и $\{h(Y)=v\}=\bigcup_{y_j\in B}\{Y=y_j\}$. Използвайки независимостта
+Нека $u,v\in\mathbb R$ са произволни (в~образите на $g(X)$, $h(Y)$
+съответно), и~нека $A=\{x : g(x)=u\}$, $B=\{y:h(y)=v\}$ (в~носителите на $X,Y$). Тогава $\{g(X)=u\}=\bigcup_{x_i\in A}\{X=x_i\}$
+и~$\{h(Y)=v\}=\bigcup_{y_j\in B}\{Y=y_j\}$. Използвайки независимостта
 на $X,Y$:
 \begin{align*}
   \mathbb P\big(g(X)=u,\,h(Y)=v\big) &= \sum_{x_i\in A}\sum_{y_j\in
@@ -187,7 +185,7 @@ $\{Z<x\}\in\mathcal A$ (затвореност относно допълнени
 \section*{Тема 5}
 
 \begin{proofbox}[Решение на Задача 5.1]
-$DX=\mathbb E(X-\mathbb EX)^2$, а $(X-\mathbb EX)^2\ge0$ във всяка
+$DX=\mathbb E(X-\mathbb EX)^2$, а~$(X-\mathbb EX)^2\ge0$ във всяка
 точка, следователно по монотонност на очакването $\mathbb E(X-
 \mathbb EX)^2\ge \mathbb E0=0$, т.е.\ $DX\ge0$. За второто:
 \[
@@ -206,7 +204,7 @@ $g_X''(s)=n(n-1)p^2(ps+1-p)^{n-2}$, при $s=1$: $g_X''(1)=n(n-1)p^2$.
   DX = g_X''(1)+g_X'(1)-(g_X'(1))^2 = n(n-1)p^2+np-n^2p^2 = np-np^2
   = np(1-p),
 \]
-което съвпада точно с познатите $\mathbb EX=np$, $DX=np(1-p)$.
+което съвпада точно с~познатите $\mathbb EX=np$, $DX=np(1-p)$.
 \end{proofbox}
 
 \begin{proofbox}[Решение на Задача 5.3]
@@ -232,7 +230,7 @@ $g_X''(s)=n(n-1)p^2(ps+1-p)^{n-2}$, при $s=1$: $g_X''(1)=n(n-1)p^2$.
 
 \begin{proofbox}[Решение на Задача 6.2]
 За $0\le k\le n+m$, по формулата за пълна вероятност (условие по
-стойността на $X$) и независимостта на $X,Y$:
+стойността на $X$) и~независимостта на $X,Y$:
 \begin{align*}
   \mathbb P(X+Y=k) &= \sum_{i=0}^{k} \mathbb P(X=i)\,\mathbb P(Y=k-i)
   = \sum_{i=0}^k \binom ni p^i(1-p)^{n-i}\binom m{k-i}p^{k-i}(1-p)^{
@@ -250,7 +248,7 @@ Poisson(2)$, следователно
   \mathbb P(X=3) \approx e^{-2}\frac{2^3}{3!} = \frac{4e^{-2}}3
   \approx 0.180.
 \]
-Тъй като $n$ е голямо, а $p$ - малко (с умерено $np$), приближението
+Тъй като $n$ е голямо, а~$p$ - малко (с~умерено $np$), приближението
 е добро.
 \end{proofbox}
 
@@ -300,7 +298,7 @@ P(X=1)\,\mathbb P(Y=0)=\tfrac13\cdot\tfrac13=\tfrac19\ne0$.
   (\mathbb EXI_{A_j})^2}{\mathbb P(A_j)}.
 \]
 От друга страна, понеже $I_{A_j}I_{A_k}=0$ за $j\ne k$ (несъвместими)
-и $I_{A_j}^2=I_{A_j}$:
+и~$I_{A_j}^2=I_{A_j}$:
 \[
   \mathbb E\big[(\mathbb E[X\mid Y])^2\big] = \mathbb E\Big[\sum_j
   \Big(\frac{\mathbb EXI_{A_j}}{\mathbb P(A_j)}\Big)^2 I_{A_j}\Big] =
@@ -353,14 +351,13 @@ $\mathbb P(Y=0)=0.1+0.3=0.4$, $\mathbb P(Y=1)=0.2+0.4=0.6$.
 \end{proofbox}
 
 \begin{proofbox}[Решение на Задача 9.2]
-$g(x)=-\ln x$ е строго намаляваща и диференцируема върху $(0,1)$, с
-обратна $g^{-1}(y)=e^{-y}$ за $y>0$, $(g^{-1}(y))'=-e^{-y}$. По
+$g(x)=-\ln x$ е строго намаляваща и~диференцируема върху $(0,1)$, с~обратна $g^{-1}(y)=e^{-y}$ за $y>0$, $(g^{-1}(y))'=-e^{-y}$. По
 теоремата за смяна на променливите:
 \[
   f_Y(y) = f_X\big(e^{-y}\big)\cdot\big|-e^{-y}\big| = 1\cdot e^{-y}
   = e^{-y}, \qquad y>0
 \]
-(използвахме $f_X\equiv1$ на $(0,1)$, а $e^{-y}\in(0,1)$ за $y>0$).
+(използвахме $f_X\equiv1$ на $(0,1)$, а~$e^{-y}\in(0,1)$ за $y>0$).
 Това е точно плътността на $Exp(1)$, следователно $Y\sim Exp(1)$.
 \qedbg
 \end{proofbox}
@@ -391,7 +388,7 @@ $g(x)=-\ln x$ е строго намаляваща и диференцируем
 \end{proofbox}
 
 \begin{proofbox}[Решение на Задача 10.2]
-$g(x)=\tfrac{x-\mu}\sigma$ е строго растяща линейна функция с обратна
+$g(x)=\tfrac{x-\mu}\sigma$ е строго растяща линейна функция с~обратна
 $g^{-1}(z)=\sigma z+\mu$, $(g^{-1}(z))'=\sigma$. По теоремата за
 смяна на променливите:
 \[
@@ -413,15 +410,15 @@ m}=\tfrac12 \Rightarrow -\lambda m=-\ln2 \Rightarrow m=\dfrac{\ln2}
 \begin{proofbox}[Решение на Задача 11.1]
 Търсената вероятност е лицето на областта $\{(x,y)\in(0,1)^2 : x+y<
 1\}$ спрямо равномерната плътност (която е константа $1$ върху
-единичния квадрат). Тази област е триъгълник с върхове $(0,0),(1,0),
-(0,1)$ с лице $\tfrac12$, следователно $\mathbb P(X+Y<1)=\tfrac12$.
+единичния квадрат). Тази област е триъгълник с~върхове $(0,0),(1,0),
+(0,1)$ с~лице $\tfrac12$, следователно $\mathbb P(X+Y<1)=\tfrac12$.
 \end{proofbox}
 
 \begin{proofbox}[Решение на Задача 11.2]
 $Exp(\lambda)$ е частен случай на Гама разпределението: плътността
-$\lambda e^{-\lambda x}$ съвпада с плътността на $\Gamma(1,\lambda)$
+$\lambda e^{-\lambda x}$ съвпада с~плътността на $\Gamma(1,\lambda)$
 при $\alpha=1$. Следователно $X_i\sim\Gamma(1,\lambda)$ независими,
-и по теоремата за адитивност на Гама разпределението (Тема~11):
+и~по теоремата за адитивност на Гама разпределението (Тема~11):
 \[
   \sum_{i=1}^n X_i \sim \Gamma(\underbrace{1+1+\dots+1}_{n\text{ пъти}
   },\ \lambda) = \Gamma(n,\lambda). \qedbg
@@ -450,7 +447,7 @@ $x\in(0,1)$ (по симетрия, $f_Y(y)=y+\tfrac12$). Тогава
 \section*{Тема 12}
 
 \begin{proofbox}[Решение на Задача 12.1]
-Фиксираме $\varepsilon>0$ и полагаме $\delta=\min\big(1,\
+Фиксираме $\varepsilon>0$ и~полагаме $\delta=\min\big(1,\
 \tfrac\varepsilon{1+2|c|}\big)>0$. Ако $|X_n-c|<\delta$, то $|X_n+c|
 \le|X_n-c|+2|c| < 1+2|c|$, следователно
 \[
@@ -463,13 +460,13 @@ $x\in(0,1)$ (по симетрия, $f_Y(y)=y+\tfrac12$). Тогава
   \mathbb P(|X_n^2-c^2|>\varepsilon) \le \mathbb P(|X_n-c|\ge\delta)
   \xrightarrow[n\to\infty]{}0,
 \]
-понеже $X_n\xrightarrow{\mathbb P}c$ и $\delta>0$ е фиксирано.
+понеже $X_n\xrightarrow{\mathbb P}c$ и~$\delta>0$ е фиксирано.
 Следователно $X_n^2\xrightarrow{\mathbb P}c^2$. \qedbg
 \end{proofbox}
 
 \begin{proofbox}[Решение на Задача 12.2]
 По неравенството на Чебишов, приложено към извадковата средна (както
-в доказателството на СЗГЧ): $\mathbb P(|\overline X_n-\mu|>\varepsilon)
+в~доказателството на СЗГЧ): $\mathbb P(|\overline X_n-\mu|>\varepsilon)
 \le \dfrac{\sigma^2}{n\varepsilon^2}$. С $\sigma^2=4$, $\varepsilon=
 0.5$, искаме
 \[
@@ -512,13 +509,12 @@ $M_X(t)=\lambda(\lambda-t)^{-1}$. Първа производна: $M_X'(t)=
   DX = \mathbb EX^2-(\mathbb EX)^2 = \frac2{\lambda^2}-\frac1{
   \lambda^2} = \frac1{\lambda^2},
 \]
-което съвпада с познатите $\mathbb EX=1/\lambda$, $DX=1/\lambda^2$
+което съвпада с~познатите $\mathbb EX=1/\lambda$, $DX=1/\lambda^2$
 за експоненциалното разпределение.
 \end{proofbox}
 
 \begin{proofbox}[Решение на Задача 13.3]
-За $X_1\sim Be(0.5)$: $\mu=0.5$, $\sigma^2=0.25$, $\sigma=0.5$, и
-$|X_1-\mu|=0.5$ винаги (тъй като $X_1\in\{0,1\}$), следователно
+За $X_1\sim Be(0.5)$: $\mu=0.5$, $\sigma^2=0.25$, $\sigma=0.5$, и~$|X_1-\mu|=0.5$ винаги (тъй като $X_1\in\{0,1\}$), следователно
 $\mathbb E|X_1-\mu|^3 = 0.5^3=0.125$. С $N=100$:
 \[
   \frac{0.4748\cdot0.125}{0.5^3\cdot\sqrt{100}} = \frac{0.4748\cdot
@@ -543,20 +539,19 @@ $\mathbb E|X_1-\mu|^3 = 0.5^3=0.125$. С $N=100$:
 \end{proofbox}
 
 \begin{proofbox}[Решение на Задача 14.2]
-$\mu^{(1)}(\lambda)=\mathbb EX=\dfrac1\lambda$. Изравняваме с
-извадковия момент: $\dfrac1\lambda=\overline X_n \Rightarrow
+$\mu^{(1)}(\lambda)=\mathbb EX=\dfrac1\lambda$. Изравняваме с~извадковия момент: $\dfrac1\lambda=\overline X_n \Rightarrow
 \hat\lambda = \dfrac1{\overline X_n}$.
 \end{proofbox}
 
 \begin{proofbox}[Решение на Задача 14.3]
-По неравенството на Чебишов, приложено към $\hat\theta_n$ (с $\mathbb
+По неравенството на Чебишов, приложено към $\hat\theta_n$ (с~$\mathbb
 E\hat\theta_n=\theta$ по неизместеност):
 \[
   \mathbb P(|\hat\theta_n-\theta|>\varepsilon) = \mathbb P\big(|
   \hat\theta_n-\mathbb E\hat\theta_n|>\varepsilon\big) \le \frac{
   D\hat\theta_n}{\varepsilon^2} \xrightarrow[n\to\infty]{} 0,
 \]
-защото $D\hat\theta_n\to0$ по условие, а $\varepsilon>0$ е
+защото $D\hat\theta_n\to0$ по условие, а~$\varepsilon>0$ е
 фиксирано. Понеже това важи за всяко $\varepsilon>0$, $\hat\theta_n
 \xrightarrow{\mathbb P}\theta$, т.е.\ $\hat\theta_n$ е състоятелна.
 \qedbg
@@ -565,13 +560,13 @@ E\hat\theta_n=\theta$ по неизместеност):
 \section*{Тема 15}
 
 \begin{proofbox}[Решение на Задача 15.1]
-По ЦГТ, приложена към i.i.d.\ извадката $(X_i)$ с $\mathbb EX_1=p$,
+По ЦГТ, приложена към i.i.d.\ извадката $(X_i)$ с~$\mathbb EX_1=p$,
 $DX_1=p(1-p)$:
 \[
   T = \frac{\hat p_n-p}{\sqrt{p(1-p)/n}} \xrightarrow[n\to\infty]{d}
   N(0,1).
 \]
-Третирайки $T$ приблизително като централна статистика и повтаряйки
+Третирайки $T$ приблизително като централна статистика и~повтаряйки
 конструкцията от Тема~15 със симетрични квантили $\pm q$, $q=
 \Phi^{-1}(\tfrac{1+\gamma}2)$:
 \[
@@ -579,8 +574,7 @@ $DX_1=p(1-p)$:
   \hat p_n - q\sqrt{\tfrac{p(1-p)}n} \le p \le \hat p_n+q\sqrt{
   \tfrac{p(1-p)}n}\Big).
 \]
-Тъй като $p$ (в корена) е неизвестно, на практика заместваме с
-$\hat p_n$ (състоятелна оценка, оправдано защото $\hat p_n\to p$ по
+Тъй като $p$ (в~корена) е неизвестно, на практика заместваме с~$\hat p_n$ (състоятелна оценка, оправдано защото $\hat p_n\to p$ по
 вероятност), получавайки приблизителния доверителен интервал
 \[
   \Big(\hat p_n - q\sqrt{\tfrac{\hat p_n(1-\hat p_n)}n},\ \ \hat p_n
@@ -590,7 +584,7 @@ $\hat p_n$ (състоятелна оценка, оправдано защото
 
 \begin{proofbox}[Решение на Задача 15.2]
 По формулата за доверителен интервал при известно $\sigma^2$ (Тема
-15), с $\hat\mu=50$, $\sigma=2$, $n=16$, $q\approx1.96$:
+15), с~$\hat\mu=50$, $\sigma=2$, $n=16$, $q\approx1.96$:
 \[
   \Big(50-1.96\cdot\frac2{\sqrt{16}},\ 50+1.96\cdot\frac2{\sqrt{16}}
   \Big) = \big(50-0.98,\ 50+0.98\big) = (49.02,\ 50.98).
@@ -604,7 +598,7 @@ $\hat p_n$ (състоятелна оценка, оправдано защото
   \frac2{0.8} = 2.5.
 \]
 Критичната стойност е $q_{0.975}\approx1.96$. Понеже $|Z|=2.5>1.96$,
-наблюдението попада в критичната област, следователно \textbf{
+наблюдението попада в~критичната област, следователно \textbf{
 отхвърляме} $H_0$ при ниво на значимост $\alpha=0.05$.
 \end{proofbox}
 

@@ -10,9 +10,8 @@
 \end{defbox}
 
 \begin{rembox}[Идея]
-Ако имаме интервал $(c,d)\subseteq(a,b)$, вероятността да попаднем в
-него зависи само от дължината на интервала - тя е пропорционална на
-$d-c$. Всички изходи в $(a,b)$ са равновероятни.
+Ако имаме интервал $(c,d)\subseteq(a,b)$, вероятността да попаднем в~него зависи само от дължината на интервала - тя е пропорционална на
+$d-c$. Всички изходи в~$(a,b)$ са равновероятни.
 \end{rembox}
 
 \begin{thmbox}[]{Теорема}
@@ -21,8 +20,7 @@ $d-c$. Всички изходи в $(a,b)$ са равновероятни.
 \[
   \mathbb EX = \frac{a+b}{2}, \qquad \mathbb EX^2 = \frac{a^2+ab+b^2}{3}, \qquad DX = \frac{(a-b)^2}{12},
 \]
-и
-\[
+и~\[
   F_X(x) = \begin{cases}0, & x\le a\\ \dfrac{x-a}{b-a}, & x\in(a,b)\\ 1, & x\ge b\end{cases}.
 \]
 \end{thmbox}
@@ -37,26 +35,26 @@ $d-c$. Всички изходи в $(a,b)$ са равновероятни.
 \[
   DX = \mathbb EX^2-(\mathbb EX)^2 = \frac{a^2+ab+b^2}{3} - \frac{(a+b)^2}{4} = \frac{(a-b)^2}{12}
 \]
-(след привеждане под общ знаменател~12 и опростяване). Функцията на
+(след привеждане под общ знаменател~12 и~опростяване). Функцията на
 разпределение се получава директно чрез интегриране на плътността:
 за $x\in(a,b)$, $F_X(x)=\int_a^x\frac1{b-a}\,dy = \frac{x-a}{b-a}$.
 \qedbg
 \end{proofbox}
 
 \begin{rembox}[Забележка]
-$DX$ зависи само от дължината на интервала $b-a$, а не от неговото
+$DX$ зависи само от дължината на интервала $b-a$, а~не от неговото
 разположение (позиция) върху числовата ос.
 \end{rembox}
 
 \begin{thmbox}[~(стандартизация на равномерното разпределение)]{Теорема}
-Ако $X\sim U(a,b)$, то $Y=\dfrac{X-a}{b-a}\sim U(0,1)$; и обратно,
+Ако $X\sim U(a,b)$, то $Y=\dfrac{X-a}{b-a}\sim U(0,1)$; и~обратно,
 ако $Y\sim U(0,1)$, то $X=a+(b-a)Y \sim U(a,b)$.
 \end{thmbox}
 
 \begin{proofbox}
-\textbf{($\Rightarrow$)} Нека $D_{f_X}=(a,b)$ и $g(x)=\dfrac{x-a}{b-a}$
+\textbf{($\Rightarrow$)} Нека $D_{f_X}=(a,b)$ и~$g(x)=\dfrac{x-a}{b-a}$
 - строго растяща функция. Тогава $g^{-1}(y)=a+(b-a)y$,
-$(g^{-1}(y))'=b-a$, и по теоремата за смяна на променливите (Тема~9):
+$(g^{-1}(y))'=b-a$, и~по теоремата за смяна на променливите (Тема~9):
 \[
   f_Y(y) = f_X\big(g^{-1}(y)\big)\cdot(b-a) = \begin{cases}\dfrac{b-a}{b-a}=1, & y\in(0,1)\\ 0,&\text{иначе}\end{cases}
   \quad\Longrightarrow\quad Y\sim U(0,1).
@@ -64,8 +62,8 @@ $(g^{-1}(y))'=b-a$, и по теоремата за смяна на промен
 
 \textbf{($\Leftarrow$)} Нека $Y\sim U(0,1)$, т.е.\ $f_Y(y)=1$ за
 $y\in(0,1)$, $0$ иначе. Разглеждаме $X=g(Y)=a+(b-a)Y$ - строго
-растяща функция на $Y$ (защото $b>a$), с $g^{-1}(x)=\dfrac{x-a}{b-a}$
-и $(g^{-1}(x))'=\dfrac1{b-a}$. Тогава
+растяща функция на $Y$ (защото $b>a$), с~$g^{-1}(x)=\dfrac{x-a}{b-a}$
+и~$(g^{-1}(x))'=\dfrac1{b-a}$. Тогава
 \begin{align*}
   f_X(x) &= f_Y\big(g^{-1}(x)\big)\cdot\Big|\frac1{b-a}\Big| = \begin{cases}\dfrac1{b-a}, & 0<\dfrac{x-a}{b-a}<1 \iff a<x<b\\ 0,&\text{иначе}\end{cases}\\
   &\quad\Longrightarrow\quad X\sim U(a,b). \qedbg
@@ -73,11 +71,10 @@ $y\in(0,1)$, $0$ иначе. Разглеждаме $X=g(Y)=a+(b-a)Y$ - стро
 \end{proofbox}
 
 \begin{rembox}[Пресмятане за \texorpdfstring{$U(0,1)$}{U(0,1)}]
-За $X\sim U(0,1)$: $\mathbb EX = \int_0^1 x\,dx = \tfrac12$, и
-\[
+За $X\sim U(0,1)$: $\mathbb EX = \int_0^1 x\,dx = \tfrac12$, и~\[
   DX = \mathbb EX^2-(\mathbb EX)^2 = \int_0^1 x^2\,dx - \frac14 = \frac13-\frac14 = \frac1{12},
 \]
-което съвпада с горната обща формула $DX=\tfrac{(b-a)^2}{12}$ при
+което съвпада с~горната обща формула $DX=\tfrac{(b-a)^2}{12}$ при
 $a=0,b=1$.
 \end{rembox}
 
@@ -89,8 +86,8 @@ $a=0,b=1$.
 \[
   f_X(x) = \frac1{\sqrt{2\pi}\,\sigma}\,e^{-\frac{(x-\mu)^2}{2\sigma^2}}, \qquad x\in\mathbb R,
 \]
-където $\mu$ е средната стойност, а $\sigma$ - стандартното
-отклонение. „Камбанката“ е по-висока и по-тясна за по-малко~$\sigma$.
+където $\mu$ е средната стойност, а~$\sigma$ - стандартното
+отклонение. „Камбанката“ е по-висока и~по-тясна за по-малко~$\sigma$.
 \end{defbox}
 
 \begin{rembox}[Стандартно нормално разпределение]
@@ -108,8 +105,7 @@ e^{-y^2/2}\,dy$.
 \end{thmbox}
 
 \begin{proofbox}
-Нека $g(x)=\dfrac{x-\mu}{\sigma}$ - строго растяща функция, с
-$g^{-1}(z)=\mu+\sigma z$, $(g^{-1}(z))'=\sigma$. По теоремата за
+Нека $g(x)=\dfrac{x-\mu}{\sigma}$ - строго растяща функция, с~$g^{-1}(z)=\mu+\sigma z$, $(g^{-1}(z))'=\sigma$. По теоремата за
 смяна на променливите (Тема~9):
 \[
   f_Z(z) = f_X\big(g^{-1}(z)\big)\cdot\sigma = \frac1{\sqrt{2\pi}\sigma}e^{-\frac{(\mu+\sigma z-\mu)^2}{2\sigma^2}}\cdot\sigma = \frac1{\sqrt{2\pi}}e^{-\frac{\sigma^2z^2}{2\sigma^2}} = \frac1{\sqrt{2\pi}}e^{-z^2/2}. \qedbg
@@ -117,7 +113,7 @@ $g^{-1}(z)=\mu+\sigma z$, $(g^{-1}(z))'=\sigma$. По теоремата за
 \end{proofbox}
 
 \begin{corbox}[]
-Ако $X\sim N(\mu,\sigma^2)$, то $\mathbb EX=\mu$ и $DX=\sigma^2$.
+Ако $X\sim N(\mu,\sigma^2)$, то $\mathbb EX=\mu$ и~$DX=\sigma^2$.
 \end{corbox}
 
 \begin{proofbox}
@@ -127,18 +123,17 @@ $\mathbb EX = \mu+\sigma\,\mathbb EZ$, като
 \[
   \mathbb EZ = \frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty} z\,e^{-z^2/2}\,dz = 0,
 \]
-защото подинтегралната функция $z\mapsto ze^{-z^2/2}$ е нечетна (а
-интегралът ѝ по симетричен относно нулата интервал е нула).
+защото подинтегралната функция $z\mapsto ze^{-z^2/2}$ е нечетна (а~интегралът ѝ по симетричен относно нулата интервал е нула).
 Следователно $\mathbb EX=\mu$.
 
-$DX = \sigma^2 DZ$, като (интегрирайки по части, с $u=z$,
+$DX = \sigma^2 DZ$, като (интегрирайки по части, с~$u=z$,
 $dv=ze^{-z^2/2}dz \Rightarrow v=-e^{-z^2/2}$):
 \begin{align*}
   DZ &= \mathbb EZ^2-(\mathbb EZ)^2 = \mathbb EZ^2 = \frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}z^2e^{-z^2/2}\,dz = \frac{2}{\sqrt{2\pi}}\int_0^{\infty}z^2e^{-z^2/2}\,dz\\
   &= \frac{2}{\sqrt{2\pi}}\left[-ze^{-z^2/2}\Big|_0^{\infty} + \int_0^{\infty}e^{-z^2/2}\,dz\right] = \frac{2}{\sqrt{2\pi}}\cdot\frac1{2}\int_{-\infty}^{\infty}e^{-z^2/2}\,dz = \frac1{\sqrt{2\pi}}\int_{-\infty}^{\infty}e^{-z^2/2}dz = 1
 \end{align*}
 (използвахме четността на $z\mapsto z^2e^{-z^2/2}$, граничния член
-$-ze^{-z^2/2}\to0$ при $z\to\infty$, и нормировъчния интеграл на
+$-ze^{-z^2/2}\to0$ при $z\to\infty$, и~нормировъчния интеграл на
 Гаус за $N(0,1)$). Следователно $DX=\sigma^2\cdot1=\sigma^2$. \qedbg
 \end{proofbox}
 
@@ -151,19 +146,18 @@ $-ze^{-z^2/2}\to0$ при $z\to\infty$, и нормировъчния интег
 \]
 \end{defbox}
 
-\begin{rembox}[Коректност и функция на разпределение]
+\begin{rembox}[Коректност и~функция на разпределение]
 \[
   \int_0^{\infty}\lambda e^{-\lambda x}\,dx = -e^{-\lambda x}\Big|_0^{\infty} = \lim_{x\to\infty}(-e^{-\lambda x}) - (-1) = 0+1 = 1.
 \]
-Функцията на разпределение и функцията на оцеляване (,,опашка``) са:
+Функцията на разпределение и~функцията на оцеляване (,,опашка``) са:
 \[
   F_X(x) = \int_0^x \lambda e^{-\lambda y}\,dy = 1-e^{-\lambda x}, \qquad \overline{F}_X(x) = 1-F_X(x) = e^{-\lambda x}, \qquad x\ge0.
 \]
 \end{rembox}
 
 \begin{thmbox}[]{Теорема}
-Ако $X\sim Exp(\lambda)$, то $\mathbb EX = \dfrac1\lambda$ и
-$DX = \dfrac1{\lambda^2}$.
+Ако $X\sim Exp(\lambda)$, то $\mathbb EX = \dfrac1\lambda$ и~$DX = \dfrac1{\lambda^2}$.
 \end{thmbox}
 
 \begin{proofbox}

@@ -1,21 +1,21 @@
 \chapter{Въведение}
 
-\section{Случаен експеримент и елементарни събития}
+\section{Случаен експеримент и~елементарни събития}
 
 \begin{defbox}[~(Случаен експеримент)]
 \textbf{Случаен експеримент} е опит или наблюдение, чийто изход не може
 да бъде предсказан предварително. Всеки възможен елементарен резултат
-от този експеримент наричаме \textbf{елементарно събитие} и го
-означаваме с малка гръцка буква (обикновено~$\omega$).
+от този експеримент наричаме \textbf{елементарно събитие} и~го
+означаваме с~малка гръцка буква (обикновено~$\omega$).
 \end{defbox}
 
 \begin{rembox}[Мотивация]
 Случайният експеримент е моделът, чрез който математиката хваща
-явления с недетерминиран изход - от хвърляне на монета и зар, през
+явления с~недетерминиран изход - от хвърляне на монета и~зар, през
 резултати от избори, до напълно непрекъснати процеси. Класически
 пример за такъв процес е \textbf{Брауновото движение}: през 1827~г.
 ботаникът Робърт Браун наблюдава хаотичното движение на прашец във
-вода, а през 1905~г. Айнщайн му дава строго вероятностно обяснение.
+вода, а~през 1905~г. Айнщайн му дава строго вероятностно обяснение.
 Именно нуждата от такива по-сложни пространства ни води до общата
 дефиниция по-долу.
 \end{rembox}
@@ -23,7 +23,7 @@
 \begin{defbox}[~(Пространство от елементарни събития)]
 \textbf{Пространството от елементарни събития} е множеството от
 всички възможни елементарни събития за даден случаен експеримент.
-Означава се с главна гръцка буква (обикновено~$\Omega$).
+Означава се с~главна гръцка буква (обикновено~$\Omega$).
 \end{defbox}
 
 \begin{defbox}[~(Събитие)]
@@ -35,18 +35,18 @@ $\omega \in A$. Най-често събитието групира елемен
 даден признак (рядко е точно едно елементарно събитие).
 \end{defbox}
 
-\begin{rembox}[Операции с events (кратко резюме)]
+\begin{rembox}[Операции с~events (кратко резюме)]
 Събитията са множества, затова върху тях работят обичайните
-операции и закони от теория на множествата:
+операции и~закони от теория на множествата:
 \begin{itemize}[nosep]
-  \item $A \subseteq B \iff \forall \omega \in A \Rightarrow \omega \in B$ (влагане); $A = B \iff A\subseteq B \text{ и } B \subseteq A$.
+  \item $A \subseteq B \iff \forall \omega \in A \Rightarrow \omega \in B$ (влагане); $A = B \iff A\subseteq B \text{ и~} B \subseteq A$.
   \item $A \cup B = \{\omega \in \Omega : \omega \in A \text{ или } \omega \in B\}$ - \emph{„или“};
-  \item $A \cap B = \{\omega \in \Omega : \omega \in A \text{ и } \omega \in B\}$ - \emph{„и“};
+  \item $A \cap B = \{\omega \in \Omega : \omega \in A \text{ и~} \omega \in B\}$ - \emph{„и~“};
   \item $A^c = \{\omega \in \Omega : \omega \notin A\}$ - \emph{допълнение} (по-рядко: отрицание), като $\Omega = A \cup A^c$;
   \item $A \setminus B = A \cap B^c$ (,,$A$ без $B$``);
   \item комутативност: $A\cup B = B\cup A$, $A\cap B = B\cap A$;
   \item асоциативност: $A\cup(B\cup C) = (A\cup B)\cup C$;
-  \item дистрибутивност: $A\cup(B\cap C) = (A\cup B)\cap(A\cup C)$ и двойственото ѝ равенство;
+  \item дистрибутивност: $A\cup(B\cap C) = (A\cup B)\cap(A\cup C)$ и~двойственото ѝ равенство;
   \item инволутивност: $(A^c)^c = A$;
   \item закони на Де Морган: $\left(\bigcup_{i=1}^{\infty} A_i\right)^c = \bigcap_{i=1}^{\infty} A_i^c$, \quad $\left(\bigcap_{i=1}^{\infty} A_i\right)^c = \bigcup_{i=1}^{\infty} A_i^c$.
 \end{itemize}
@@ -56,7 +56,7 @@ $\omega \in A$. Най-често събитието групира елемен
 
 \begin{defbox}[~(\texorpdfstring{$\sigma$}{Sigma}-алгебра)]
 Нека $\Omega$ е произволно множество (наричано пространство от
-елементарни събития) и нека $\mathcal{A}$ е система от подмножества
+елементарни събития) и~нека $\mathcal{A}$ е система от подмножества
 на $\Omega$ (т.е. $\mathcal{A} \subseteq \mathcal{P}(\Omega)$).
 Казваме, че $\mathcal{A}$ е \textbf{$\sigma$-алгебра} на $\Omega$, ако
 са изпълнени:
@@ -71,19 +71,19 @@ $\omega \in A$. Най-често събитието групира елемен
 Ако $\mathcal{A}$ е $\sigma$-алгебра на $\Omega$, то:
 \begin{itemize}[nosep]
   \item $\varnothing \in \mathcal{A}$;
-  \item ако $A_i \in \mathcal{A}$ за всяко $i \geq 1$, то $\bigcap_{i=1}^{\infty} A_i \in \mathcal{A}$ (затвореност и относно изброимо сечение);
-  \item ако $A_1,\dots,A_n \in \mathcal{A}$, то $\bigcup_{i=1}^{n} A_i \in \mathcal{A}$ и $\bigcap_{i=1}^n A_i \in \mathcal A$ (затвореност и относно \emph{крайно} обединение/сечение).
+  \item ако $A_i \in \mathcal{A}$ за всяко $i \geq 1$, то $\bigcap_{i=1}^{\infty} A_i \in \mathcal{A}$ (затвореност и~относно изброимо сечение);
+  \item ако $A_1,\dots,A_n \in \mathcal{A}$, то $\bigcup_{i=1}^{n} A_i \in \mathcal{A}$ и~$\bigcap_{i=1}^n A_i \in \mathcal A$ (затвореност и~относно \emph{крайно} обединение/сечение).
 \end{itemize}
 \end{corbox}
 
 \begin{proofbox}
-Понеже $\Omega \in \mathcal{A}$ и $\Omega^c = \varnothing$, от аксиома~2)
+Понеже $\Omega \in \mathcal{A}$ и~$\Omega^c = \varnothing$, от аксиома~2)
 следва $\varnothing = \Omega^c \in \mathcal{A}$.
 
 Нека $A_i \in \mathcal{A}$ за всяко $i \geq 1$. От аксиома~2) $A_i^c \in
-\mathcal{A}$ за всяко $i$, а от аксиома~3), приложена към редицата
+\mathcal{A}$ за всяко $i$, а~от аксиома~3), приложена към редицата
 $\{A_i^c\}$, следва $\bigcup_{i=1}^{\infty} A_i^c \in \mathcal{A}$.
-Прилагайки отново аксиома~2) към това обединение и закона на Де
+Прилагайки отново аксиома~2) към това обединение и~закона на Де
 Морган:
 \[
   \left(\bigcup_{i=1}^{\infty} A_i^c\right)^{c} \in \mathcal{A}
@@ -92,13 +92,13 @@ $\{A_i^c\}$, следва $\bigcup_{i=1}^{\infty} A_i^c \in \mathcal{A}$.
 \]
 
 За крайното обединение: нека $A_1,\dots,A_n \in \mathcal{A}$. Допълваме
-редицата с $A_{n+k} := \varnothing$ за $k \geq 1$ (знаем вече, че
+редицата с~$A_{n+k} := \varnothing$ за $k \geq 1$ (знаем вече, че
 $\varnothing \in \mathcal{A}$). Тогава по аксиома~3)
 \[
   \bigcup_{i=1}^{n} A_i = \bigcup_{i=1}^{\infty} A_i \in \mathcal{A}.
 \]
 Затвореността относно крайно сечение следва по същия начин чрез
-допълнение и закона на Де Морган. \qedbg
+допълнение и~закона на Де Морган. \qedbg
 \end{proofbox}
 
 \begin{rembox}[Примери]
@@ -107,28 +107,27 @@ $\varnothing \in \mathcal{A}$). Тогава по аксиома~3)
 другата страна, \textbf{дискретната} (пълна) $\sigma$-алгебра е
 $2^{\Omega} = \{\varnothing,\Omega,\{a\},\{b\}\}$ - множеството от
 \emph{всички} подмножества на $\Omega$; тя винаги е $\sigma$-алгебра
-и съдържа $2^{|\Omega|}$ елемента. За произволна крайна извадка от $n$
+и~съдържа $2^{|\Omega|}$ елемента. За произволна крайна извадка от $n$
 изхода имаме $|2^\Omega| = 2^n$ възможни събития.
 \end{rembox}
 
-\section{Топология и Борелова \texorpdfstring{$\sigma$}{sigma}-алгебра}
+\section{Топология и~Борелова \texorpdfstring{$\sigma$}{sigma}-алгебра}
 
 \begin{defbox}[~(Система от отворени множества)]
 Нека $X$ е произволно множество. Система от отворени множества
 (\textbf{топология}) е съвкупност $\tau \subseteq 2^X$, която
 удовлетворява аксиомите:
 \begin{enumerate}[label=\arabic*)]
-  \item Празното множество и цялото пространство са отворени.
+  \item Празното множество и~цялото пространство са отворени.
   \item Обединението на произволен брой отворени множества е отворено.
   \item Сечението на \emph{крайно много} отворени множества е отворено.
 \end{enumerate}
 \end{defbox}
 
 \begin{defbox}[~(Породена / Борелова \texorpdfstring{$\sigma$}{sigma}-алгебра)]
-Нека $\Omega$ е множество от елементарни събития и $G$ е произволна
+Нека $\Omega$ е множество от елементарни събития и~$G$ е произволна
 колекция от подмножества на $\Omega$. Най-малката $\sigma$-алгебра,
-съдържаща $G$, се нарича \textbf{породена от $G$ $\sigma$-алгебра} и
-се означава с $\sigma(G)$:
+съдържаща $G$, се нарича \textbf{породена от $G$ $\sigma$-алгебра} и~се означава с~$\sigma(G)$:
 \[
   \sigma(G) := \bigcap_{\substack{\mathcal{A} \supseteq G\\ \mathcal{A}\ \sigma\text{-алгебра}}} \mathcal{A}.
 \]
@@ -138,9 +137,8 @@ $\sigma$-алгебра, съдържаща всички отворени мно
 \end{defbox}
 
 \begin{rembox}[Пример: породена \texorpdfstring{$\sigma$}{sigma}-алгебра от три събития]
-Нека $A,B,C$ образуват пълна група от несъвместими събития в
-$\Omega$ (т.е.\ $A,B,C$ са по двойки непресичащи се и $A\cup B\cup
-C=\Omega$) и $G=\{A,B,C\}$. Тогава породената $\sigma$-алгебра е
+Нека $A,B,C$ образуват пълна група от несъвместими събития в~$\Omega$ (т.е.\ $A,B,C$ са по двойки непресичащи се и~$A\cup B\cup
+C=\Omega$) и~$G=\{A,B,C\}$. Тогава породената $\sigma$-алгебра е
 крайна:
 \[
   \sigma(G) = \{\varnothing,\Omega,A,B,C,A\cup B,A\cup C,B\cup C\}.
@@ -150,13 +148,13 @@ C=\Omega$) и $G=\{A,B,C\}$. Тогава породената $\sigma$-алге
 \end{rembox}
 
 \begin{rembox}[Пример: Бореловата \texorpdfstring{$\sigma$}{sigma}-алгебра на \texorpdfstring{$\mathbb{R}$}{R}]
-За $\Omega = \mathbb{R}$ с обичайната топология, $\mathcal{B}(\mathbb{R})$
+За $\Omega = \mathbb{R}$ с~обичайната топология, $\mathcal{B}(\mathbb{R})$
 съдържа всички интервали $(a,b)$, $(a,\infty)$, $(-\infty,a)$ за
-$a,b\in\mathbb{R}$, $a<b$. Съдържа и всяко едноточково множество
+$a,b\in\mathbb{R}$, $a<b$. Съдържа и~всяко едноточково множество
 $\{a\}$, защото
 \[
   \{a\} = \bigcap_{i=1}^{\infty} \left(a-\tfrac1i,\, a+\tfrac1i\right) \in \mathcal{B}(\mathbb{R}),
 \]
-а оттам и $[a,b) = \{a\}\cup(a,b) \in \mathcal{B}(\mathbb{R})$,
+а~оттам и~$[a,b) = \{a\}\cup(a,b) \in \mathcal{B}(\mathbb{R})$,
 $[a,b]=\{a\}\cup(a,b)\cup\{b\}\in\mathcal B(\mathbb R)$.
 \end{rembox}
