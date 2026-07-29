@@ -59,7 +59,7 @@ x)^2=\sum_k x_k^2-n\bar x^2=\sum_k x_k(x_k-\bar x)$ и~аналогичното
 $Y_k = \beta_0+\beta_1 X_k+\varepsilon_k$, $k=1,\dots,n$, където
 $(\varepsilon_j)_{j=1}^n$ са независими в~съвкупност (случайността е
 единствено в~грешките $\varepsilon_k$; стойностите $X_k$ са
-фиксирани наблюдения), и~:
+фиксирани наблюдения), и:
 \begin{enumerate}[label=\arabic*)]
   \item $\mathbb E\varepsilon_j=0$;
   \item $D\varepsilon_j=\sigma^2$ за всяко $j$ (\textbf{хомоскедастичност} - еднаква дисперсия на грешката);
@@ -147,7 +147,7 @@ $\sum_k(X_k-\bar X)=0$ и~$\sum_k(X_k-\bar X)^2=A$). \qedbg
 От модела, $\dfrac{Y_k-\beta_0-\beta_1X_k}\sigma\sim N(0,1)$, и~$\sum_{k=1}^n\Big(\dfrac{Y_k-\beta_0-\beta_1X_k}\sigma\Big)^2\sim
 \chi^2(n)$. Но $\beta_0,\beta_1$ не са ни известни - заместваме ги с~оценките $\hat\beta_0,\hat\beta_1$, което (аналогично на загубата на
 една степен на свобода при замяната на $\mu$ с~$\hat\mu$ в~Тема~15)
-намалява броя на степените на свобода с~~2 (по броя оценени
+намалява броя на степените на свобода с~2 (по броя оценени
 параметри):
 \[
   \sum_{k=1}^n\left(\frac{Y_k-\hat\beta_0-\hat\beta_1X_k}\sigma\right)^2 \sim \chi^2(n-2).
@@ -156,7 +156,7 @@ $\sum_k(X_k-\bar X)=0$ и~$\sum_k(X_k-\bar X)^2=A$). \qedbg
 
 \begin{defbox}[~(Оценка на дисперсията на грешката)]
 Използвайки, че за $Z_1,\dots,Z_{n-2}\sim N(0,1)$ независими,
-$\tfrac1{n-2}\sum_j Z_j^2 \xrightarrow{\text{п.с~.}} \mathbb EZ_1^2=1$
+$\tfrac1{n-2}\sum_j Z_j^2 \xrightarrow{\text{п.с.}} \mathbb EZ_1^2=1$
 (УЗГЧ, Тема~12), приближаваме $\tfrac1{n-2}\sum_k\big(\tfrac{Y_k-
 \hat\beta_0-\hat\beta_1X_k}\sigma\big)^2\approx1$, откъдето
 получаваме оценката за дисперсията на грешката:

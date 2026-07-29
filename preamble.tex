@@ -94,13 +94,17 @@
 }
 
 \titleformat{\chapter}[display]
-  {\normalfont\Huge\bfseries\color{ChapterAccent}}
+  {\normalfont\Huge\bfseries\color{ChapterAccent}\hyphenpenalty=10000\exhyphenpenalty=10000}
   {\Large\color{ChapterAccent!70!black}Тема \thechapter}
   {6pt}{\Huge}
 \titleformat{\section}
   {\normalfont\Large\bfseries\color{ThmColorDark}}{\thesection}{0.6em}{}
 \titleformat{\subsection}
   {\normalfont\large\bfseries\color{ThmColorDark!80!black}}{\thesubsection}{0.6em}{}
+
+\widowpenalty=10000
+\clubpenalty=10000
+\displaywidowpenalty=10000
 
 \pagestyle{fancy}
 \setlength{\headheight}{23.12pt}

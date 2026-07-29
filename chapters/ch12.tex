@@ -14,9 +14,9 @@
 вероятностно пространство $V=(\Omega,\mathcal A,\mathbb P)$.
 \end{rembox}
 
-\begin{defbox}[~(Почти сигурна сходимост, п.с~.)]
+\begin{defbox}[~(Почти сигурна сходимост, п.с.)]
 Нека $L_X = \{\omega\in\Omega : \lim_{n\to\infty}X_n(\omega)=X(\omega)\}$.
-Казваме, че $X_n\xrightarrow[n\to\infty]{\text{п.с~.}} X$, ако
+Казваме, че $X_n\xrightarrow[n\to\infty]{\text{п.с.}} X$, ако
 $\mathbb P(L_X)=1$ (,,$X_n$ клони почти сигурно към $X$``). Възможно
 е да съществуват изходи $\omega$, за които границата не е изпълнена,
 но множеството от такива изходи да има вероятност нула.
@@ -39,15 +39,15 @@ $x\in C_{F_X}$: $\lim_{n\to\infty}F_{X_n}(x)=F_X(x)$.
 \begin{thmbox}[]{Теорема}
 Нека $(X_n)_{n=1}^{\infty}$ е редица от случайни величини.
 \begin{enumerate}[label=\alph*)]
-  \item Ако $X_n\xrightarrow{\text{п.с~.}}X$, то $X_n\xrightarrow{\mathbb P}X$.
+  \item Ако $X_n\xrightarrow{\text{п.с.}}X$, то $X_n\xrightarrow{\mathbb P}X$.
   \item Ако $X_n\xrightarrow{\mathbb P}X$, то $X_n\xrightarrow{d}X$.
 \end{enumerate}
-(Т.е.\ п.с~.\ сходимостта е най-силна, следвана от сходимостта по
+(Т.е.\ п.с.\ сходимостта е най-силна, следвана от сходимостта по
 вероятност, а~сходимостта по разпределение е най-слабата.)
 \end{thmbox}
 
 \begin{proofbox}
-\textbf{а~)} Нека $X_n\xrightarrow{\text{п.с~.}}X$, т.е.\ $\mathbb
+\textbf{а)} Нека $X_n\xrightarrow{\text{п.с.}}X$, т.е.\ $\mathbb
 P(L)=1$ за $L=\{\omega:\lim_n X_n(\omega)=X(\omega)\}$. Твърдим, че
 \[
   L = \bigcap_{r=1}^{\infty}\bigcup_{n=1}^{\infty}\bigcap_{k=n}^{\infty} \Big\{\omega\in\Omega : |X_k(\omega)-X(\omega)|\le\frac1r\Big\}.
@@ -213,7 +213,7 @@ EX_i$ не променя дисперсията). По неравенствот
 Нека $(X_i)_{i=1}^{\infty}$ е редица от случайни величини с~очаквания $(\mathbb EX_i)_{i=1}^{\infty}$. Казваме, че за редицата е
 в~сила \textbf{усиленият закон за големите числа}, ако
 \[
-  \frac{\sum_{i=1}^n (X_i-\mathbb EX_i)}{n} \xrightarrow[n\to\infty]{\text{п.с~.}} 0.
+  \frac{\sum_{i=1}^n (X_i-\mathbb EX_i)}{n} \xrightarrow[n\to\infty]{\text{п.с.}} 0.
 \]
 \end{defbox}
 
@@ -221,7 +221,7 @@ EX_i$ не променя дисперсията). По неравенствот
 Нека $(X_i)_{i=1}^{\infty}$ е i.i.d.\ редица с~$\mathbb E|X_1|<\infty$.
 Тогава
 \[
-  \frac{\sum_{i=1}^n X_i}{n} \xrightarrow[n\to\infty]{\text{п.с~.}} \mathbb EX_1.
+  \frac{\sum_{i=1}^n X_i}{n} \xrightarrow[n\to\infty]{\text{п.с.}} \mathbb EX_1.
 \]
 \end{thmbox}
 

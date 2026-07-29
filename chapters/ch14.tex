@@ -84,7 +84,7 @@ $x_1$ „най-вероятно“).
 (винаги, независимо дали $\sigma^2$ е известно), а~МПО за $\sigma^2$
 зависи от това дали $\mu$ е известно:
 \[
-  \text{а~) } \hat\sigma^2 = \frac1n\sum_{j=1}^n (X_j-\mu)^2\ \text{(ако $\mu$ е известно)},
+  \text{а) } \hat\sigma^2 = \frac1n\sum_{j=1}^n (X_j-\mu)^2\ \text{(ако $\mu$ е известно)},
 \]
 \[
   \text{б) } \hat\sigma^2 = \frac1n\sum_{j=1}^n (X_j-\overline X_n)^2\ \text{(ако $\mu$ не е известно)}.
@@ -133,7 +133,7 @@ $x_1$ „най-вероятно“).
 \begin{rembox}[Идея]
 От усиления закон за големите числа (Тема~12), за i.i.d.\ извадка:
 $\overline X_n^{(j)} := \tfrac1n\sum_{k=1}^n X_k^j
-\xrightarrow{\text{п.с~.}}\mathbb EX^j$ за всеки ред на момента $j$
+\xrightarrow{\text{п.с.}}\mathbb EX^j$ за всеки ред на момента $j$
 (стига моментът да съществува). Идеята на метода на моментите е да
 \emph{изравним} теоретичните моменти (функции на $\theta$) с~емпиричните моменти от извадката и~да решим спрямо~$\theta$.
 \end{rembox}
@@ -252,7 +252,7 @@ $\mathbb E\hat\sigma^2 = \tfrac{n-1}n\sigma^2 \to \sigma^2$ при $n\to\infty$ 
 
 \begin{defbox}[~(Силна състоятелност)]
 Казваме, че $\hat\theta$ е \textbf{силно състоятелна} оценка на
-$\theta$, ако $\hat\theta\xrightarrow[n\to\infty]{\text{п.с~.}}\theta$.
+$\theta$, ако $\hat\theta\xrightarrow[n\to\infty]{\text{п.с.}}\theta$.
 От теоремата за видовете сходимост (Тема~12), силната състоятелност
 влече състоятелност.
 \end{defbox}
@@ -260,15 +260,15 @@ $\theta$, ако $\hat\theta\xrightarrow[n\to\infty]{\text{п.с~.}}\theta$.
 \begin{rembox}[Пример: \texorpdfstring{$\hat\mu=\overline X_n$}{мю-капа=X-чертата} е силно състоятелна]
 По усиления закон за големите числа (Тема~12), директно приложен
 към i.i.d.\ извадката $(X_j)$: $\overline X_n=\tfrac1n\sum_j X_j
-\xrightarrow{\text{п.с~.}}\mathbb EX_1=\mu$.
+\xrightarrow{\text{п.с.}}\mathbb EX_1=\mu$.
 \end{rembox}
 
 \begin{rembox}[Пример: \texorpdfstring{$\hat\sigma^2=\overline X_n^{(2)}-(\overline X_n^{(1)})^2$}{сигма-капа^2} е силно състоятелна]
 По УЗГЧ, приложен поотделно към редиците $(X_j)$ и~$(X_j^2)$:
-$\overline X_n^{(1)}\xrightarrow{\text{п.с~.}}\mathbb EX_1=\mu$ и~$\overline X_n^{(2)}\xrightarrow{\text{п.с~.}}\mathbb EX_1^2$.
+$\overline X_n^{(1)}\xrightarrow{\text{п.с.}}\mathbb EX_1=\mu$ и~$\overline X_n^{(2)}\xrightarrow{\text{п.с.}}\mathbb EX_1^2$.
 Функцията $g(a,b)=b-a^2$ е непрекъсната, следователно
 \[
-  \hat\sigma^2 = \overline X_n^{(2)}-\big(\overline X_n^{(1)}\big)^2 \xrightarrow[n\to\infty]{\text{п.с~.}} \mathbb EX_1^2-\mu^2 = \sigma^2,
+  \hat\sigma^2 = \overline X_n^{(2)}-\big(\overline X_n^{(1)}\big)^2 \xrightarrow[n\to\infty]{\text{п.с.}} \mathbb EX_1^2-\mu^2 = \sigma^2,
 \]
 т.е.\ $\hat\sigma^2$ е силно състоятелна (макар да е изместена за
 крайно $n$, видяхме по-горе).
