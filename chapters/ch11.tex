@@ -190,7 +190,8 @@ $h=g^{-1}$, $X=h(Y)=(h_1(Y_1,Y_2),h_2(Y_1,Y_2))$, като $g$ и~$h$ са
 разпределение).
 
 Правим трансформацията $W=X_2$, $Z=X_1+X_2$ (т.е.\ $X_1=Z-W$,
-$X_2=W$), с~Якобиан $|J|(w,z)=\det\begin{pmatrix}1&-1\\0&1\end{pmatrix}=1$.
+$X_2=W$), с~Якобиан
+$|J|(z,w)=\left|\det\begin{pmatrix}\partial X_1/\partial Z & \partial X_1/\partial W\\ \partial X_2/\partial Z & \partial X_2/\partial W\end{pmatrix}\right|=\left|\det\begin{pmatrix}1&-1\\0&1\end{pmatrix}\right|=1$.
 Понеже $X_1\perp\!\!\!\perp X_2$, съвместната им плътност е
 $f_{X_1,X_2}(x_1,x_2)=\dfrac1{2\pi\sigma_1\sigma_2}e^{-\frac{x_1^2}{2\sigma_1^2}-\frac{x_2^2}{2\sigma_2^2}}$,
 следователно
