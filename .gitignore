@@ -19,3 +19,5 @@ build/
 Theory/*.tex
 Theory/chapters/
 !practicum/**/*.pdf
+!Seminars/*.pdf
+Seminars/src/
