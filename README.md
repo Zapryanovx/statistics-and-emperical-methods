@@ -40,5 +40,5 @@ practicum/
 
 Seminars/
   0 Ръководство със задачи.pdf
-  1.1.pdf ... 4.36.pdf
+  1.01.pdf ... 4.36.pdf
 ```
