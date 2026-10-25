@@ -70,15 +70,40 @@ C_k$. По $\sigma$-адитивност $\mathbb P(A_n)=\sum_{k=1}^n \mathbb
 P(C_k)$ и~$\mathbb P(A)=\sum_{k=1}^\infty \mathbb P(C_k)$. Но сумата
 на реда по дефиниция е границата на частичните суми, откъдето
 $\lim_{n\to\infty}\mathbb P(A_n)=\mathbb P(A)$.
+\end{proofbox}
 
-\textbf{з) (непрекъснатост отгоре)} Нека $A_1\supseteq A_2\supseteq
-\dots$ и~$A=\bigcap_{i=1}^{\infty}A_i$. Полагаме $B_n=A_n^c$. Тогава
-$B_1\subseteq B_2\subseteq\dots$ и, по закона на Де Морган,
-$\bigcup_n B_n=\bigcap_n A_n^{c}\,{}^{c}=A^c$. От непрекъснатостта
-отдолу, приложена към $B_n$: $\lim_n\mathbb P(B_n)=\mathbb P(A^c)$.
-Но $\mathbb P(B_n)=1-\mathbb P(A_n)$ и~$\mathbb P(A^c)=1-\mathbb
-P(A)$, следователно $1-\lim_n\mathbb P(A_n)=1-\mathbb P(A)
-\Rightarrow \lim_n\mathbb P(A_n)=\mathbb P(A)$.
+\begin{proofbox}
+\textbf{з) (непрекъснатост отгоре)} Първо разглеждаме частния случай,
+в~който редицата се свива до празното множество: $B_1\supseteq
+B_2\supseteq\dots\supseteq B_n\supseteq\dots$ и~$\bigcap_{j=1}^{\infty}
+B_j=\varnothing$. Трябва да покажем, че
+$0=\mathbb P(\varnothing)=\lim_{n\to\infty}\mathbb P(B_n)$.
+
+Всеки елемент на $B_1$ отпада от редицата на някоя стъпка, защото
+иначе би бил във всички $B_j$, т.е.\ в~сечението. Затова $B_1$ се
+разбива на несъвместими „венци“ $B_j\setminus B_{j+1}$, и~по същата
+причина това важи за всяко $B_n$:
+\[
+  B_1=\bigcup_{j=1}^{\infty}(B_j\setminus B_{j+1}),
+  \qquad
+  B_n=\bigcup_{j=n}^{\infty}(B_j\setminus B_{j+1}).
+\]
+По $\sigma$-адитивност
+\[
+  1\ \ge\ \mathbb P(B_1)=\sum_{j=1}^{\infty}\mathbb P(B_j\setminus B_{j+1})<\infty,
+  \qquad
+  \mathbb P(B_n)=\sum_{j=n}^{\infty}\mathbb P(B_j\setminus B_{j+1})
+  \xrightarrow[n\to\infty]{}0.
+\]
+Първият ред е сходящ, а $\mathbb P(B_n)$ е неговата остатъчна сума
+след $n-1$ члена, която за сходящ ред клони към~$0$. Това е точно
+непрекъснатостта в~$\varnothing$.
+
+Общият случай се свежда до частния. Нека $A_1\supseteq A_2\supseteq
+\dots$ и~$A=\bigcap_{i=1}^{\infty}A_i$. Полагаме $B_n=A_n\setminus A$.
+Тогава $B_n$ намаляват и~$\bigcap_n B_n=\varnothing$, а понеже
+$A\subseteq A_n$, имаме $\mathbb P(A_n)=\mathbb P(A)+\mathbb P(B_n)
+\to\mathbb P(A)$.
 
 \textbf{и) (субадитивност, чрез „венци“)} Нека
 \[
@@ -96,35 +121,6 @@ $\bigcup_{i}B_i=\bigcup_i A_i$: включването „$\subseteq$“ е оч
 \]
 Крайният случай се получава аналогично (или чрез допълване с~$\varnothing$). \qedbg
 \end{proofbox}
-
-\begin{rembox}[Алтернативно доказателство на (з) в~частния случай $\bigcap_i A_i=\varnothing$]
-Ако границата на намаляващата редица е точно $\varnothing$ (а не
-произволно $A$), непрекъснатостта отгоре има и~директно доказателство,
-без да минава през (ж):
-
-Понеже $A_1\supseteq A_2\supseteq\dots$ и~$\bigcap_{i=1}^{\infty}A_i=
-\varnothing$, всеки елемент $x\in A_1$ трябва в~някой момент да
-„отпадне“ от редицата - иначе би принадлежал на всички $A_n$, т.е.\
-на сечението, противоречие. Затова (аналогично на разбиването,
-ползвано при непрекъснатостта отдолу) можем да запишем $A_1$ като
-несъвместимо обединение от „пръстени“:
-\[
-  A_1 = \bigcup_{j=1}^{\infty} (A_j\setminus A_{j+1}).
-\]
-По същата логика, за всяко $n$: $A_n = \bigcup_{j=n}^{\infty}
-(A_j\setminus A_{j+1})$ (опашката на същото разбиване - всеки
-$x\in A_n$ отпада на някой по-късен етап $j\ge n$, и~обратно). По
-$\sigma$-адитивност,
-\[
-  \mathbb P(A_1) = \sum_{j=1}^{\infty} \mathbb P(A_j\setminus A_{j+1}),
-  \qquad
-  \mathbb P(A_n) = \sum_{j=n}^{\infty} \mathbb P(A_j\setminus A_{j+1}).
-\]
-Редът $\sum_{j=1}^{\infty}\mathbb P(A_j\setminus A_{j+1})$ е сходящ
-(сборът му е $\mathbb P(A_1)\le1$), следователно опашката му клони
-към нула: $\mathbb P(A_n)\to0$ при $n\to\infty$, т.е.\
-$\mathbb P(A_n)\to\mathbb P(\varnothing)=0$.
-\end{rembox}
 
 \section{Вероятностно пространство}
 
