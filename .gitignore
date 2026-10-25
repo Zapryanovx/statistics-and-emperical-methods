@@ -16,3 +16,5 @@
 *.pdf
 build/
 !Theory/lectures/*.pdf
+Theory/*.tex
+Theory/chapters/
